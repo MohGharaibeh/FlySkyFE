@@ -25,9 +25,62 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "src/assets/homeAssets/css/bootstrap.min.css",
+              "src/assets/homeAssets/css/owl.carousel.min.css",
+              "src/assets/homeAssets/css/flaticon.css",
+              "src/assets/homeAssets/css/slicknav.css",
+              "src/assets/homeAssets/css/animate.min.css",
+              "src/assets/homeAssets/css/magnific-popup.css",
+              "src/assets/homeAssets/css/fontawesome-all.min.css",
+              "src/assets/homeAssets/css/themify-icons.css",
+              "src/assets/homeAssets/css/slick.css",
+              "src/assets/homeAssets/css/nice-select.css",
+              "src/assets/homeAssets/css/style.css",
+
+              "src/assets/adminAssets/css/bootstrap.min.css",
+              "src/assets/adminAssets/css/paper-dashboard.css",
+              "src/assets/adminAssets/demo/demo.css"
+
+
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/homeAssets/js/vendor/modernizr-3.5.0.min.js",
+              "src/assets/homeAssets/js/vendor/jquery-1.12.4.min.js",
+              "src/assets/homeAssets/js/popper.min.js",
+              "src/assets/homeAssets/js/bootstrap.min.js",
+              "src/assets/homeAssets/js/jquery.slicknav.min.js",
+              "src/assets/homeAssets/js/owl.carousel.min.js",
+              "src/assets/homeAssets/js/slick.min.js",
+              "src/assets/homeAssets/js/wow.min.js",
+              "src/assets/homeAssets/js/animated.headline.js",
+              "src/assets/homeAssets/js/jquery.magnific-popup.js",
+              "src/assets/homeAssets/js/jquery.scrollUp.min.js",
+              "src/assets/homeAssets/js/jquery.nice-select.min.js",
+              "src/assets/homeAssets/js/jquery.sticky.js",
+              "src/assets/homeAssets/js/contact.js",
+              "src/assets/homeAssets/js/jquery.form.js",
+              "src/assets/homeAssets/js/jquery.validate.min.js",
+              "src/assets/homeAssets/js/mail-script.js",
+              "src/assets/homeAssets/js/jquery.ajaxchimp.min.js",
+              "src/assets/homeAssets/js/plugins.js",
+              "src/assets/homeAssets/js/main.js",
+
+              "src/assets/authAssets/js/jquery.min.js",
+              "src/assets/authAssets/js/popper.js",
+              "src/assets/authAssets/js/bootstrap.min.js",
+              "src/assets/authAssets/js/main.js",
+              
+
+              "src/assets/adminAssets/js/core/jquery.min.js",
+              "src/assets/adminAssets/js/core/popper.min.js",
+              "src/assets/adminAssets/js/core/bootstrap.min.js",
+              "src/assets/adminAssets/js/plugins/perfect-scrollbar.jquery.min.js",
+              "src/assets/adminAssets/js/plugins/chartjs.min.js",
+              "src/assets/adminAssets/js/plugins/bootstrap-notify.js",
+              "src/assets/adminAssets/js/paper-dashboard.min.js",
+              "src/assets/adminAssets/demo/demo.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -94,5 +147,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }
