@@ -5,7 +5,7 @@ import { AdminRoutingModule } from './admin-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SharedadminModule } from '../sharedadmin/sharedadmin.module';
 
-
+import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
 @NgModule({
   declarations: [
     DashboardComponent
@@ -13,7 +13,8 @@ import { SharedadminModule } from '../sharedadmin/sharedadmin.module';
   imports: [
     CommonModule,
     AdminRoutingModule,
-    SharedadminModule
+    SharedadminModule,
+    CanvasJSAngularChartsModule
   ]
 })
 export class AdminModule { }

@@ -25,6 +25,7 @@
               "src/assets"
             ],
             "styles": [
+              "@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css",
               "src/assets/homeAssets/css/bootstrap.min.css",
               "src/assets/homeAssets/css/owl.carousel.min.css",
@@ -37,12 +38,9 @@
               "src/assets/homeAssets/css/slick.css",
               "src/assets/homeAssets/css/nice-select.css",
               "src/assets/homeAssets/css/style.css",
-
               "src/assets/adminAssets/css/bootstrap.min.css",
               "src/assets/adminAssets/css/paper-dashboard.css",
               "src/assets/adminAssets/demo/demo.css"
-
-
             ],
             "scripts": [
               "src/assets/homeAssets/js/vendor/modernizr-3.5.0.min.js",
@@ -140,6 +138,7 @@
               "src/assets"
             ],
             "styles": [
+              "@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css"
             ],
             "scripts": []

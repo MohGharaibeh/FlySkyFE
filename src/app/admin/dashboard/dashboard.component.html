@@ -159,7 +159,8 @@
             <p class="card-category">Line Chart with Points</p>
           </div>
           <div class="card-body">
-            <canvas id="speedChart" width="400" height="100"></canvas>
+            <!-- <canvas id="speedChart" width="400" height="100"></canvas> -->
+            <canvasjs-chart [options]="chartOptions" [styles]="{width: '400', height:'100'}"></canvasjs-chart>    
           </div>
           <div class="card-footer">
             <div class="chart-legend">
