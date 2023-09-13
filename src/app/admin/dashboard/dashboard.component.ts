@@ -7,10 +7,15 @@ import { StatisticService } from 'src/app/service/statistic.service';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
+	numOfUser: number = 0;
+	numOfAirport: number = 0;
+
 	constructor(public stat: StatisticService){}
-  ngOnInit(): void {
-	  this.stat.getNumOfUser();
-  }
+	ngOnInit(): void {
+		this.stat.getNum();
+		this.stat.getNumOfAirport();
+		this.stat.getMaxReserved();
+	  }
   chartOptions = {
 	  title: {
 		  text: "Angular Column Chart with Index Labels"
