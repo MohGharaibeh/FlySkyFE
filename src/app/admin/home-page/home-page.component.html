@@ -1,0 +1,102 @@
+
+<div class="wrapper ">
+    <app-sidebar></app-sidebar>
+    <div class="main-panel">
+    <app-navbar></app-navbar>
+    <div class="content">
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-sm-12">
+            <!-- <button (click)="openCreateDialog()" style="display: block;" mat-raised-button>Add one!</button> -->
+            <br>
+    <table class="table table-light table-hover" style="width: 100%;">
+        <thead>
+            <tr>
+              <th >#</th>
+              <th >paragraph</th>
+              <th >text1</th>
+              <th >text2</th>
+              <th >text3</th>
+              <th >text4</th>
+              <th >text5</th>
+              <th >text6</th>
+              <th >text7</th>
+              <th >image</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let f of home.homePage; index as i" >
+              <th >{{i+1}}</th>
+              <td>{{f.paragraph}}</td>
+              <td>{{f.text1}}</td>
+              <td>{{f.text2}}</td>
+              <td>{{f.text3}}</td>
+              <td>{{f.text4}}</td>
+              <td>{{f.text5}}</td>
+              <td>{{f.text6}}</td>
+              <td>{{f.text7}}</td>
+              <td><img width="100px" src="../../../assets/ApiImage/{{f.image}}"></td>
+              <td>
+                <button (click)="openUpdateDialog(f)" mat-raised-button color="primary">Update</button>
+              </td>
+            </tr>
+            
+          </tbody>
+      </table>
+<app-footer></app-footer>
+</div>
+</div>
+
+
+<ng-template #updateDialog>
+    <h1 mat-dialog-title>Update Airport</h1>
+    <form [formGroup]="updateForms" style="padding-left: 30px;">
+    <p>
+        <mat-form-field appearance="fill">
+          <input formControlName="paragraph" [(ngModel)]="data.paragraph" matInput >
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="fill">
+          <input formControlName="text1" [(ngModel)]="data.text1" matInput placeholder="Placeholder">
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="fill">
+          <input type="text" formControlName="text2" [(ngModel)]="data.text2" matInput placeholder="Placeholder">
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="fill">
+          <input formControlName="text3" [(ngModel)]="data.text3" matInput placeholder="Placeholder">
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="fill">
+          <input formControlName="text4" [(ngModel)]="data.text4" matInput placeholder="Placeholder">
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="fill">
+          <input formControlName="text5" [(ngModel)]="data.text5" matInput placeholder="Placeholder">
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="fill">
+          <input formControlName="text6" [(ngModel)]="data.text6" matInput placeholder="Placeholder">
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="fill">
+          <input type="text" formControlName="text7" [(ngModel)]="data.text7" matInput placeholder="Placeholder">
+        </mat-form-field>
+      </p>
+      <div>
+        <input type="file" #file formControlName="image" (change)="uploadImage(file.files)" >
+      </div>
+    </form>
+    <div mat-dialog-actions>
+      <button (click)="updateHome()" mat-button mat-dialog-close="yes">Update</button>
+      <button mat-button mat-dialog-close="no" cdkFocusInitial>Cancel</button>
+    </div>
+    </ng-template>

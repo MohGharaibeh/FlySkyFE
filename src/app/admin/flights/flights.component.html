@@ -107,6 +107,9 @@
           <input type="date" formControlName="arrivaldate" [(ngModel)]="data.arrivaldate" matInput placeholder="Placeholder">
         </mat-form-field>
       </p>
+      <div>
+        <input type="file" #file formControlName="image" (change)="uploadImage(file.files)" >
+      </div>
     </form>
     <div mat-dialog-actions>
       <button (click)="updateFlight()" mat-button mat-dialog-close="yes">Update</button>

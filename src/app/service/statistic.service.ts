@@ -38,4 +38,15 @@ export class StatisticService {
       
     })
   }
+
+  registerUsers:any=[{}];
+  showRegisterdUser(){
+    this.http.get('https://localhost:7152/api/UserAccount').subscribe((res:any)=>{
+      this.registerUsers = res;
+      
+    }, err=>{
+      console.log(err);
+      
+    })
+  }
 }
