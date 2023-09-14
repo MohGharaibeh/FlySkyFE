@@ -7,10 +7,12 @@ import { SharedadminModule } from '../sharedadmin/sharedadmin.module';
 
 import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
 import { AirportsComponent } from './airports/airports.component';
+import { FlightsComponent } from './flights/flights.component';
 @NgModule({
   declarations: [
     DashboardComponent,
-    AirportsComponent
+    AirportsComponent,
+    FlightsComponent,
   ],
   imports: [
     CommonModule,

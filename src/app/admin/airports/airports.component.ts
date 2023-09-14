@@ -43,7 +43,7 @@ data:any={};
 
   updateAirport(){
     this.airport.updateAirport(this.data)
-    window.location.reload();
+    
   }
 @ViewChild('createDialog') createDialogs !: TemplateRef<any>
   createForm : FormGroup = new FormGroup({
@@ -55,7 +55,7 @@ data:any={};
   }
 
   createAirport(){
+
     this.airport.createAirport(this.createForm.value);
-    window.location.reload();
   }
 }

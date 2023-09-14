@@ -33,18 +33,20 @@ export class AirportService {
   updateAirport(body:any){
     this.http.put('https://localhost:7152/api/Airport', body).subscribe((res: any)=>{
       console.log(res);
-      
+      window.location.reload();
     }, err=>{
       console.log(err);
       
     })
   }
 
-  createAirport(body:any){
+  async createAirport(body:any){
     debugger;
-    this.http.post('https://localhost:7152/api/Airport/AddAirport/', body).subscribe((res:any)=>{
+    await this.http.post('https://localhost:7152/api/Airport/AddAirport/', body).subscribe((res:any)=>{
       console.log(res);
-      
+      setTimeout(() => {
+        window.location.reload();
+      }, 1000);
     }, err=>{
       console.log(err);
       

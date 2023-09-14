@@ -47,9 +47,6 @@
 
 <ng-template #updateDialog>
     <h1 mat-dialog-title>Update Airport</h1>
-    <div mat-dialog-content>
-      Would you like to delete cat.jpeg?
-    </div>
     <form [formGroup]="updateForm" style="padding-left: 30px;">
     <p>
         <mat-form-field appearance="fill">
@@ -78,7 +75,7 @@
 
     <ng-template #createDialog>
         <h1 mat-dialog-title>Add Airport</h1>
-        <form [formGroup]="createForm" style="padding-left: 30px;">
+        <form [formGroup]="createForm" style="padding-left: 30px; ">
         <p>
             <mat-form-field appearance="fill">
               <mat-label>Fill form field</mat-label>
