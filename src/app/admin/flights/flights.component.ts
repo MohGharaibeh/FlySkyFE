@@ -42,7 +42,9 @@ export class FlightsComponent implements OnInit {
     tocountry : new FormControl(''),
     travelclass : new FormControl(''),
     departuredate : new FormControl(''),
-    arrivaldate : new FormControl('')
+    arrivaldate : new FormControl(''),
+    image : new FormControl('')
+
   });
   @ViewChild('updateDialog') updateDialoge !: TemplateRef<any>
   data:any={}
