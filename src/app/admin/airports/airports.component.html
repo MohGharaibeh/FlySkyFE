@@ -6,7 +6,7 @@
     <div class="content">
         <div class="row">
           <div class="col-lg-10 col-md-12 col-sm-12">
-            <button (click)="openCreateDialog()" style="display: block;" mat-raised-button>Basic</button>
+            <button (click)="openCreateDialog()" style="display: block;" mat-raised-button>Add Airport</button>
             <br>
     <table class="table table-light table-hover">
         <thead>
@@ -50,16 +50,16 @@
     <form [formGroup]="updateForm" style="padding-left: 30px;">
     <p>
         <mat-form-field appearance="fill">
-          <mat-label>Fill form field</mat-label>
-          <input formControlName="name" [(ngModel)]="data.name" matInput placeholder="Placeholder">
+          <mat-label>Airport Name</mat-label>
+          <input formControlName="name" [(ngModel)]="data.name" matInput placeholder="name">
           <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
           <mat-hint>Hint</mat-hint>
         </mat-form-field>
       </p>
       <p>
         <mat-form-field appearance="outline">
-          <mat-label>Outline form field</mat-label>
-          <input formControlName="location" [(ngModel)]="data.location" matInput placeholder="Placeholder">
+          <mat-label>Airport location</mat-label>
+          <input formControlName="location" [(ngModel)]="data.location" matInput placeholder="location">
           <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
           <mat-hint>Hint</mat-hint>
         </mat-form-field>
@@ -78,18 +78,18 @@
         <form [formGroup]="createForm" style="padding-left: 30px; ">
         <p>
             <mat-form-field appearance="fill">
-              <mat-label>Fill form field</mat-label>
-              <input type="text" formControlName="name" matInput placeholder="Placeholder">
+              <mat-label>Airport name</mat-label>
+              <input type="text" formControlName="name" matInput placeholder="name">
               <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-              <mat-hint>Hint</mat-hint>
+              
             </mat-form-field>
           </p>
           <p>
             <mat-form-field appearance="outline">
-              <mat-label>Outline form field</mat-label>
-              <input type="text" formControlName="location" matInput placeholder="Placeholder">
+              <mat-label>Airport location</mat-label>
+              <input type="text" formControlName="location" matInput placeholder="location">
               <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-              <mat-hint>Hint</mat-hint>
+             
             </mat-form-field>
           </p>
         </form>

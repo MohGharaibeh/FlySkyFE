@@ -59,7 +59,7 @@
 </ng-template>
 
 
-<ng-template #updateDialog>
+<ng-template #updateDialog >
     <h1 mat-dialog-title>Update Airport</h1>
     <form [formGroup]="updateForms" style="padding-left: 30px;">
     <p>
@@ -116,87 +116,89 @@
 
 
 
-    <ng-template #createDialog>
-        <h1 mat-dialog-title>Add Airport</h1>
-        <form [formGroup]="createForms" style="padding-left: 30px; ">
+    <ng-template #createDialog class="AddAirport">
+      
+        <h1 id="headTitle" mat-dialog-title>Add Flight</h1>
+        <form class="formAddFlight" [formGroup]="createForms" >
         <p>
             <mat-form-field appearance="fill">
-              <mat-label>Fill form field</mat-label>
-              <input type="text" formControlName="capacity" matInput placeholder="Placeholder">
+              <mat-label>capacity</mat-label>
+              <input type="text" formControlName="capacity" matInput placeholder="capacity">
               <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-              <mat-hint>Hint</mat-hint>
+           
             </mat-form-field>
           </p>
           <p>
             <mat-form-field appearance="outline">
-              <mat-label>Outline form field</mat-label>
-              <input type="text" formControlName="status" matInput placeholder="Placeholder">
+              <mat-label>status</mat-label>
+              <input type="text" formControlName="status" matInput placeholder="status" >
               <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-              <mat-hint>Hint</mat-hint>
             </mat-form-field>
           </p>
           <p>
             <mat-form-field appearance="outline">
-              <mat-label>Outline form field</mat-label>
-              <input type="text" formControlName="price" matInput placeholder="Placeholder">
+              <mat-label>price</mat-label>
+              <input type="text" formControlName="price" matInput placeholder="price">
               <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-              <mat-hint>Hint</mat-hint>
+              
             </mat-form-field>
           </p>
           <p>
             <mat-form-field appearance="outline">
-              <mat-label>Outline form field</mat-label>
-              <input type="text" formControlName="description" matInput placeholder="Placeholder">
+              <mat-label>description</mat-label>
+              <input type="text" formControlName="description" matInput placeholder="description">
               <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-              <mat-hint>Hint</mat-hint>
+
             </mat-form-field>
           </p>
           <p>
             <mat-form-field appearance="outline">
-              <mat-label>Outline form field</mat-label>
-              <input type="text" formControlName="fromcountry" matInput placeholder="Placeholder">
+              <mat-label>fromcountry</mat-label>
+              <input type="text" formControlName="fromcountry" matInput placeholder="fromcountry">
               <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-              <mat-hint>Hint</mat-hint>
+   
             </mat-form-field>
           </p>
           <p>
             <mat-form-field appearance="outline">
-              <mat-label>Outline form field</mat-label>
-              <input type="text" formControlName="tocountry" matInput placeholder="Placeholder">
+              <mat-label>tocountry</mat-label>
+              <input type="text" formControlName="tocountry" matInput placeholder="tocountry">
               <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-              <mat-hint>Hint</mat-hint>
+        
             </mat-form-field>
           </p>
           <p>
             <mat-form-field appearance="outline">
-              <mat-label>Outline form field</mat-label>
-              <input type="text" formControlName="travelclass" matInput placeholder="Placeholder">
+              <mat-label>travelclass</mat-label>
+              <input type="text" formControlName="travelclass" matInput placeholder="travelclass">
               <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-              <mat-hint>Hint</mat-hint>
+              
             </mat-form-field>
           </p>
           <p>
             <mat-form-field appearance="outline">
-              <mat-label>Outline form field</mat-label>
-              <input type="date" formControlName="departuredate" matInput placeholder="Placeholder">
+              <mat-label>departuredate</mat-label>
+              <input type="date" formControlName="departuredate" matInput >
               <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-              <mat-hint>Hint</mat-hint>
+             
             </mat-form-field>
           </p>
           <p>
             <mat-form-field appearance="outline">
-              <mat-label>Outline form field</mat-label>
-              <input type="date" formControlName="arrivaldate" matInput placeholder="Placeholder">
+              <mat-label>arrivaldate</mat-label>
+              <input type="date" formControlName="arrivaldate" matInput width="300px">
               <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-              <mat-hint>Hint</mat-hint>
+            
             </mat-form-field>
           </p>
-            <div>
+            <div name="button">
               <input type="file" #file formControlName="image" (change)="uploadImage(file.files)" >
             </div>
+
+            <div name="button" mat-dialog-actions>
+              <button (click)="createFlight()" mat-button [mat-dialog-close]="true">Add</button>
+              <button mat-button mat-dialog-close="no" cdkFocusInitial>Cancel</button>
+            </div>
         </form>
-        <div mat-dialog-actions>
-          <button (click)="createFlight()" mat-button [mat-dialog-close]="true">Add</button>
-          <button mat-button mat-dialog-close="no" cdkFocusInitial>Cancel</button>
-        </div>
+     
         </ng-template>
