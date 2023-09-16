@@ -1,4 +1,33 @@
-.paragraph{
+/* .paragraph{
     scroll-behavior: auto;
     max-width: 25%;
+} */
+
+.custom{
+    width: 300px;
 }
+
+/* Define a CSS class for the template container */
+.update-dialog {
+    background-color: lightblue;
+    padding: 10px;
+    font-size: 16px;
+    max-height: 85vh;
+    overflow-y: scroll;
+    padding: 30px;
+  }
+  
+  /* Style specific elements within the template */
+  .update-dialog h1.mat-dialog-title {
+    /* Styles for the title */
+    font-size: 24px;
+    color: #333; /* Change color as needed */
+  }
+  
+  .update-dialog mat-form-field {
+    /* Styles for form fields */
+    margin-bottom: 20px;
+  }
+  
+  /* Add more styles as needed for other elements within the template */
+  

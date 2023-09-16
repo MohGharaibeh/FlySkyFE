@@ -8346,4 +8346,9 @@
           border: 1px solid transparent;
           background: #fbceb5;
           color: #fff; }
-  
+  .js-fullheight{
+    background-image: url('../../../assets/authAssets/images/login.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }

@@ -1,11 +1,11 @@
 
 <div class="main">
 
-    <section class="signup" style="background-image: url('../../../assets/homeAssets/img/hero/flight.jpg');">
+    <section class="signup js-fullheight" >
         <!-- <img src="images/signup-bg.jpg" alt=""> -->
         <div class="container">
             <div class="signup-content">
-                <form method="POST" id="signup-form" class="signup-form" [formGroup]="createForm">
+                <form  method="POST" id="signup-form" class="signup-form" [formGroup]="createForm">
                     <h2 class="form-title">Create account</h2>
                     <div class="form-group">
                         <input type="text" class="form-input" name="name" id="name" formControlName="fname"  placeholder="First Name"/>
@@ -24,7 +24,14 @@
                         <input type="date" class="form-input" name="name" id="name" formControlName="birthdate"  placeholder="Birth Date"/>
                     </div>
                     <div class="custom">
-                        <input type="file" accept="image/*" #file formControlName="image" (change)="uploadImage(file.files)" style="padding: 10px;background-color: transparent;border: none;">
+                        <div class="file-upload">
+                            <label for="image-upload" class="file-label">
+                              <i class="fas fa-upload"></i> Upload Image
+                            </label>
+                            <input type="file" #file accept="image/*" id="image-upload" formControlName="image" (change)="uploadImage(file.files)">
+                          </div>
+                          
+                        <!-- <input type="file" accept="image/*" #file formControlName="image" (change)="uploadImage(file.files)" style="padding: 10px;background-color: transparent;border: none;"> -->
                     
                     </div>
                         

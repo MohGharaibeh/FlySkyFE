@@ -357,3 +357,47 @@ input[type=checkbox]:not(old):checked + label > span:before {
     padding: 50px 25px; } }
 
 /*# sourceMappingURL=style.css.map */
+.js-fullheight{
+  background-image: url('../../../assets/authAssets/images/login.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+/* Style for the file input container */
+.file-upload {
+  position: relative;
+  display: inline-block;
+  background-color: #88cddd;
+}
+
+/* Style for the hidden input */
+.file-upload input[type="file"] {
+  position: absolute;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+}
+
+/* Style for the label */
+.file-label {
+  background-color: transparent;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Style for the icon */
+.file-label i {
+  margin-right: 5px; /* Add some space between the icon and text */
+}
+
+/* Optional: Style for the label when hovering */
+.file-label:hover {
+  background-color: #eee;
+}

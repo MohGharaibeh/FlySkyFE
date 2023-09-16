@@ -30,7 +30,7 @@ import { ExportAsModule } from 'ngx-export-as';
     MatFormFieldModule,
     MatIconModule,
     MatInputModule
-  ],
+    ],
   exports: [
     SidebarComponent,
     FooterComponent,
