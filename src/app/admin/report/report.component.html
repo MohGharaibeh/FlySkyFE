@@ -14,42 +14,65 @@
                 </div>
               </div>
             <br>
-            <label for="startdate">Start Date</label>
-            <input type="date" id="startdate">
-            <label for="endtdate">End Date</label>
+            <form (submit)="onSearch()">
+              <label for="departulDate">Start Date</label>
+            <input type="date" id="departulDate" name="departulDate" [(ngModel)]="departulDate">
+            <label for="arrivelDate">End Date</label>
 
-            <input type="date" id="endtdate">
-            <button class="btn btn-primary">Search</button>
+            <input type="date" id="arrivelDate" name="arrivelDate" [(ngModel)]="arrivelDate">
+            <button type="submit" (click)="searchOn()" class="btn btn-primary">Search</button>
+            </form>
 
             <div #content class="pdf">
-    <table class="table table-light table-hover" style="width: 100%;" id="down">
-        <thead>
-            <tr #head>
-              <th >#</th>
-              <th >status</th>
-              <th >fromCountry</th>
-              <th >toCountry</th>
-              <th >total_price</th>
-              <th >numberOfPassenger</th>
-              <th >departuredate</th>
-              <th >arrivaldate</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr #body *ngFor="let f of reports.report; index as i" >
-              <th >{{i+1}}</th>
-              <td>{{f.status}}</td>
-              <td>{{f.fromCountry}}</td>
-              <td>{{f.toCountry}}</td>
-              <td>{{f.total_price}}</td>
-              <td>{{f.numberOfPassenger}}</td>
-              <td>{{f.departuredate}}</td>
-              <td>{{f.arrivaldate}}</td>
-              
-            </tr>
-            
-          </tbody>
-      </table>
+              <table class="table table-light table-hover" style="width: 100%;" id="down">
+                <thead>
+                    <tr #head>
+                      <th >#</th>
+                      <th >status</th>
+                      <th >fromCountry</th>
+                      <th >toCountry</th>
+                      <th >total_price</th>
+                      <th >numberOfPassenger</th>
+                      <th >departuredate</th>
+                      <th >arrivaldate</th>
+                    </tr>
+                  </thead>
+                 
+                    <tbody *ngIf="searchOn() originalData ">
+                      <tr #body *ngFor="let f of reports.report; index as i">
+                        <th >{{i+1}}</th>
+                        <td>{{f.status}}</td>
+                        <td>{{f.fromCountry}}</td>
+                        <td>{{f.toCountry}}</td>
+                        <td>{{f.total_price}}</td>
+                        <td>{{f.numberOfPassenger}}</td>
+                        <td>{{f.departuredate}}</td>
+                        <td>{{f.arrivaldate}}</td>
+                        
+                      </tr>
+                      
+                    </tbody>
+               
+
+                  <ng-template #originalData>
+                    <!-- Display reports.report data when dateShow is null -->
+                    <tbody>
+                      <tr *ngFor="let f of reports.dateShow index as i">
+                        <th>{{i + 1}}</th>
+                        <td>{{f.status}}</td>
+                        <td>{{f.fromCountry}}</td>
+                        <td>{{f.toCountry}}</td>
+                        <td>{{f.total_price}}</td>
+                        <td>{{f.numberOfPassenger}}</td>
+                        <td>{{f.departuredate}}</td>
+                        <td>{{f.arrivaldate}}</td>
+                      </tr>
+                    </tbody>
+                    
+                  </ng-template>
+              </table>
+
+
     </div>
           </div>
         </div>

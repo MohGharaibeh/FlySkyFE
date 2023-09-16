@@ -7,6 +7,7 @@ import { Observable, catchError, tap, throwError } from 'rxjs';
 })
 export class ManageHomeService {
 
+ 
   constructor(private http : HttpClient) { }
 //Start Home Page
   homePage:any=[{}];
@@ -140,15 +141,19 @@ realdata:any[]=[];
       
     })
   }
-
-
+  
+  dateShow: any = [{}];
   searchDate(obj:any){
+    debugger;
     this.http.post('https://localhost:7152/api/AdminReport', obj).subscribe((res:any)=>{
-      console.log(res);
       
+      this.dateShow = res;
+      console.log(this.dateShow);
     }, err=>{
       console.log(err);
       
     })
   }
+
+
 }

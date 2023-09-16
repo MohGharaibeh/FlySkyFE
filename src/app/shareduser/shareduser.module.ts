@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import {MatDialogModule} from '@angular/material/dialog';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -13,11 +14,13 @@ import {MatDialogModule} from '@angular/material/dialog';
   ],
   imports: [
     CommonModule,
-    MatDialogModule
+    MatDialogModule,
+    RouterModule
   ],
   exports:[
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    RouterModule
   ]
 })
 export class ShareduserModule { }

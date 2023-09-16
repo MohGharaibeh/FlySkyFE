@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { ManageHomeService } from 'src/app/service/manage-home.service';
 import  jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';
@@ -12,11 +12,28 @@ Chart.register(...registerables)
 })
 export class ReportComponent implements OnInit{
   chartOptions: any;
+@ViewChild('reportData') reportData !: TemplateRef<any>
+  departulDate : string ='';
+  arrivelDate: string ='';
   constructor(public reports:ManageHomeService){}
   ngOnInit(): void {
   this.reports.viewReport();
+  
     this.renderChart(this.reports.labeldata, this.reports.realdata);
   
+}
+
+searchOn(){
+  const report = {Departuredate: this.departulDate, Arrivaldate: this.arrivelDate};
+  this.reports.dateShow;
+  this.reports.searchDate(report);
+}
+
+onSearch(){
+  
+  const report = {Departuredate: this.departulDate, Arrivaldate: this.arrivelDate};
+  this.reports.searchDate(report);
+
 }
 renderChart(labeldata:any, maindata:any){
   const myChart = new Chart("chart", {
