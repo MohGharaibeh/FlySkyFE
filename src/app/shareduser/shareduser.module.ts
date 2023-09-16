@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
-import { RouterModule } from '@angular/router';
-import {MatButtonModule} from '@angular/material/button';
+import {MatDialogModule} from '@angular/material/dialog';
+
 
 
 @NgModule({
@@ -13,14 +13,11 @@ import {MatButtonModule} from '@angular/material/button';
   ],
   imports: [
     CommonModule,
-    RouterModule,
-    MatButtonModule
+    MatDialogModule
   ],
-  exports: [
-    RouterModule,
+  exports:[
     NavbarComponent,
-    FooterComponent,
-    MatButtonModule
+    FooterComponent
   ]
 })
-export class SharedModule { }
+export class ShareduserModule { }
