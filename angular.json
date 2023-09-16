@@ -41,6 +41,8 @@
               "src/assets/adminAssets/css/bootstrap.min.css",
               "src/assets/adminAssets/css/paper-dashboard.css",
               "src/assets/adminAssets/demo/demo.css"
+
+             
             ],
             "scripts": [
               "src/assets/homeAssets/js/vendor/modernizr-3.5.0.min.js",
@@ -64,12 +66,10 @@
               "src/assets/homeAssets/js/plugins.js",
               "src/assets/homeAssets/js/main.js",
 
-              "src/assets/authAssets/js/jquery.min.js",
-              "src/assets/authAssets/js/popper.js",
-              "src/assets/authAssets/js/bootstrap.min.js",
-              "src/assets/authAssets/js/main.js",
-              
 
+              "src/assets/authenticationAssets/vendor/jquery/jquery.min.js",
+              "src/assets/authenticationAssets/js/main.js",
+             
               "src/assets/adminAssets/js/core/jquery.min.js",
               "src/assets/adminAssets/js/core/popper.min.js",
               "src/assets/adminAssets/js/core/bootstrap.min.js",

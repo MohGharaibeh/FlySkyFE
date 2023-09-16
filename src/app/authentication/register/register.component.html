@@ -1,5 +1,113 @@
 
-<div class="img js-fullheight" style="background-image: url(../../../assets/authAssets/images/bg.jpg);">
+<div class="main">
+
+    <section class="signup" style="background-image: url('../../../assets/homeAssets/img/hero/flight.jpg');">
+        <!-- <img src="images/signup-bg.jpg" alt=""> -->
+        <div class="container">
+            <div class="signup-content">
+                <form method="POST" id="signup-form" class="signup-form" [formGroup]="createForm">
+                    <h2 class="form-title">Create account</h2>
+                    <div class="form-group">
+                        <input type="text" class="form-input" name="name" id="name" formControlName="fname"  placeholder="First Name"/>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-input" name="name" id="name" formControlName="lname"  placeholder="Last Name"/>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-input" name="email" id="email" formControlName="email" placeholder="Your Email"/>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-input" name="password" id="password" formControlName="password" placeholder="Password"/>
+                        <span toggle="#password" class="zmdi zmdi-eye field-icon toggle-password"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="date" class="form-input" name="name" id="name" formControlName="birthdate"  placeholder="Birth Date"/>
+                    </div>
+                    <div class="custom">
+                        <input type="file" accept="image/*" #file formControlName="image" (change)="uploadImage(file.files)" style="padding: 10px;background-color: transparent;border: none;">
+                    
+                    </div>
+                        
+                    <div class="form-group">
+                        <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
+                        <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all statements in  <a href="#" class="term-service">Terms of service</a></label>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" name="submit" id="submit" (click)="createUser()" class="form-submit" value="Sign up"/>
+                    </div>
+                </form>
+                <p class="loginhere">
+                    Have already an account ? <a href="#" class="loginhere-link">Login here</a>
+                </p>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+<!-- <div class="limiter">
+    <div class="container-login100" style="background-image: url('../../../assets/homeAssets/img/hero/flightLogo.jpg');">
+        <div class="wrap-login100">
+            <form class="login100-form validate-form" [formGroup]="createForm">
+                <span class="login100-form-logo">
+                    <i class="zmdi zmdi-landscape"></i>
+                </span>
+
+                <span class="login100-form-title p-b-34 p-t-27">
+                    Register
+                </span>
+
+                <div class="wrap-input100 validate-input" data-validate = "Enter username">
+                    <input class="input100" type="email" formControlName="email" name="username" placeholder="Email">
+                    <span class="focus-input100" data-placeholder="&#xf207;"></span>
+                </div>
+
+                <div class="wrap-input100 validate-input" data-validate = "Enter username">
+                    <input class="input100" type="text" formControlName="fname" name="username" placeholder="First Name">
+                    <span class="focus-input100" data-placeholder="&#xf207;"></span>
+                </div>
+
+                <div class="wrap-input100 validate-input" data-validate = "Enter username">
+                    <input class="input100" type="text" formControlName="lname" name="username" placeholder="Last Name">
+                    <span class="focus-input100" data-placeholder="&#xf207;"></span>
+                </div>
+                <div class="wrap-input100 validate-input" data-validate = "Enter username">
+                    <input class="input100" type="date" formControlName="birthdate" name="username" placeholder="Birth Date">
+                    <span class="focus-input100" data-placeholder="&#xf207;"></span>
+                </div>
+
+                <div class="wrap-input100 validate-input" data-validate = "Enter username">
+                    <input class="input100" type="file" accept="image/*" #file formControlName="image" (change)="uploadImage(file.files)" name="username" placeholder="Your Image">
+                    <span class="focus-input100" data-placeholder="&#xf207;"></span>
+                </div>
+                <div class="wrap-input100 validate-input" data-validate="Enter password">
+                    <input class="input100" type="password" formControlName="password" name="pass" placeholder="Password">
+                    <span class="focus-input100" data-placeholder="&#xf191;"></span>
+                </div>
+
+                 <div class="contact100-form-checkbox">
+                    <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
+                    <label class="label-checkbox100" for="ckb1">
+                        Remember me
+                    </label>
+                </div> 
+
+                <div class="container-login100-form-btn">
+                    <button class="login100-form-btn" (click)="createUser()">
+                        Register
+                    </button>
+                </div>
+
+                <div class="text-center p-t-90">
+                    <a class="txt1" >
+                        Forgot Password?
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div> -->
+<!-- <div class="img js-fullheight" style="background-image: url(../../../assets/authAssets/images/bg.jpg);">
 	
     <section class="ftco-section">
     <div class="container">
@@ -12,21 +120,24 @@
             <div class="col-md-6 col-lg-4">
                 <div class="login-wrap p-0">
               <h3 class="mb-4 text-center">Have an account?</h3>
-              <form action="#" class="signin-form">
+              <form >
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="First Name" required>
+                    <input type="text" class="form-control" formControlName="fname" placeholder="First Name" required>
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Last Name" required>
+                    <input type="text" class="form-control" formControlName="lname" placeholder="Last Name" required>
                 </div>
                 <div class="form-group">
-                    <input type="date" class="form-control" placeholder="Birth Date" required>
+                    <input type="file" #file formControlName="image" (change)="uploadImage(file.files)" formControlName="image" required>
+                </div>
+                <div class="form-group">
+                    <input type="date" class="form-control" formControlName="birthdate" placeholder="Birth Date" required>
                 </div>
                   <div class="form-group">
-                      <input type="text" class="form-control" placeholder="Username" required>
+                      <input type="email" class="form-control" formControlName="email" placeholder="Email" required>
                   </div>
             <div class="form-group">
-              <input id="password-field" type="password" class="form-control" placeholder="Password" required>
+              <input id="password-field" type="password" class="form-control" formControlName="password" placeholder="Password" required>
               <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
             </div>
             <div class="form-group">
@@ -57,5 +168,4 @@
 
 
 
-</div>
-
+</div> -->
