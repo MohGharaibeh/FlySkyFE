@@ -109,9 +109,11 @@ export class ManageHomeService {
   }
 
   acceptTestimonials(id:number){
-    this.http.post('https://localhost:7152/api/testimonial/accept/', id).subscribe((res:any)=>{
-      //window.location.reload();
+    debugger;
+    const requestBody = { Testimonialid: id };
+    this.http.put('https://localhost:7152/api/Testimonial/updateTest/', requestBody).subscribe((res:any)=>{
       console.log(res);
+      window.location.reload();
       
     },err=>{
       console.log(err);

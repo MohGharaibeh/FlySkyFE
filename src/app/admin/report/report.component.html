@@ -20,7 +20,7 @@
             <label for="arrivelDate">End Date</label>
 
             <input type="date" id="arrivelDate" name="arrivelDate" [(ngModel)]="arrivelDate">
-            <button type="submit" (click)="searchOn()" class="btn btn-primary">Search</button>
+            <button type="submit" class="btn btn-primary">Search</button>
             </form>
 
             <div #content class="pdf">
@@ -38,8 +38,8 @@
                     </tr>
                   </thead>
                  
-                    <tbody *ngIf="searchOn() originalData ">
-                      <tr #body *ngFor="let f of reports.report; index as i">
+                    <tbody *ngIf="searchOn() else originalData ">
+                      <tr #body *ngFor="let f of reports.dateShow; index as i">
                         <th >{{i+1}}</th>
                         <td>{{f.status}}</td>
                         <td>{{f.fromCountry}}</td>
@@ -57,7 +57,7 @@
                   <ng-template #originalData>
                     <!-- Display reports.report data when dateShow is null -->
                     <tbody>
-                      <tr *ngFor="let f of reports.dateShow index as i">
+                      <tr *ngFor="let f of reports.report index as i">
                         <th>{{i + 1}}</th>
                         <td>{{f.status}}</td>
                         <td>{{f.fromCountry}}</td>

@@ -30,7 +30,6 @@ export class TestimonialComponent implements OnInit {
   }
 
   acceptTestimonial(id: number){
-    debugger;
     this.tests.acceptTestimonials(id);
   }
 
