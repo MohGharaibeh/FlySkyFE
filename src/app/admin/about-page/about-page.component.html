@@ -12,29 +12,25 @@
         <thead>
             <tr>
               <th >#</th>
-              <th >paragraph</th>
+              <th >descriptions</th>
               <th >text1</th>
               <th >text2</th>
               <th >text3</th>
               <th >text4</th>
               <th >text5</th>
-              <th >text6</th>
-              <th >text7</th>
               <th >image</th>
               <th></th>
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let f of home.homePage; index as i" >
+            <tr *ngFor="let f of about.aboutPage; index as i" >
               <th >{{i+1}}</th>
-              <td class="paragraph">{{f.paragraph}}</td>
+              <td>{{f.descriptions}}</td>
               <td>{{f.text1}}</td>
               <td>{{f.text2}}</td>
               <td>{{f.text3}}</td>
               <td>{{f.text4}}</td>
               <td>{{f.text5}}</td>
-              <td>{{f.text6}}</td>
-              <td>{{f.text7}}</td>
               <td><img width="100px" src="../../../assets/ApiImage/{{f.image}}"></td>
               <td>
                 <button (click)="openUpdateDialog(f)" mat-raised-button color="primary">Update</button>
@@ -49,11 +45,11 @@
 
 
 <ng-template #updateDialog>
-    <h1 mat-dialog-title>Update Airport</h1>
+    <h1 mat-dialog-title>Update About</h1>
     <form [formGroup]="updateForms" style="padding-left: 30px;">
     <p>
         <mat-form-field appearance="fill">
-          <input formControlName="paragraph" [(ngModel)]="data.paragraph" matInput >
+          <input formControlName="descriptions" [(ngModel)]="data.descriptions" matInput >
         </mat-form-field>
       </p>
       <p>
@@ -81,22 +77,12 @@
           <input formControlName="text5" [(ngModel)]="data.text5" matInput placeholder="Placeholder">
         </mat-form-field>
       </p>
-      <p>
-        <mat-form-field appearance="fill">
-          <input formControlName="text6" [(ngModel)]="data.text6" matInput placeholder="Placeholder">
-        </mat-form-field>
-      </p>
-      <p>
-        <mat-form-field appearance="fill">
-          <input type="text" formControlName="text7" [(ngModel)]="data.text7" matInput placeholder="Placeholder">
-        </mat-form-field>
-      </p>
       <div>
         <input type="file" #file formControlName="image" (change)="uploadImage(file.files)" >
       </div>
     </form>
     <div mat-dialog-actions>
-      <button (click)="updateHome()" mat-button mat-dialog-close="yes">Update</button>
+      <button (click)="updateAbout()" mat-button mat-dialog-close="yes">Update</button>
       <button mat-button mat-dialog-close="no" cdkFocusInitial>Cancel</button>
     </div>
     </ng-template>

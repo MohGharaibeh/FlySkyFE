@@ -10,6 +10,10 @@ import { AirportsComponent } from './airports/airports.component';
 import { FlightsComponent } from './flights/flights.component';
 import { RegisterdUserComponent } from './registerd-user/registerd-user.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { AboutPageComponent } from './about-page/about-page.component';
+import { ContactComponent } from './contact/contact.component';
+import { TestimonialComponent } from './testimonial/testimonial.component';
+import { ReportComponent } from './report/report.component';
 @NgModule({
   declarations: [
     DashboardComponent,
@@ -17,6 +21,10 @@ import { HomePageComponent } from './home-page/home-page.component';
     FlightsComponent,
     RegisterdUserComponent,
     HomePageComponent,
+    AboutPageComponent,
+    ContactComponent,
+    TestimonialComponent,
+    ReportComponent,
   ],
   imports: [
     CommonModule,

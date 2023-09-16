@@ -5,6 +5,10 @@ import { AirportsComponent } from './airports/airports.component';
 import { FlightsComponent } from './flights/flights.component';
 import { RegisterdUserComponent } from './registerd-user/registerd-user.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { AboutPageComponent } from './about-page/about-page.component';
+import { ContactComponent } from './contact/contact.component';
+import { TestimonialComponent } from './testimonial/testimonial.component';
+import { ReportComponent } from './report/report.component';
 
 const routes: Routes = [
   {
@@ -26,6 +30,22 @@ const routes: Routes = [
   {
     path: 'homepage',
     component: HomePageComponent
+  },
+  {
+    path: 'aboutpage',
+    component: AboutPageComponent
+  },
+  {
+    path: 'contact',
+    component: ContactComponent
+  },
+  {
+    path: 'testimonial',
+    component: TestimonialComponent
+  },
+  {
+    path: 'report',
+    component: ReportComponent
   }
   
 ];

@@ -1,0 +1,62 @@
+
+<div class="wrapper ">
+    <app-sidebar></app-sidebar>
+    <div class="main-panel">
+    <app-navbar></app-navbar>
+    <div class="content" id="content">
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-sm-12">
+            <div class="mb-3 row">
+                <div class="col-5">
+                  <button type="button" class="btn btn-primary" (click)="makePDF()">
+                    Downlaod
+                  </button>
+                </div>
+              </div>
+            <br>
+            <label for="startdate">Start Date</label>
+            <input type="date" id="startdate">
+            <label for="endtdate">End Date</label>
+
+            <input type="date" id="endtdate">
+            <button class="btn btn-primary">Search</button>
+
+            <div #content class="pdf">
+    <table class="table table-light table-hover" style="width: 100%;" id="down">
+        <thead>
+            <tr #head>
+              <th >#</th>
+              <th >status</th>
+              <th >fromCountry</th>
+              <th >toCountry</th>
+              <th >total_price</th>
+              <th >numberOfPassenger</th>
+              <th >departuredate</th>
+              <th >arrivaldate</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr #body *ngFor="let f of reports.report; index as i" >
+              <th >{{i+1}}</th>
+              <td>{{f.status}}</td>
+              <td>{{f.fromCountry}}</td>
+              <td>{{f.toCountry}}</td>
+              <td>{{f.total_price}}</td>
+              <td>{{f.numberOfPassenger}}</td>
+              <td>{{f.departuredate}}</td>
+              <td>{{f.arrivaldate}}</td>
+              
+            </tr>
+            
+          </tbody>
+      </table>
+    </div>
+          </div>
+        </div>
+          </div>
+          <div >
+            <canvas id="chart"></canvas>
+          </div>
+<app-footer></app-footer>
+</div>
+</div>

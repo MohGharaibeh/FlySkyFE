@@ -25,7 +25,7 @@ export class DashboardComponent implements OnInit {
 		includeZero: true
 	  },
 	  data: [{
-		type: "column", //change type to bar, line, area, pie, etc
+		type: "area", //change type to bar, line, area, pie, etc
 		//indexLabel: "{y}", //Shows y value on all Data Points
 		indexLabelFontColor: "#5A5757",
 		dataPoints: [
