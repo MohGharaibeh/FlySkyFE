@@ -22,13 +22,13 @@
             <tr *ngFor="let f of tests.test; index as i" >
               <th >{{i+1}}</th>
               <td >{{f.message}}</td>
-              <td>{{f.userid}}</td>
+              <td>{{f.fullName}}</td>
               <td>{{f.status}}</td>
               
               <td>
-                <button (click)="openDeleteDialog(f.testimonialid)" mat-raised-button color="red">Delete</button>
+                <button (click)="openDeleteDialog(f.testimonialid)" mat-raised-button style="background-color: red;color: white;">Delete</button>
                 
-                <button (click)="acceptTestimonial(f.testimonialid)" mat-raised-button color="green">Accept</button>
+                <button *ngIf="f.status != 'accept'" (click)="acceptTestimonial(f.testimonialid)" mat-raised-button style="background-color: green;color: white;">Accept</button>
               </td>
             </tr>
             

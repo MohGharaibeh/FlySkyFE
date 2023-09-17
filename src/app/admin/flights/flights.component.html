@@ -8,37 +8,51 @@
           <div class="col-lg-12 col-md-12 col-sm-12">
             <button  (click)="openCreateDialog()" style="display: block; background-color: #04aa6d; color: white;" mat-raised-button>Add one!</button>
             <br>
+            <form (submit)="onSearch()">
+              <label for="departulDate">Start Date</label>
+            <input type="date" id="departulDate" name="departulDate" [(ngModel)]="departulDate">
+            <label for="arrivelDate">End Date</label>
+
+            <input type="date" id="arrivelDate" name="arrivelDate" [(ngModel)]="arrivelDate">
+            <button type="submit" class="btn btn-primary">Search</button>
+            </form>
     <table class="table table-light table-hover" style="width: 100%;">
         <thead>
             <tr>
               <th >#</th>
-              <th >Capacity</th>
+              <!-- <th >Capacity</th> -->
               <th >status</th>
-              <th >price</th>
+              <!-- <th >price</th> -->
               <th >Departuredate</th>
               <th >Arrivaldate</th>
-              <th >Description</th>
+              <!-- <th >Description</th>
               <th >Fromcountry</th>
               <th >Fromcountry</th>
-              <th >Travelclass</th>
+              <th >Travelclass</th> -->
+              <th>From Airport</th>
+              <th>To Airport</th>
+
               <th></th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let f of fly.flight; index as i" >
               <th >{{i+1}}</th>
-              <td>{{f.capacity}}</td>
+              <!-- <td>{{f.capacity}}</td> -->
               <td>{{f.status}}</td>
-              <td>{{f.price}}</td>
-              <td>{{f.departuredate}}</td>
-              <td>{{f.arrivaldate}}</td>
-              <td>{{f.description}}</td>
-              <td>{{f.fromcountry}}</td>
-              <td>{{f.tocountry}}</td>
-              <td>{{f.travelclass}}</td>
+              <!-- <td>{{f.price}}</td> -->
+              <td>{{f.departuredate | date:'short'}}</td>
+              <td>{{f.arrivaldate | date:'short'}}</td>
+              <!-- <td>{{f.description}}</td>
+              <td>{{f.fromcountry}}</td> -->
+              <!-- <td>{{f.tocountry}}</td>
+              <td>{{f.travelclass}}</td> -->
+              <td>{{f.fromAirportName}}</td>
+          <td>{{f.toAirportName}}</td>
               <td>
                 <button style="margin-right: 5px; margin-bottom: 5px;" (click)="openDeleteDialog(f.flightid)" mat-raised-button color="warn" >Delete</button>
                 <button (click)="openUpdateDialog(f)" mat-raised-button color="primary">Update</button>
+                <button (click)="gitItById(f.flightid)" mat-raised-button style="background-color: orange;color: white;">👀</button>
               </td>
             </tr>
             
@@ -49,6 +63,40 @@
 </div>
 <app-footer style="position: absolute; bottom: 0;right: 0;left: 0;"></app-footer>
 
+<ng-template #getId>
+  <table class="table table-light table-hover" style="width: 100%;">
+    <thead>
+        <tr>
+          <th >Capacity</th>
+          <th >status</th>
+          <th >price</th>
+          <th >Departuredate</th>
+          <th >Arrivaldate</th>
+          <th >Description</th>
+          <th >Fromcountry</th>
+          <th >Fromcountry</th>
+          <th >Travelclass</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- <tr *ngFor="let f of fly.flight; index as i" > -->
+          <tr>
+          <td>{{flightData.capacity}}</td>
+          <td>{{flightData.status}}</td>
+          <td>{{flightData.price}}</td>
+          <td>{{flightData.departuredate}}</td>
+          <td>{{flightData.arrivaldate}}</td>
+          <td>{{flightData.description}}</td>
+          <td>{{flightData.fromcountry}}</td>
+          <!-- <td>{{flightData.tocountry}}</td>
+          <td>{{flightData.travelclass}}</td> -->
+          <td>{{flightData.fromAirportName}}</td>
+          <td>{{flightData.toAirportName}}</td>
+        </tr>
+        
+      </tbody>
+  </table>
+</ng-template>
 <ng-template #deleteDialog>
 <h1 mat-dialog-title>Delete Flight</h1>
 <div mat-dialog-content>
@@ -66,47 +114,47 @@
     <form [formGroup]="updateForms"  style="max-height: 85vh;overflow: auto;">
     <p>
         <mat-form-field appearance="fill">
-          <input formControlName="capacity" [(ngModel)]="data.capacity" matInput >
+          <input type="number" formControlName="capacity" [(ngModel)]="data.capacity" matInput >
         </mat-form-field>
       </p>
       <p>
         <mat-form-field appearance="fill">
-          <input formControlName="status" [(ngModel)]="data.status" matInput placeholder="Placeholder">
+          <input type="text" formControlName="status" [(ngModel)]="data.status" matInput placeholder="Placeholder">
         </mat-form-field>
       </p>
       <p>
         <mat-form-field appearance="fill">
-          <input type="number" formControlName="price" [(ngModel)]="data.price" matInput placeholder="Placeholder">
+          <input type="number" type="number" formControlName="price" [(ngModel)]="data.price" matInput placeholder="Placeholder">
         </mat-form-field>
       </p>
       <p>
         <mat-form-field appearance="fill">
-          <input formControlName="description" [(ngModel)]="data.description" matInput placeholder="Placeholder">
+          <input type="text" formControlName="description" [(ngModel)]="data.description" matInput placeholder="Placeholder">
         </mat-form-field>
       </p>
       <p>
         <mat-form-field appearance="fill">
-          <input formControlName="fromcountry" [(ngModel)]="data.fromcountry" matInput placeholder="Placeholder">
+          <input type="text" formControlName="fromcountry" [(ngModel)]="data.fromcountry" matInput placeholder="Placeholder">
         </mat-form-field>
       </p>
       <p>
         <mat-form-field appearance="fill">
-          <input formControlName="tocountry" [(ngModel)]="data.tocountry" matInput placeholder="Placeholder">
+          <input type="text" formControlName="tocountry" [(ngModel)]="data.tocountry" matInput placeholder="Placeholder">
         </mat-form-field>
       </p>
       <p>
         <mat-form-field appearance="fill">
-          <input formControlName="travelclass" [(ngModel)]="data.travelclass" matInput placeholder="Placeholder">
+          <input type="text" formControlName="travelclass" [(ngModel)]="data.travelclass" matInput placeholder="Placeholder">
         </mat-form-field>
       </p>
       <p>
         <mat-form-field appearance="fill">
-          <input type="date" formControlName="departuredate" [(ngModel)]="data.departuredate" matInput placeholder="Placeholder">
+          <input type="datetime-local" formControlName="departuredate" [(ngModel)]="data.departuredate" matInput placeholder="Placeholder">
         </mat-form-field>
       </p>
       <p>
         <mat-form-field appearance="fill">
-          <input type="date" formControlName="arrivaldate" [(ngModel)]="data.arrivaldate" matInput placeholder="Placeholder">
+          <input type="datetime-local" formControlName="arrivaldate" [(ngModel)]="data.arrivaldate" matInput placeholder="Placeholder">
         </mat-form-field>
       </p>
       <div>
@@ -179,13 +227,13 @@
               
             </mat-form-field>
           </p>
-          <p>
+          
             <mat-form-field appearance="outline">
               <mat-label>departuredate</mat-label>
-              <input type="date" formControlName="departuredate" matInput >
+              <input type="datetime-local" formControlName="departuredate" matInput >
              
             </mat-form-field>
-          </p>
+          
           <p>
             <mat-form-field appearance="outline">
               <mat-label>arrivaldate</mat-label>
@@ -195,16 +243,13 @@
             </mat-form-field>
           </p>
             <div name="button">
-              <!-- <input type="file" #file formControlName="image" (change)="uploadImage(file.files)" > -->
               <div class="file-upload">
                 <label for="image-upload" class="file-label">
                   <i class="fas fa-upload"></i> Upload Image
                 </label>
                 <input type="file" #file accept="image/*" id="image-upload" formControlName="image" (change)="uploadImage(file.files)">
               </div>
-              
-            <!-- <input type="file" accept="image/*" #file formControlName="image" (change)="uploadImage(file.files)" style="padding: 10px;background-color: transparent;border: none;"> -->
-        
+                      
         </div>
 
             <div name="button" mat-dialog-actions>
@@ -213,4 +258,4 @@
             </div>
         </form>
      
-        </ng-template>
+        </ng-template> 

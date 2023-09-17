@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -60,4 +61,22 @@ export class FlightService {
       
     })
   }
+  report : any = [{}];
+
+  searchDate(obj:any){
+    debugger;
+    const requestDate = {departuredate: obj.departuredate , arrivaldate: obj.arrivaldate}
+    this.http.post('https://localhost:7152/api/AdminReport/searchReport', requestDate).subscribe((res:any)=>{
+      
+      this.report = res;
+      console.log(this.report);
+    }, err=>{
+      console.log(err);
+      
+    })
+  }
+//👀
+getFlightById(id: number): Observable<any> {
+  return this.http.get(`https://localhost:7152/api/Flight/GetByID/${id}`);
+}
 }
