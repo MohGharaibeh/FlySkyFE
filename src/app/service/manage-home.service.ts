@@ -144,13 +144,14 @@ realdata:any[]=[];
     })
   }
   
-  dateShow: any = [{}];
+ 
   searchDate(obj:any){
     debugger;
-    this.http.post('https://localhost:7152/api/AdminReport', obj).subscribe((res:any)=>{
+    const requestDate = {departuredate: obj.departuredate , arrivaldate: obj.arrivaldate}
+    this.http.post('https://localhost:7152/api/AdminReport/searchReport', requestDate).subscribe((res:any)=>{
       
-      this.dateShow = res;
-      console.log(this.dateShow);
+      this.report = res;
+      console.log(this.report);
     }, err=>{
       console.log(err);
       

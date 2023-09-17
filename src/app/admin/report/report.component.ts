@@ -12,7 +12,7 @@ Chart.register(...registerables)
 })
 export class ReportComponent implements OnInit{
   chartOptions: any;
-@ViewChild('reportData') reportData !: TemplateRef<any>
+
   departulDate : string ='';
   arrivelDate: string ='';
   constructor(public reports:ManageHomeService){}
@@ -23,15 +23,9 @@ export class ReportComponent implements OnInit{
   
 }
 
-searchOn(){
-  const report = {Departuredate: this.departulDate, Arrivaldate: this.arrivelDate};
-  this.reports.dateShow;
-  this.reports.searchDate(report);
-}
-
 onSearch(){
   
-  const report = {Departuredate: this.departulDate, Arrivaldate: this.arrivelDate};
+  const report = {departuredate: this.departulDate, arrivaldate: this.arrivelDate};
   this.reports.searchDate(report);
 
 }
