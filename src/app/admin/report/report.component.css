@@ -4,3 +4,6 @@ canvas{
     height: 690px !important;
     width: 1381px !important;
 }
+canvas .element{
+    width: 200px !important;
+}

@@ -4,6 +4,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { RouterModule } from '@angular/router';
 import {MatButtonModule} from '@angular/material/button';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 
 @NgModule({
@@ -14,13 +16,15 @@ import {MatButtonModule} from '@angular/material/button';
   imports: [
     CommonModule,
     RouterModule,
-    MatButtonModule
+    MatButtonModule,
+    ReactiveFormsModule
   ],
   exports: [
     RouterModule,
     NavbarComponent,
     FooterComponent,
-    MatButtonModule
+    MatButtonModule,
+    ReactiveFormsModule
   ]
 })
 export class SharedModule { }
