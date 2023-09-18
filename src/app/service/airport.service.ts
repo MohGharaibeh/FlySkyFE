@@ -40,9 +40,9 @@ export class AirportService {
     })
   }
 
-  async createAirport(body:any){
+   createAirport(body:any){
     debugger;
-    await this.http.post('https://localhost:7152/api/Airport/AddAirport/', body).subscribe((res:any)=>{
+     this.http.post('https://localhost:7152/api/Airport/AddAirport/', body).subscribe((res:any)=>{
       console.log(res);
       setTimeout(() => {
         window.location.reload();

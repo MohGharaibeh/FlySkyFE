@@ -100,11 +100,20 @@ export class ManageHomeService {
   }
 
   deleteTestimonial(id : number){
-    this.http.delete('https://localhost:7152/api/Testimonial/'+id).subscribe((res)=>{
+    debugger;
+    this.http.delete('https://localhost:7152/api/Testimonial/delete/'+id).subscribe((res)=>{
     window.location.reload();
     }, err=>{
       console.log(err);
-      
+
+    })
+  }
+createTestimonial(body:any){
+    debugger;
+    this.http.post('https://localhost:7152/api/Testimonial/createTest',body).subscribe((res:any)=>{
+      console.log(res);
+    },err=>{
+      console.log(err);
     })
   }
 
@@ -123,19 +132,39 @@ export class ManageHomeService {
 // End Testimonial
 
 //Report
-chartdata:any;
-labeldata:any[]=[];
-realdata:any[]=[];
+// chartdata:any;
+// labeldata:any[]=[];
+// realdata:any[]=[];
   report : any = [{}];
   viewReport(){
     this.http.get('https://localhost:7152/api/AdminReport').subscribe((res:any)=>{
       this.report=res;
+      // this.chartdata=res;
+      // if (this.chartdata !=null){
+      //   for (let i = 0; i < this.chartdata.length; i++) {
+      //     this.labeldata.push(this.chartdata[i].departuredate);
+      //     this.realdata.push(this.chartdata[i].total_price);
+          
+      //   }
+      //}
+    }, err=>{
+      console.log(err);
+      
+    })
+  }
+  
+  chartdata:any;
+labeldata:any[]=[];
+realdata:any[]=[];
+  chart : any = [{}];
+  viewChart(){
+    this.http.get('https://localhost:7152/api/AdminReport/chart').subscribe((res:any)=>{
+      //this.chart=res;
       this.chartdata=res;
       if (this.chartdata !=null){
         for (let i = 0; i < this.chartdata.length; i++) {
-          this.labeldata.push(this.chartdata[i].departuredate);
+          this.labeldata.push(this.chartdata[i].year_only);
           this.realdata.push(this.chartdata[i].total_price);
-          
         }
       }
     }, err=>{
@@ -143,7 +172,6 @@ realdata:any[]=[];
       
     })
   }
-  
  
   searchDate(obj:any){
     debugger;
