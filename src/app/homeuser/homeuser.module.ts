@@ -6,10 +6,12 @@ import { ShareduserModule } from '../shareduser/shareduser.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { AboutComponent } from './about/about.component';
+import { TestinomialComponent } from './testinomial/testinomial.component';
 @NgModule({
   declarations: [
     HomeComponent,
-    AboutComponent
+    AboutComponent,
+    TestinomialComponent
   ],
   imports: [
     CommonModule,
