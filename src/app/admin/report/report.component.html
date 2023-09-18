@@ -46,8 +46,8 @@
                         <td>{{f.toCountry}}</td>
                         <td>{{f.total_price}}</td>
                         <td>{{f.numberOfPassenger}}</td>
-                        <td>{{f.departuredate}}</td>
-                        <td>{{f.arrivaldate}}</td>
+                        <td>{{f.departuredate | date:'short'}}</td>
+                        <td>{{f.arrivaldate | date:'short'}}</td>
                         
                       </tr>
                       
@@ -60,9 +60,10 @@
           </div>
         </div>
           </div>
-          <div >
-            <canvas id="chart"></canvas>
+          <div>
+            <canvas  id="chart"></canvas>
           </div>
+
 <app-footer></app-footer>
 </div>
 </div>
