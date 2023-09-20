@@ -108,10 +108,10 @@ createForms : FormGroup = new FormGroup({
 
   flightData: any;
   gitItById(id: number) {
-    // Call your service method to fetch flight data
+    
     this.fly.getFlightById(id).subscribe(
       (data) => {
-        this.flightData = data; // Assuming your service returns the flight data
+        this.flightData = data; 
         this.dialog.open(this.openId, { data: { flightData: this.flightData } });
       },
       (error) => {

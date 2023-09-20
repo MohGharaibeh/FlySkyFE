@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { authorizationGuard } from './authorization.guard';
 
 const routes: Routes = [
   {
@@ -12,11 +13,11 @@ const routes: Routes = [
   },
   {
     path: 'admin',
-    loadChildren: ()=> import('./admin/admin.module').then(a=>a.AdminModule)
+    loadChildren: ()=> import('./admin/admin.module').then(a=>a.AdminModule)//, canActivate:[authorizationGuard]
   },
   {
     path: 'user',
-    loadChildren: ()=> import('./homeuser/homeuser.module').then(u=>u.HomeuserModule)
+    loadChildren: ()=> import('./homeuser/homeuser.module').then(u=>u.HomeuserModule)//,canActivate:[authorizationGuard]
   }
 ];
 

@@ -86,6 +86,9 @@ export class ManageHomeService {
       
     })
   }
+  getContactById(id: number): Observable<any> {
+    return this.http.get(`https://localhost:7152/api/Contact/GetByID/${id}`);
+  }
 //End Contact Page
 
 //Start Testimonial

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { DynamicHomeService } from 'src/app/service/dynamic-home.service';
 import { ManageHomeService } from 'src/app/service/manage-home.service';
-
 
 @Component({
   selector: 'app-index',
@@ -11,16 +11,14 @@ import { ManageHomeService } from 'src/app/service/manage-home.service';
 export class IndexComponent implements OnInit{
   constructor(public home:DynamicHomeService, public testi:ManageHomeService){}
   ngOnInit(): void {
+    
     this.home.getHomeById();
     this.testi.getAllTestimonial();
+    this.home.getAboutById();
   }
 
-  sliderConfig = {
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    arrows: true,
-    dots: true,
-  };
   
-   
 }
+
+   
+

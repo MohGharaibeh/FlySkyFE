@@ -25,7 +25,8 @@
               <td>{{f.subject}}</td>
               <td>{{f.email}}</td>
               <td>{{f.phone}}</td>
-              <td>{{f.senddate}}</td>
+              <td>{{f.senddate | date:'short'}}</td>
+              <button (click)="gitItById(f.contactid)">Replay</button>
               
             </tr>
             
@@ -34,3 +35,8 @@
 <app-footer></app-footer>
 </div>
 </div>
+
+<ng-template #replay style="padding: 15px;">
+  <textarea [(ngModel)]="message" style="display: block;" placeholder="Enter Replay"></textarea>
+  <button (click)="send()">Send</button>
+</ng-template>

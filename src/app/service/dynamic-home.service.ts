@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -20,4 +21,31 @@ export class DynamicHomeService {
       
     })
   }
+
+  fullAbout:any=[{}];
+  imageAbout:string='';
+  getAboutById(){
+    this.http.get('https://localhost:7152/api/about/getid').subscribe((res:any)=>{
+      this.fullAbout = res;
+      this.imageAbout = res.image;
+    }, err=>{
+      console.log(err);
+      
+    })
+  }
+
+  createContact(body:any){
+    debugger;
+    const currentDate = new Date();
+    body.senddate = currentDate.toISOString();
+    this.http.post('https://localhost:7152/api/Contact', body).subscribe((res:any)=>{
+      console.log(res);
+      window.location.reload();
+    }, err=>{
+      console.log('Error:'+err);
+      
+    })
+  }
+
+  
 }
