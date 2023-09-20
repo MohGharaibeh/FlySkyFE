@@ -65,10 +65,10 @@ export class FlightService {
 
   searchDate(obj:any){
     debugger;
-    const requestDate = {departuredate: obj.departuredate , arrivaldate: obj.arrivaldate}
-    this.http.post('https://localhost:7152/api/AdminReport/searchReport', requestDate).subscribe((res:any)=>{
+    const requestDate = {Departuredate: obj.departuredate , Arrivaldate: obj.arrivaldate}
+    this.http.post('https://localhost:7152/api/AdminReport/searchFlight', requestDate).subscribe((res:any)=>{
       
-      this.report = res;
+      this.flight = res;
       console.log(this.report);
     }, err=>{
       console.log(err);

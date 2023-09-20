@@ -4,6 +4,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { RouterModule } from '@angular/router';
+import { SlickCarouselModule } from 'ngx-slick-carousel';
 
 
 
@@ -15,12 +16,14 @@ import { RouterModule } from '@angular/router';
   imports: [
     CommonModule,
     MatDialogModule,
-    RouterModule
+    RouterModule,
+    SlickCarouselModule
   ],
   exports:[
     NavbarComponent,
     FooterComponent,
-    RouterModule
+    RouterModule,
+    SlickCarouselModule
   ]
 })
 export class ShareduserModule { }

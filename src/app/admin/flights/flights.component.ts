@@ -3,6 +3,7 @@ import { FlightService } from 'src/app/service/flight.service';
 import { MatDialog } from '@angular/material/dialog';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AirportService } from 'src/app/service/airport.service';
 
 
 
@@ -12,11 +13,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./flights.component.css']
 })
 export class FlightsComponent implements OnInit {
-  constructor(public fly: FlightService, public dialog:MatDialog, private router: Router){}
+  constructor(public fly: FlightService, public dialog:MatDialog, private router: Router, public airport:AirportService){}
   departulDate : string ='';
   arrivelDate: string ='';
   ngOnInit(): void {
     this.fly.getAllFlight();
+    this.airport.getAirport();
   }
 
   @ViewChild('deleteDialog') deleteDialog !: TemplateRef<any>
@@ -45,24 +47,14 @@ export class FlightsComponent implements OnInit {
     travelclass : new FormControl(''),
     departuredate : new FormControl(''),
     arrivaldate : new FormControl(''),
-    image : new FormControl('')
+    image : new FormControl(''),
+    fromid : new FormControl(''),
+    toid : new FormControl('')
 
   });
   @ViewChild('updateDialog') updateDialoge !: TemplateRef<any>
   data:any={}
   openUpdateDialog(obj: any){
-    // this.data = {
-    //   flightid : obj.flightid,
-    //   capacity:obj.capacity,
-    //   status: obj.status,
-    //   price: obj.price,
-    //   description: obj.description,
-    //   fromcountry: obj.fromcountry,
-    //   tocountry: obj.tocountry,
-    //   travelclass:obj.travelclass,
-    //   departuredate: obj.departuredate,
-    //   arrivaldate: obj.arrivaldate
-    // }
     this.data = obj;
     this.dialog.open(this.updateDialoge);
     this.updateForms.controls['flightid'].setValue(this.data.flightid);
@@ -83,7 +75,9 @@ createForms : FormGroup = new FormGroup({
   travelclass : new FormControl(''),
   departuredate : new FormControl(''),
   arrivaldate : new FormControl(''),
-  image : new FormControl('')
+  image : new FormControl(''),
+  fromid : new FormControl(''),
+  toid : new FormControl('')
 });
   openCreateDialog(){
     this.dialog.open(this.createDialoge)
@@ -114,10 +108,10 @@ createForms : FormGroup = new FormGroup({
 
   flightData: any;
   gitItById(id: number) {
-    // Call your service method to fetch flight data
+    
     this.fly.getFlightById(id).subscribe(
       (data) => {
-        this.flightData = data; // Assuming your service returns the flight data
+        this.flightData = data; 
         this.dialog.open(this.openId, { data: { flightData: this.flightData } });
       },
       (error) => {

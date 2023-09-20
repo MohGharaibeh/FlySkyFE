@@ -18,16 +18,15 @@ export class ReportComponent implements OnInit{
   constructor(public reports:ManageHomeService){}
   ngOnInit(): void {
   this.reports.viewReport();
+  this.reports.viewChart();
   
     this.renderChart(this.reports.labeldata, this.reports.realdata);
   
 }
 
 onSearch(){
-  
   const report = {departuredate: this.departulDate, arrivaldate: this.arrivelDate};
   this.reports.searchDate(report);
-
 }
 renderChart(labeldata:any, maindata:any){
   const myChart = new Chart("chart", {
@@ -35,7 +34,7 @@ renderChart(labeldata:any, maindata:any){
     data: {
       labels: labeldata,
       datasets: [{
-        label: '# of Votes',
+        label: '# of Price',
         data: maindata,
         backgroundColor: [
           'rgba(255, 99, 132, 1)'
@@ -67,6 +66,4 @@ renderChart(labeldata:any, maindata:any){
     this.reports.searchDate(body)
   }
 
-
-  
 }

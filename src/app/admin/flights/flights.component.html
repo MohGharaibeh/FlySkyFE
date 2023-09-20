@@ -162,11 +162,21 @@
           <input type="text" formControlName="travelclass" [(ngModel)]="data.travelclass" matInput placeholder="Placeholder">
         </mat-form-field>
       </p>
+      <select class="form-select" aria-label="Default select example" formControlName="fromid" [(ngModel)]="data.fromid">
+        <option selected>Select From Airport</option>
+        <option *ngFor="let air of airport.airports" [value]="air.airportid">{{air.name}}</option>
+      </select>
+      <select class="form-select" aria-label="Default select example" formControlName="toid" [(ngModel)]="data.toid">
+        <option selected>Select From Airport</option>
+        <option *ngFor="let air of airport.airports" [value]="air.airportid">{{air.name}}</option>
+      </select>
       <p>
         <mat-form-field appearance="fill">
           <input type="datetime-local" formControlName="departuredate" [(ngModel)]="data.departuredate" matInput placeholder="Placeholder">
         </mat-form-field>
       </p>
+      
+      
       <p>
         <mat-form-field appearance="fill">
           <input type="datetime-local" formControlName="arrivaldate" [(ngModel)]="data.arrivaldate" matInput placeholder="Placeholder">
@@ -229,7 +239,7 @@
             </mat-form-field>
           </p>
           <p>
-            <mat-form-field appearance="outline">
+            <mat-form-field appearance="fill">
               <mat-label>tocountry</mat-label>
               <input type="text" formControlName="tocountry" matInput placeholder="tocountry">
         
@@ -243,17 +253,25 @@
             </mat-form-field>
           </p>
           
-            <mat-form-field appearance="outline">
+          <select class="form-select" aria-label="Default select example" formControlName="fromid" [(ngModel)]="data.fromid">
+            <option selected>Select From Airport</option>
+            <option *ngFor="let air of airport.airports" [value]="air.airportid">{{air.name}}</option>
+          </select>
+          <select class="form-select" aria-label="Default select example" formControlName="toid" [(ngModel)]="data.toid">
+            <option selected>Select From Airport</option>
+            <option *ngFor="let air of airport.airports" [value]="air.airportid">{{air.name}}</option>
+          </select>
+            <mat-form-field appearance="fill">
               <mat-label>departuredate</mat-label>
-              <input type="datetime-local" formControlName="departuredate" matInput >
+              <input type="date" formControlName="departuredate" matInput >
              
             </mat-form-field>
           
           <p>
-            <mat-form-field appearance="outline">
+            <mat-form-field appearance="fill">
               <mat-label>arrivaldate</mat-label>
               
-              <input type="datetime-local" formControlName="arrivaldate" matInput width="300px">
+              <input type="date" formControlName="arrivaldate" matInput width="300px">
             
             </mat-form-field>
           </p>

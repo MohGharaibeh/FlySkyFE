@@ -20,7 +20,9 @@
           </thead>
           <tbody>
             <tr *ngFor="let f of tests.test; index as i" >
-              <th >{{i+1}}</th>
+              <th >
+                {{i+1}}
+              </th>
               <td >{{f.message}}</td>
               <td>{{f.fullName}}</td>
               <td>{{f.status}}</td>

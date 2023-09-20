@@ -1,0 +1,19 @@
+<app-navbar></app-navbar>
+
+
+<h1 style="text-align: center; margin: 0;" mat-dialog-title>Add Testimonial</h1>
+    <form class="formAddFlight" [formGroup]="createForm" style="max-height: 85vh;overflow: auto;">
+   
+          
+            <label for="Message">Message</label>
+            <input type="text" formControlName="Message" matInput placeholder="Message...">
+            <label for="Userid">Userid</label>
+            <input type="number" formControlName="Userid" matInput placeholder="Userid">
+         
+
+          <div name="button" mat-dialog-actions>
+            <button style="background-color: #04aa6d;color:#fff" (click)="create()" mat-button>Add</button>
+            
+          </div>
+      </form>
+<app-footer></app-footer>
