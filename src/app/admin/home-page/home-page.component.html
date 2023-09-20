@@ -1,7 +1,20 @@
-
-<div class="wrapper ">
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    button:hover {
+      transform: scale(1.1);
+    }
+    button {
+      transition: all .5s;
+    }
+  </style>
+</head>
+  <div class="wrapper">
     <app-sidebar></app-sidebar>
-    <div class="main-panel">
+    <div class="main-panel" style="height: 90%;">
     <app-navbar></app-navbar>
     <div class="content">
         <div class="row">
@@ -43,63 +56,64 @@
             
           </tbody>
       </table>
-<app-footer></app-footer>
 </div>
 </div>
+<app-footer style="position: absolute;top: 100%;right: 0;left: 0;"></app-footer>
+<div class="custom" style="width: 450px;">
+  <ng-template #updateDialog class="update-dialog">
 
-<ng-template #updateDialog class="update-dialog">
-
-  <div class="custom">
-    <h1 mat-dialog-title>Update Airport</h1>
-    <form [formGroup]="updateForms" style="max-height: 85vh;overflow-y: scroll; padding: 30px;">
-    <p>
-        <mat-form-field appearance="fill">
-          <input formControlName="paragraph" [(ngModel)]="data.paragraph" matInput >
-        </mat-form-field>
-      </p>
+      <!-- <h1 mat-dialog-title>Update Airport</h1> -->
+      <form [formGroup]="updateForms" style="max-height: 85vh;overflow-y: scroll; padding:30 0px;">
       <p>
-        <mat-form-field appearance="fill">
-          <input formControlName="text1" [(ngModel)]="data.text1" matInput placeholder="Placeholder">
-        </mat-form-field>
-      </p>
-      <p>
-        <mat-form-field appearance="fill">
-          <input type="text" formControlName="text2" [(ngModel)]="data.text2" matInput placeholder="Placeholder">
-        </mat-form-field>
-      </p>
-      <p>
-        <mat-form-field appearance="fill">
-          <input formControlName="text3" [(ngModel)]="data.text3" matInput placeholder="Placeholder">
-        </mat-form-field>
-      </p>
-      <p>
-        <mat-form-field appearance="fill">
-          <input formControlName="text4" [(ngModel)]="data.text4" matInput placeholder="Placeholder">
-        </mat-form-field>
-      </p>
-      <p>
-        <mat-form-field appearance="fill">
-          <input formControlName="text5" [(ngModel)]="data.text5" matInput placeholder="Placeholder">
-        </mat-form-field>
-      </p>
-      <p>
-        <mat-form-field appearance="fill">
-          <input formControlName="text6" [(ngModel)]="data.text6" matInput placeholder="Placeholder">
-        </mat-form-field>
-      </p>
-      <p>
-        <mat-form-field appearance="fill">
-          <input type="text" formControlName="text7" [(ngModel)]="data.text7" matInput placeholder="Placeholder">
-        </mat-form-field>
-      </p>
-      <div>
-        <input type="file" #file formControlName="image" (change)="uploadImage(file.files)" >
+          <mat-form-field appearance="fill">
+            <input formControlName="paragraph" [(ngModel)]="data.paragraph" matInput >
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="fill">
+            <input formControlName="text1" [(ngModel)]="data.text1" matInput placeholder="Placeholder">
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="fill">
+            <input type="text" formControlName="text2" [(ngModel)]="data.text2" matInput placeholder="Placeholder">
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="fill">
+            <input formControlName="text3" [(ngModel)]="data.text3" matInput placeholder="Placeholder">
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="fill">
+            <input formControlName="text4" [(ngModel)]="data.text4" matInput placeholder="Placeholder">
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="fill">
+            <input formControlName="text5" [(ngModel)]="data.text5" matInput placeholder="Placeholder">
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="fill">
+            <input formControlName="text6" [(ngModel)]="data.text6" matInput placeholder="Placeholder">
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="fill">
+            <input type="text" formControlName="text7" [(ngModel)]="data.text7" matInput placeholder="Placeholder">
+          </mat-form-field>
+        </p>
+        <div>
+          <input type="file" #file formControlName="image" (change)="uploadImage(file.files)" >
+        </div>
+      </form>
+      
+      <div mat-dialog-actions>
+        <button (click)="updateHome()" mat-button mat-dialog-close="yes">Update</button>
+        <button mat-button mat-dialog-close="no" cdkFocusInitial>Cancel</button>
       </div>
-    </form>
-  </div>
-    
-    <div mat-dialog-actions>
-      <button (click)="updateHome()" mat-button mat-dialog-close="yes">Update</button>
-      <button mat-button mat-dialog-close="no" cdkFocusInitial>Cancel</button>
-    </div>
-    </ng-template>
+      </ng-template>
+</div>
+
+  

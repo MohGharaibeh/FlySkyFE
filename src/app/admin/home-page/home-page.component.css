@@ -1,10 +1,6 @@
-/* .paragraph{
-    scroll-behavior: auto;
-    max-width: 25%;
-} */
-
-.custom{
-    width: 300px;
+.custom {
+  width: 100%;
+  background-color: red;
 }
 
 /* Define a CSS class for the template container */
@@ -14,7 +10,6 @@
     font-size: 16px;
     max-height: 85vh;
     overflow-y: scroll;
-    padding: 30px;
   }
   
   /* Style specific elements within the template */
@@ -23,11 +18,9 @@
     font-size: 24px;
     color: #333; /* Change color as needed */
   }
-  
-  .update-dialog mat-form-field {
-    /* Styles for form fields */
-    margin-bottom: 20px;
-  }
-  
+.mat-mdc-dialog-container .mdc-dialog .cdk-dialog-container .mdc-dialog--open {
+  width: 450px;
+}
+
   /* Add more styles as needed for other elements within the template */
   

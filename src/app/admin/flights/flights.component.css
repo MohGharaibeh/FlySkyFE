@@ -67,4 +67,6 @@ align-items: center;
   .file-label:hover {
     background-color: #eee;
   }
-  
+  .update-dialog form{
+    background-color: red;
+  }

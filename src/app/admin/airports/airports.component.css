@@ -12,3 +12,19 @@ input{
 width: 300px;
 align-content: center;
 }
+.custom-form {
+    background: url('../../../assets/adminAssets/img/form.jpg') no-repeat center center;
+    background-size: cover;
+}
+.update button:hover {
+    background-color: black;
+    color: #fff;
+}
+table {
+    width: 80vw;
+    margin: auto;
+    box-shadow: 5px 5px 5px #aaa;
+}
+table th {
+    padding:15px 60px;
+}

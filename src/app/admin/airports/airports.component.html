@@ -1,7 +1,14 @@
-
-<div class="wrapper ">
+<style>
+  button:hover {
+    transform: scale(1.1);
+  }
+  button {
+    transition: all .5s;
+  }
+</style>
+<div class="wrapper">
     <app-sidebar></app-sidebar>
-    <div class="main-panel">
+    <div class="main-panel" style="height: 90%;">
     <app-navbar></app-navbar>
     <div class="content">
         <div class="row">
@@ -23,16 +30,22 @@
               <td>{{air.name}}</td>
               <td>{{air.location}}</td>
               <td>
-                <button style="margin-right: 5px;" (click)="confirmDelete(air.airportid)" mat-raised-button color="warn" >Delete</button>
-                <button (click)="openUpdate(air)" mat-raised-button color="primary">Update</button>
-              </td>
+                <button style="margin-right: 5px;" (click)="confirmDelete(air.airportid)" mat-raised-button color="warn">
+                  <mat-icon>delete</mat-icon>
+                  Delete
+                </button>
+                <button (click)="openUpdate(air)" mat-raised-button color="primary">
+                  <mat-icon>edit</mat-icon>
+                  Update
+                </button>
+                              </td>
             </tr>
             
           </tbody>
       </table>
-<app-footer></app-footer>
 </div>
 </div>
+<app-footer style="position: absolute;top: 100%;left: 0%;right: 0%;"></app-footer>
 <ng-template #deleteDialog>
 <h1 mat-dialog-title>Delete Airport</h1>
 <div mat-dialog-content>
@@ -45,27 +58,24 @@
 </ng-template>
 
 
-<ng-template #updateDialog>
-    <h1 mat-dialog-title>Update Airport</h1>
-    <form [formGroup]="updateForm" style="padding-left: 30px;">
-    <p>
-        <mat-form-field appearance="fill">
+<ng-template #updateDialog >
+    <h1 mat-dialog-title style="text-align: center;">Update Airport</h1>
+    <form class="custom-form" [formGroup]="updateForm" style="height:450px;width: 500px;display: flex;justify-content: center;align-items: center;flex-direction: column;">
+      <p style="margin-top: 35px; width: 80%;">
+        <mat-form-field appearance="outline" style="background-color: transparent;">
           <mat-label>Airport Name</mat-label>
-          <input formControlName="name" [(ngModel)]="data.name" matInput placeholder="name">
-          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-          <mat-hint>Hint</mat-hint>
+          <input style="border-radius: 25px; color: #fff;" formControlName="name" [(ngModel)]="data.name" matInput placeholder="name">
         </mat-form-field>
       </p>
       <p>
-        <mat-form-field appearance="outline">
-          <mat-label>Airport location</mat-label>
-          <input formControlName="location" [(ngModel)]="data.location" matInput placeholder="location">
-          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-          <mat-hint>Hint</mat-hint>
+        <mat-form-field appearance="outline" style="background-color: transparent;">
+          <mat-label>Airport Location</mat-label>
+          <input style="border-radius: 25px; width: 80%; margin: auto; color: #fff;" formControlName="location" [(ngModel)]="data.location" matInput placeholder="location">
         </mat-form-field>
       </p>
+      
     </form>
-    <div mat-dialog-actions>
+    <div mat-dialog-actions class="update">
       <button (click)="updateAirport()" mat-button mat-dialog-close="yes">Update</button>
       <button mat-button mat-dialog-close="no" cdkFocusInitial>Cancel</button>
     </div>
@@ -80,7 +90,6 @@
             <mat-form-field appearance="fill">
               <mat-label>Airport name</mat-label>
               <input type="text" formControlName="name" matInput placeholder="name">
-              <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
               
             </mat-form-field>
           </p>
@@ -88,7 +97,6 @@
             <mat-form-field appearance="outline">
               <mat-label>Airport location</mat-label>
               <input type="text" formControlName="location" matInput placeholder="location">
-              <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
              
             </mat-form-field>
           </p>

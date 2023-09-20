@@ -1,21 +1,37 @@
-
-<div class="wrapper" style="height: 100%;">
+<style>
+  button:hover {
+    transform: scale(1.1)
+  }
+  button {
+    transition: all .5s;
+  }
+</style>
+<div class="wrapper" >
     <app-sidebar></app-sidebar>
-    <div class="main-panel">
+    <div class="main-panel" style="height: 90%;">
     <app-navbar></app-navbar>
     <div class="content">
         <div class="row">
           <div class="col-lg-12 col-md-12 col-sm-12">
             <button  (click)="openCreateDialog()" style="display: block; background-color: #04aa6d; color: white;" mat-raised-button>Add one!</button>
             <br>
-            <form (submit)="onSearch()">
-              <label for="departulDate">Start Date</label>
-            <input type="date" id="departulDate" name="departulDate" [(ngModel)]="departulDate">
-            <label for="arrivelDate">End Date</label>
+            <form (submit)="onSearch()" style="text-align: center; max-width: 400px; margin: 10px 0; padding: 20px; border: 1px solid #ccc; border-radius: 10px; background-color: #f9f9f9;">
 
-            <input type="date" id="arrivelDate" name="arrivelDate" [(ngModel)]="arrivelDate">
-            <button type="submit" class="btn btn-primary">Search</button>
-            </form>
+              <label for="departulDate" style="display: inline-block; margin-right: 10px; margin-bottom: 5px;">Start Date</label>
+              <input type="date" id="departulDate" name="departulDate" [(ngModel)]="departulDate" style="padding: 8px; width: calc(100% - 30px); border: 1px solid #ccc; border-radius: 5px; display: inline-block;">
+          
+              <br>
+          
+              <label for="arrivelDate" style="display: inline-block; margin-right: 10px; margin-bottom: 5px;">End Date</label>
+              <input type="date" id="arrivelDate" name="arrivelDate" [(ngModel)]="arrivelDate" style="padding: 8px; width: calc(100% - 30px); border: 1px solid #ccc; border-radius: 5px; display: inline-block;">
+          
+              <br>
+          
+              <button type="submit" class="btn btn-primary" style="display: block; width: calc(100% - 30px); padding: 10px; border: none; border-radius: 5px; background-color: #007bff; color: white;">Search</button>
+          
+          </form>
+          
+          
     <table class="table table-light table-hover" style="width: 100%;">
         <thead>
             <tr>
@@ -52,51 +68,50 @@
               <td>
                 <button style="margin-right: 5px; margin-bottom: 5px;" (click)="openDeleteDialog(f.flightid)" mat-raised-button color="warn" >Delete</button>
                 <button (click)="openUpdateDialog(f)" mat-raised-button color="primary">Update</button>
-                <button (click)="gitItById(f.flightid)" mat-raised-button style="background-color: orange;color: white;">👀</button>
-              </td>
+                <button (click)="gitItById(f.flightid)" title="Show More Details" mat-raised-button style="background-color: orange; color: white; margin-left: 5px;">
+                  <mat-icon>visibility</mat-icon>
+                  Show Details
+              </button>
+                            </td>
             </tr>
             
           </tbody>
       </table>
 </div>
-
 </div>
-<app-footer style="position: absolute; bottom: 0;right: 0;left: 0;"></app-footer>
+<app-footer style="position: absolute;top: 100%;left: 0%;right: 0%;"></app-footer>
 
-<ng-template #getId>
+<ng-template #getId style="display: flex; justify-content: center; align-items: center; height: 100vh; overflow: auto;">
   <table class="table table-light table-hover" style="width: 100%;">
     <thead>
-        <tr>
-          <th >Capacity</th>
-          <th >status</th>
-          <th >price</th>
-          <th >Departuredate</th>
-          <th >Arrivaldate</th>
-          <th >Description</th>
-          <th >Fromcountry</th>
-          <th >Fromcountry</th>
-          <th >Travelclass</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- <tr *ngFor="let f of fly.flight; index as i" > -->
-          <tr>
-          <td>{{flightData.capacity}}</td>
-          <td>{{flightData.status}}</td>
-          <td>{{flightData.price}}</td>
-          <td>{{flightData.departuredate}}</td>
-          <td>{{flightData.arrivaldate}}</td>
-          <td>{{flightData.description}}</td>
-          <td>{{flightData.fromcountry}}</td>
-          <!-- <td>{{flightData.tocountry}}</td>
-          <td>{{flightData.travelclass}}</td> -->
-          <td>{{flightData.fromAirportName}}</td>
-          <td>{{flightData.toAirportName}}</td>
-        </tr>
-        
-      </tbody>
+      <tr>
+        <th style="display: inline-block; width: 10%;">Capacity</th>
+        <th style="display: inline-block; width: 10%;">Status</th>
+        <th style="display: inline-block; width: 10%;">Price</th>
+        <th style="display: inline-block; width: 10%;">Departure Date</th>
+        <th style="display: inline-block; width: 10%;">Arrival Date</th>
+        <th style="display: inline-block; width: 20%;">Description</th>
+        <th style="display: inline-block; width: 10%;">From Country</th>
+        <th style="display: inline-block; width: 10%;">To Country</th>
+        <th style="display: inline-block; width: 10%;">Travel Class</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="display: inline-block; width: 10%;">{{flightData.capacity}}</td>
+        <td style="display: inline-block; width: 10%;">{{flightData.status}}</td>
+        <td style="display: inline-block; width: 10%;">{{flightData.price}}</td>
+        <td style="display: inline-block; width: 10%;">{{flightData.departuredate}}</td>
+        <td style="display: inline-block; width: 10%;">{{flightData.arrivaldate}}</td>
+        <td style="display: inline-block; width: 20%;">{{flightData.description}}</td>
+        <td style="display: inline-block; width: 10%;">{{flightData.fromcountry}}</td>
+        <td style="display: inline-block; width: 10%;">{{flightData.tocountry}}</td>
+        <td style="display: inline-block; width: 10%;">{{flightData.travelclass}}</td>
+      </tr>
+    </tbody>
   </table>
 </ng-template>
+
 <ng-template #deleteDialog>
 <h1 mat-dialog-title>Delete Flight</h1>
 <div mat-dialog-content>
@@ -109,9 +124,9 @@
 </ng-template>
 
 
-<ng-template #updateDialog >
-    <h1 style="text-align: center;" mat-dialog-title>Update Airport</h1>
-    <form [formGroup]="updateForms"  style="max-height: 85vh;overflow: auto;">
+<ng-template #updateDialog class="update-dialog">
+    <!-- <h6 style="text-align: center;" mat-dialog-title>Update Airport</h6> -->
+    <form [formGroup]="updateForms">
     <p>
         <mat-form-field appearance="fill">
           <input type="number" formControlName="capacity" [(ngModel)]="data.capacity" matInput >
@@ -171,7 +186,7 @@
       <button style="background-color: blue; color: white;" (click)="updateFlight()" mat-button mat-dialog-close="yes">Update</button>
       <button style="background-color: red; color: white;" mat-button mat-dialog-close="no" cdkFocusInitial>Cancel</button>
     </div>
-    </ng-template>
+</ng-template>
 
 
 
