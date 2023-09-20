@@ -20,6 +20,7 @@ export class AirportService {
   }
 
   deleteAirport(id : number){
+    debugger;
     this.http.delete('https://localhost:7152/api/Airport/'+id).subscribe((res)=>{
       console.log(res);
       
@@ -42,7 +43,7 @@ export class AirportService {
 
    createAirport(body:any){
     debugger;
-     this.http.post('https://localhost:7152/api/Airport/AddAirport/', body).subscribe((res:any)=>{
+     this.http.post('https://localhost:7152/api/Airport/', body).subscribe((res:any)=>{
       console.log(res);
       setTimeout(() => {
         window.location.reload();

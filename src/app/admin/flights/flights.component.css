@@ -70,3 +70,6 @@ align-items: center;
   .update-dialog form{
     background-color: red;
   }
+  *{
+    box-sizing: border-box;
+  }

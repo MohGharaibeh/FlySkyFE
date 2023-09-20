@@ -8,9 +8,9 @@
 </style>
 <div class="wrapper" >
     <app-sidebar></app-sidebar>
-    <div class="main-panel" style="height: 90%;">
-    <app-navbar></app-navbar>
-    <div class="content">
+    <div class="main-panel" style="position: relative;">
+    <app-navbar ></app-navbar>
+    <div class="content" style="margin-bottom: 40px;">
         <div class="row">
           <div class="col-lg-12 col-md-12 col-sm-12">
             <button  (click)="openCreateDialog()" style="display: block; background-color: #04aa6d; color: white;" mat-raised-button>Add one!</button>
@@ -36,15 +36,10 @@
         <thead>
             <tr>
               <th >#</th>
-              <!-- <th >Capacity</th> -->
               <th >status</th>
-              <!-- <th >price</th> -->
               <th >Departuredate</th>
               <th >Arrivaldate</th>
-              <!-- <th >Description</th>
-              <th >Fromcountry</th>
-              <th >Fromcountry</th>
-              <th >Travelclass</th> -->
+             
               <th>From Airport</th>
               <th>To Airport</th>
 
@@ -54,15 +49,10 @@
           <tbody>
             <tr *ngFor="let f of fly.flight; index as i" >
               <th >{{i+1}}</th>
-              <!-- <td>{{f.capacity}}</td> -->
               <td>{{f.status}}</td>
-              <!-- <td>{{f.price}}</td> -->
               <td>{{f.departuredate | date:'short'}}</td>
               <td>{{f.arrivaldate | date:'short'}}</td>
-              <!-- <td>{{f.description}}</td>
-              <td>{{f.fromcountry}}</td> -->
-              <!-- <td>{{f.tocountry}}</td>
-              <td>{{f.travelclass}}</td> -->
+              
               <td>{{f.fromAirportName}}</td>
           <td>{{f.toAirportName}}</td>
               <td>
@@ -77,9 +67,9 @@
             
           </tbody>
       </table>
+</div> 
+<app-footer style="position: absolute;right: 0;left: 0;bottom: 0;margin-top: 25px;"></app-footer>
 </div>
-</div>
-<app-footer style="position: absolute;top: 100%;left: 0%;right: 0%;"></app-footer>
 
 <ng-template #getId style="display: flex; justify-content: center; align-items: center; height: 100vh; overflow: auto;">
   <table class="table table-light table-hover" style="width: 100%;">
@@ -94,6 +84,8 @@
         <th style="display: inline-block; width: 10%;">From Country</th>
         <th style="display: inline-block; width: 10%;">To Country</th>
         <th style="display: inline-block; width: 10%;">Travel Class</th>
+        <th style="display: inline-block; width: 10%;">Image</th>
+
       </tr>
     </thead>
     <tbody>
@@ -107,6 +99,7 @@
         <td style="display: inline-block; width: 10%;">{{flightData.fromcountry}}</td>
         <td style="display: inline-block; width: 10%;">{{flightData.tocountry}}</td>
         <td style="display: inline-block; width: 10%;">{{flightData.travelclass}}</td>
+        <td><img style="width: 60px;height: 60px;" src="../../../assets/ApiImage/{{flightData.image}}"></td>
       </tr>
     </tbody>
   </table>
@@ -162,26 +155,28 @@
           <input type="text" formControlName="travelclass" [(ngModel)]="data.travelclass" matInput placeholder="Placeholder">
         </mat-form-field>
       </p>
+      <mat-form-field appearance="fill">
       <select class="form-select" aria-label="Default select example" formControlName="fromid" [(ngModel)]="data.fromid">
-        <option selected>Select From Airport</option>
         <option *ngFor="let air of airport.airports" [value]="air.airportid">{{air.name}}</option>
       </select>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
       <select class="form-select" aria-label="Default select example" formControlName="toid" [(ngModel)]="data.toid">
-        <option selected>Select From Airport</option>
         <option *ngFor="let air of airport.airports" [value]="air.airportid">{{air.name}}</option>
       </select>
-      <p>
+    </mat-form-field>
+      
         <mat-form-field appearance="fill">
           <input type="datetime-local" formControlName="departuredate" [(ngModel)]="data.departuredate" matInput placeholder="Placeholder">
         </mat-form-field>
-      </p>
       
       
-      <p>
+      
+      
         <mat-form-field appearance="fill">
           <input type="datetime-local" formControlName="arrivaldate" [(ngModel)]="data.arrivaldate" matInput placeholder="Placeholder">
         </mat-form-field>
-      </p>
+      
       <div>
         <!-- <input type="file" #file formControlName="image" (change)="uploadImage(file.files)" > -->
         <div class="file-upload">
@@ -252,15 +247,16 @@
               
             </mat-form-field>
           </p>
-          
+          <mat-form-field appearance="outline">
           <select class="form-select" aria-label="Default select example" formControlName="fromid" [(ngModel)]="data.fromid">
-            <option selected>Select From Airport</option>
             <option *ngFor="let air of airport.airports" [value]="air.airportid">{{air.name}}</option>
           </select>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
           <select class="form-select" aria-label="Default select example" formControlName="toid" [(ngModel)]="data.toid">
-            <option selected>Select From Airport</option>
             <option *ngFor="let air of airport.airports" [value]="air.airportid">{{air.name}}</option>
           </select>
+        </mat-form-field>
             <mat-form-field appearance="fill">
               <mat-label>departuredate</mat-label>
               <input type="date" formControlName="departuredate" matInput >
