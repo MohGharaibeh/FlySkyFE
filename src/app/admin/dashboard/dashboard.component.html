@@ -1,6 +1,6 @@
-<div class="wrapper ">
+<div class="wrapper " >
 <app-sidebar></app-sidebar>
-<div class="main-panel">
+<div class="main-panel" >
 <app-navbar></app-navbar>
 <div class="content">
     <div class="row">
@@ -68,7 +68,7 @@
               <div class="col-7 col-md-8">
                 <div class="numbers">
                   <p class="card-category">Max Reserved</p>
-                  <p class="card-title">{{stat.maxReserved}}<p>
+                  <p class="card-title">{{stat.maxReserved.totaL_TICKETS}}<p>
                 </div>
               </div>
             </div>
@@ -77,7 +77,7 @@
             <hr>
             <div class="stats">
               <i class="fa fa-clock-o"></i>
-              In the last hour
+              {{stat.maxReserved.fromcountry}} - {{stat.maxReserved.tocountry}}
             </div>
           </div>
         </div>
@@ -108,17 +108,18 @@
           </div>
         </div>
       </div>
+      
     </div>
-    <div class="row">
+    
+    <div class="row" style="box-sizing: content-box;">
       <div class="col-md-12">
         <div class="card ">
           <div class="card-header ">
             <h5 class="card-title">Users Behavior</h5>
             <p class="card-category">24 Hours performance</p>
           </div>
-          <div class="card-body ">
-            <canvas id=chartHours width="400" height="100"></canvas>
-          </div>
+          
+        <canvasjs-chart [options]="chartOptions" styles="width:400px; height:100px"></canvasjs-chart>    
           <div class="card-footer ">
             <hr>
             <div class="stats">
@@ -128,7 +129,7 @@
         </div>
       </div>
     </div>
-    <div class="row">
+    <!-- <div class="row">
       <div class="col-md-4">
         <div class="card ">
           <div class="card-header ">
@@ -159,7 +160,6 @@
             <p class="card-category">Line Chart with Points</p>
           </div>
           <div class="card-body">
-            <!-- <canvas id="speedChart" width="400" height="100"></canvas> -->
             <canvasjs-chart [options]="chartOptions" [styles]="{width: '400', height:'100'}"></canvasjs-chart>    
           </div>
           <div class="card-footer">
@@ -174,8 +174,8 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
-<app-footer></app-footer>
 </div>
+<app-footer style="position: absolute;right: 0;left: 0;bottom: 0;margin-top: 25px;"></app-footer>
 </div>

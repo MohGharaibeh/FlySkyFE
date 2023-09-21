@@ -111,6 +111,7 @@ createForms : FormGroup = new FormGroup({
     
     this.fly.getFlightById(id).subscribe(
       (data) => {
+        this.fly.showImage = data.image;
         this.flightData = data; 
         this.dialog.open(this.openId, { data: { flightData: this.flightData } });
       },
