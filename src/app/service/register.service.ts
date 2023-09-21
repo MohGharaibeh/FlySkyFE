@@ -28,4 +28,27 @@ export class RegisterService {
       
     })
   }
+
+  profileUser:any ={};
+  imageUser:any ='';
+  getUserByID(id:any){
+    this.http.get('https://localhost:7152/api/UserAccount/get/'+id).subscribe((res:any)=>{
+      //console.log(res);
+      this.profileUser = res;
+      this.showImage = res.image;
+      console.log(this.profileUser)
+    },err=>{
+      console.log(err);
+    })
+  }
+
+  updateUser(body:any){
+    debugger;
+   body.image = this.showImage;
+    this.http.put('https://localhost:7152/api/UserAccount',body).subscribe((res:any)=>{
+      console.log(res);
+    },err=>{
+      console.log(err)
+    })
+  }
 }

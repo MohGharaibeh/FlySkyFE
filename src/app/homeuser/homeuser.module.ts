@@ -7,11 +7,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { AboutComponent } from './about/about.component';
 import { TestinomialComponent } from './testinomial/testinomial.component';
+import { ProfileComponent } from './profile/profile.component';
 @NgModule({
   declarations: [
     HomeComponent,
     AboutComponent,
-    TestinomialComponent
+    TestinomialComponent,
+    ProfileComponent
   ],
   imports: [
     CommonModule,
