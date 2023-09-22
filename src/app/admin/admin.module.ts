@@ -14,6 +14,7 @@ import { AboutPageComponent } from './about-page/about-page.component';
 import { ContactComponent } from './contact/contact.component';
 import { TestimonialComponent } from './testimonial/testimonial.component';
 import { ReportComponent } from './report/report.component';
+import { ProfileComponent } from './profile/profile.component';
 @NgModule({
   declarations: [
     DashboardComponent,
@@ -25,6 +26,7 @@ import { ReportComponent } from './report/report.component';
     ContactComponent,
     TestimonialComponent,
     ReportComponent,
+    ProfileComponent,
   ],
   imports: [
     CommonModule,

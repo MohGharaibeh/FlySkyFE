@@ -9,6 +9,7 @@ import { AboutPageComponent } from './about-page/about-page.component';
 import { ContactComponent } from './contact/contact.component';
 import { TestimonialComponent } from './testimonial/testimonial.component';
 import { ReportComponent } from './report/report.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
   {
@@ -46,6 +47,10 @@ const routes: Routes = [
   {
     path: 'report',
     component: ReportComponent
+  },
+  {
+    path: 'profile',
+    component: ProfileComponent
   }
   
 ];

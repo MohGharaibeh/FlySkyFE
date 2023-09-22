@@ -15,7 +15,7 @@ export class TestinomialComponent{
   createForm: FormGroup = new FormGroup({
     Message: new FormControl(''),
     Status : new FormControl('check'),
-    Userid : new FormControl()
+    Userid : new FormControl(localStorage.getItem('userID'))
 
   })
   create(){

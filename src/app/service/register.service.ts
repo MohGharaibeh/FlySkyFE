@@ -50,5 +50,7 @@ export class RegisterService {
     },err=>{
       console.log(err)
     })
+
+    window.location.reload();
   }
 }

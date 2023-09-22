@@ -24,7 +24,7 @@ export class SearchDateUserService {
   searchCountry(body:any){
     debugger;
     this.http.post('https://localhost:7152/api/UserAccount/ByCountry',body).subscribe((res:any)=>{
-      this.countryShow = res;
+      this.dateShow = res;
       console.log(this.countryShow)
     })
   }

@@ -8,12 +8,16 @@ import { FormsModule } from '@angular/forms';
 import { AboutComponent } from './about/about.component';
 import { TestinomialComponent } from './testinomial/testinomial.component';
 import { ProfileComponent } from './profile/profile.component';
+import { ContactusComponent } from './contactus/contactus.component';
+import { SearchflightComponent } from './searchflight/searchflight.component';
 @NgModule({
   declarations: [
     HomeComponent,
     AboutComponent,
     TestinomialComponent,
-    ProfileComponent
+    ProfileComponent,
+    ContactusComponent,
+    SearchflightComponent
   ],
   imports: [
     CommonModule,
