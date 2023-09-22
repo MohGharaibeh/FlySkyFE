@@ -9,10 +9,12 @@ export class FlightService {
 
   constructor(private http:HttpClient) { }
 
+  formCountry:any[]=[];
   flight:any = [{}];
   getAllFlight(){
     this.http.get('https://localhost:7152/api/Flight').subscribe((res:any)=>{
       this.flight = res;
+      this.formCountry=res.fromcountry;
     }, err =>{
       console.log(err);
     })

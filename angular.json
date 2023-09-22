@@ -40,7 +40,9 @@
               "src/assets/homeAssets/css/style.css",
               "src/assets/adminAssets/css/bootstrap.min.css",
               "src/assets/adminAssets/css/paper-dashboard.css",
-              "src/assets/adminAssets/demo/demo.css"
+              "src/assets/adminAssets/demo/demo.css",
+              "node_modules/leaflet/dist/leaflet.css"
+
 
              
             ],
@@ -77,7 +79,9 @@
               "src/assets/adminAssets/js/plugins/chartjs.min.js",
               "src/assets/adminAssets/js/plugins/bootstrap-notify.js",
               "src/assets/adminAssets/js/paper-dashboard.min.js",
-              "src/assets/adminAssets/demo/demo.js"
+              "src/assets/adminAssets/demo/demo.js",
+              "node_modules/leaflet/dist/leaflet.js"
+
             ]
           },
           "configurations": {
