@@ -1,49 +1,78 @@
+<style>
+ @keyframes swing {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-5px) rotateY(5deg); }
+  50% { transform: translateX(5px) rotateY(-5deg); }
+  75% { transform: translateX(-2px) rotateY(2deg); }
+  100% { transform: translateX(0); }
+}
 
+.icon i {
+  animation: swing 1s infinite;
+  transform-origin: center;
+}
+
+
+</style>
 <div class="wrapper ">
     <app-sidebar></app-sidebar>
-    <div class="main-panel">
+    <div class="main-panel" style="height:100%;position: relative;overflow: auto;">
     <app-navbar></app-navbar>
     <div class="content">
         <div class="row">
-          <div class="col-lg-12 col-md-12 col-sm-12">
+          <div class="col-lg-12 col-md-12 col-sm-12" style="height: 90vh;overflow: auto;">
             <!-- <button (click)="openCreateDialog()" style="display: block;" mat-raised-button>Add one!</button> -->
             <br>
-    <table class="table table-light table-hover" style="width: 100%;">
+    <table class="table table-light table-hover" style="width: 100%;max-height: 100%;" >
         <thead>
-            <tr>
-              <th >#</th>
-              <th >descriptions</th>
-              <th >text1</th>
-              <th >text2</th>
-              <th >text3</th>
-              <th >text4</th>
-              <th >text5</th>
-              <th >image</th>
-              <th></th>
-            </tr>
+            
           </thead>
           <tbody>
             <tr *ngFor="let f of about.aboutPage; index as i" >
-              <th >{{i+1}}</th>
-              <td>{{f.descriptions}}</td>
-              <td>{{f.text1}}</td>
-              <td>{{f.text2}}</td>
-              <td>{{f.text3}}</td>
-              <td>{{f.text4}}</td>
-              <td>{{f.text5}}</td>
-              <td><img width="100px" src="../../../assets/ApiImage/{{f.image}}"></td>
-              <td>
-                <button (click)="openUpdateDialog(f)" mat-raised-button color="primary">Update</button>
-              </td>
+              <div class="card">
+                <div class="card__body">
+                  <div class="half">
+                    <div class="image">
+                      <img width="100px" src="../../../assets/ApiImage/{{f.image}}">
+                     </div>
+                  </div>
+                  <div class="half">
+                    <div class="description">
+                      <p>
+                        {{f.descriptions}}
+                      </p>
+                    </div>
+                    <span class="stock"><i class="fa fa-pen"></i> In stock</span>
+                    <div class="reviews">
+                      <ul class="stars">
+                        <li><i class="fa fa-star"></i></li>
+                        <li><i class="fa fa-star"></i></li>
+                        <li><i class="fa fa-star"></i></li>
+                        <li><i class="fa fa-star"></i></li>
+                        <li><i class="fa fa-star-o"></i></li>
+                      </ul>
+                      <span>(64 reviews)</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="card__footer">
+                  <div class="recommend">
+                    <p><i class="fa fa-plane"></i> Recommended by</p>
+<h3><i class="fa fa-plane"></i> Andrew Palmer</h3>
+
+                  </div>
+                  <div class="action">
+                    <button (click)="openUpdateDialog(f)" mat-raised-button color="primary">Update</button>
+                  </div>
+                </div>
+              </div>
             </tr>
             
           </tbody>
       </table>
-<app-footer></app-footer>
 </div>
+<app-footer style="position: absolute;top: 100%;left: 0;right: 0;padding: 15px;"></app-footer>
 </div>
-
-
 <ng-template #updateDialog>
     <h1 mat-dialog-title>Update About</h1>
     <form [formGroup]="updateForms" style="padding-left: 30px;">
