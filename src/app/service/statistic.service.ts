@@ -29,10 +29,10 @@ export class StatisticService {
     })
       
   }
-  maxReserved : number=0;
+  maxReserved : any=[];
   getMaxReserved(){
     this.http.get('https://localhost:7152/api/Statistic/maxReserveFlight').subscribe((res:any)=>{
-    this.maxReserved = +res;
+    this.maxReserved = res;
     }, err =>{
       console.log(err);
       

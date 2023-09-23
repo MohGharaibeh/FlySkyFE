@@ -1,10 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { RegisterService } from 'src/app/service/register.service';
 
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.css']
 })
-export class SidebarComponent {
+export class SidebarComponent implements OnInit{
+  constructor(private router: Router,public user: RegisterService) { }
+  ngOnInit(): void {
+    const id = localStorage.getItem('userID');
+    this.user.getUserByID(id);
+  }
+  logout(){
+    localStorage.removeItem('token'); // Replace 'token' with the name of your token key
+    localStorage.removeItem('user'); // Replace 'user' with the name of your user data key
+    localStorage.removeItem('userID');
 
+    this.router.navigate(['']);
+  }
 }

@@ -25,6 +25,11 @@ table {
     margin: auto;
     box-shadow: 5px 5px 5px #aaa;
 }
-table th {
+table th,table td{
     padding:15px 60px;
 }
+
+/* table td{
+    padding:15px 60px;
+
+} */

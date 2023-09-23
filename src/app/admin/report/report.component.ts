@@ -19,8 +19,9 @@ export class ReportComponent implements OnInit{
   ngOnInit(): void {
   this.reports.viewReport();
   this.reports.viewChart();
-  
-    this.renderChart(this.reports.labeldata, this.reports.realdata);
+    setTimeout(() => {
+      this.renderChart(this.reports.labeldata, this.reports.realdata);
+    }, 1000);
   
 }
 

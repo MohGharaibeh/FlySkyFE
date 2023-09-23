@@ -1,0 +1,31 @@
+<app-navbar></app-navbar>
+<div class="container" style="margin: 5% 6%" *ngIf="user.profileUser">
+
+        <div class="wrapper">
+            <section class="editPhoto" *ngIf="user.profileUser">
+                <form [formGroup]="updateForm">
+                    <input type="file" #file accept="image/*" name="photo" id="photo" formControlName="image" (change)="uploadImage(file.files)" [(ngModel)]="user.profileUser.image"/>
+                    
+                    <img src="../../../assets/ApiImage/{{user.profileUser.image}}"
+                    
+                         width="200"
+                         height="200"
+                         alt=""
+                         onclick="document.getElementById('photo').click();">
+                         <input type="text" formControlName="fname" [(ngModel)]="user.profileUser.fname">
+                         <input type="text" formControlName="lname" [(ngModel)]="user.profileUser.lname">
+                         <input type="text" formControlName="email" [(ngModel)]="user.profileUser.email">
+                         <input type="password" formControlName="password" [(ngModel)]="user.profileUser.password" hidden>
+                         <input type="date" formControlName="birthdate" [(ngModel)]="user.profileUser.birthdate" hidden>
+                         <button (click)="submitUdpate()">Update</button>
+                    <!-- <input type="submit" value="Edit Image" class="edit" /> -->
+                </form>
+                
+                </section>
+
+        </div>
+    
+   
+</div>
+
+<app-footer></app-footer>

@@ -30,8 +30,10 @@ export class LoginService {
       //save token in local storge
       localStorage.setItem('token', response.token) //take key , value as string هون بكون مشفر
       let data:any = jwt_decode(response.token); // decode for token هون فكينا التشفير
+      localStorage.setItem('userID',data['Useracountid']);
       localStorage.setItem('user', JSON.stringify(data))
       const role = data['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'];
+      
       if(role=='1'){
         this.router.navigate(['admin/index']);
 
