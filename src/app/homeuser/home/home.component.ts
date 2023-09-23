@@ -9,6 +9,13 @@ import * as MapboxGeocoder from 'mapbox-gl-geocoder';
 import 'leaflet-routing-machine'; 
 import * as mapboxgl from 'mapbox-gl';
 import axios from 'axios';
+import 'leaflet';
+import 'leaflet.markercluster';
+import { Router } from '@angular/router';
+import {ToastrService} from 'ngx-toastr';
+import { DynamicHomeService } from 'src/app/service/dynamic-home.service';
+import { ManageHomeService } from 'src/app/service/manage-home.service';
+//import 'leaflet.markercluster/dist/MarkerCluster.Default.css'; // Add this line to import the default styles
 
 @Component({
   selector: 'app-home',
@@ -18,12 +25,13 @@ import axios from 'axios';
 export class HomeComponent implements OnInit{
   private map!: L.Map;
   private flights: any[] = []; // Flight data from your API
+  private markers!: L.MarkerClusterGroup;
   private opencageApiKey = '94d327738f5447bf845fb218ae53abde';
   startDate: string ='';
   endDate: string ='';
   fromCountry: string ='';
   toCountry: string ='';
-  constructor(public search: SearchDateUserService,public dialog: MatDialog, private readonly geolocation$: GeolocationService,public fly : FlightService){}
+  constructor(public search: SearchDateUserService,public dialog: MatDialog, private readonly geolocation$: GeolocationService,public fly : FlightService, public router:Router, public home:DynamicHomeService, public testi:ManageHomeService){}
   
   async ngOnInit() {
     // Create a Leaflet map
@@ -34,12 +42,26 @@ export class HomeComponent implements OnInit{
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(this.map);
 
+    // Initialize the marker cluster group with custom icon
+    this.markers = L.markerClusterGroup({
+      iconCreateFunction: function(cluster) {
+        // Customize the cluster icon using your custom image
+        return L.divIcon({
+          html: '<img src="../../../assets/ApiImage/palnicon.png" alt="Custom Cluster Icon" style="width: 32px; height: 32px;" />',
+          className: 'custom-cluster-icon'
+        });
+      }
+    });
+
+    this.map.addLayer(this.markers);
+
     // Fetch flight data from your API
     this.getAllFlight();
   }
 
   private getAllFlight() {
-    axios.get('https://localhost:7152/api/flight')
+    axios
+      .get('https://localhost:7152/api/flight')
       .then((response) => {
         if (Array.isArray(response.data)) {
           this.flights = response.data;
@@ -54,34 +76,44 @@ export class HomeComponent implements OnInit{
   }
 
   private geocodeCities() {
-    this.flights.forEach((flight:any) => {
+    this.flights.forEach((flight: any) => {
       const city = flight.fromcountry; // Use 'fromcountry' as the city name
+      const flightDetails = `<br> Departure : ${flight.departuredate},<br>Arrival : ${flight.arrivaldate},
+       <br>Price: ${flight.price}.<br> ${flight.fromcountry} - ${flight.tocountry}`; // Replace with actual flight details
 
       if (city) {
-        this.geocodeCity(city);
+        this.geocodeCity(city, flightDetails);
       }
     });
   }
 
-  private geocodeCity(city: string) {
+  private geocodeCity(city: string, flightDetails: string) {
     const geocodeUrl = `https://api.opencagedata.com/geocode/v1/json?q=${city}&key=${this.opencageApiKey}`;
 
-    axios.get(geocodeUrl)
+    axios
+      .get(geocodeUrl)
       .then((response) => {
         const { lat, lng } = response.data.results[0].geometry;
 
-        // Add a marker for the geocoded city
-        L.marker([lat, lng])
-          .bindPopup(city)
-          .addTo(this.map);
-          
+        // Create a marker for the geocoded city with flight details in the popup
+        const marker = L.marker([lat, lng])
+          .bindPopup(`<strong>City:</strong> ${city}<br><strong>Flight Details:</strong> ${flightDetails}`)
+          .on('mouseover', () => {
+            marker.openPopup(); // Use an arrow function to capture the 'this' context
+          })
+          .on('mouseout', () => {
+            marker.closePopup(); // Use an arrow function to capture the 'this' context
+          });
 
+        this.markers.addLayer(marker); // Add the marker to the cluster group
       })
       .catch((error) => {
         console.error(`Error geocoding ${city}:`, error);
       });
 
-
+      this.home.getHomeById();
+    this.testi.getAllTestimonial();
+    this.home.getAboutById();
 
   }
 
@@ -93,12 +125,14 @@ export class HomeComponent implements OnInit{
     const dateRange = { Departuredate: this.startDate, Arrivaldate: this.endDate };
 
     this.search.serachDate(dateRange);
-   this.dialog.open(this.searchDialog);
+   //this.dialog.open(this.searchDialog);
+   this.router.navigate(['/user/search'])
   }
 
   serachCountry(){
     const countryRange = {Fromcountry: this.fromCountry , Tocountry: this.toCountry};
     this.search.searchCountry(countryRange);
-    this.dialog.open(this.searchCountryDialog);
+    //this.dialog.open(this.searchCountryDialog);
+    this.router.navigate(['/user/search'])
   }
 }

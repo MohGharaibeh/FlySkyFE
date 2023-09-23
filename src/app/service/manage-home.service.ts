@@ -92,6 +92,7 @@ export class ManageHomeService {
 //End Contact Page
 
 //Start Testimonial
+
   test:any=[{}];
   getAllTestimonial(){
     this.http.get('https://localhost:7152/api/Testimonial').subscribe((res:any)=>{

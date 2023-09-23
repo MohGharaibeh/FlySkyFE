@@ -41,7 +41,8 @@
               "src/assets/adminAssets/css/bootstrap.min.css",
               "src/assets/adminAssets/css/paper-dashboard.css",
               "src/assets/adminAssets/demo/demo.css",
-              "node_modules/leaflet/dist/leaflet.css"
+              "node_modules/leaflet/dist/leaflet.css",
+              "node_modules/ngx-toaster/toaster.css"
 
 
              
