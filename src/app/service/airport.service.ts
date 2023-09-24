@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Injectable({
@@ -7,7 +8,7 @@ import { Injectable } from '@angular/core';
 })
 export class AirportService {
 
-  constructor(private http : HttpClient) { }
+  constructor(private http : HttpClient, private toast:ToastrService) { }
 
   airports: any=[{}];
   getAirport(){
@@ -23,18 +24,23 @@ export class AirportService {
     debugger;
     this.http.delete('https://localhost:7152/api/Airport/'+id).subscribe((res)=>{
       console.log(res);
-      
+      setTimeout(() => {
+        window.location.reload();
+      }, 1000);
+      this.toast.success('Delete Sucssesfuly')
     }, err=>{
       console.log(err);
-      
+      this.toast.error('Somthing Error')
     })
-    window.location.reload();
   }
 
   updateAirport(body:any){
     this.http.put('https://localhost:7152/api/Airport', body).subscribe((res: any)=>{
       console.log(res);
-      window.location.reload();
+      setTimeout(() => {
+        window.location.reload();
+      }, 1000);
+      this.toast.success('Update Sucssesfuly')
     }, err=>{
       console.log(err);
       
@@ -48,9 +54,10 @@ export class AirportService {
       setTimeout(() => {
         window.location.reload();
       }, 1000);
+      this.toast.success('Added Sucssesfuly')
     }, err=>{
       console.log(err);
-      
+      this.toast.error('Somthing Error')
     })
   }
 }

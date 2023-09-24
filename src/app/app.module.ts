@@ -7,6 +7,8 @@ import{HTTP_INTERCEPTORS, HttpClientModule}from  '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { token } from 'src/interseptor/token';
 
+import { ToastrModule } from 'ngx-toastr';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -16,7 +18,8 @@ import { token } from 'src/interseptor/token';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ToastrModule.forRoot()
     
   ],
   exports: [

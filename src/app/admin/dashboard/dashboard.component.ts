@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { StatisticService } from 'src/app/service/statistic.service';
 
 @Component({
@@ -10,8 +11,9 @@ export class DashboardComponent implements OnInit {
 	// numOfUser: number = 0;
 	// numOfAirport: number = 0;
 
-	constructor(public stat: StatisticService){}
+	constructor(public stat: StatisticService, private toast:ToastrService){}
 	ngOnInit(): void {
+		//this.toast.success('Sucssed')
 		this.stat.getNum();
 		this.stat.getNumOfAirport();
 		this.stat.getMaxReserved();

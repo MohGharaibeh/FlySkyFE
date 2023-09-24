@@ -2,6 +2,7 @@ import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { ManageHomeService } from 'src/app/service/manage-home.service';
 import emailjs from '@emailjs/browser'
 import { MatDialog } from '@angular/material/dialog';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-contact',
@@ -9,7 +10,7 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./contact.component.css']
 })
 export class ContactComponent implements OnInit{
-  constructor(public contact: ManageHomeService, public dialog:MatDialog){}
+  constructor(public contact: ManageHomeService, public dialog:MatDialog, private toast:ToastrService){}
   ngOnInit(): void {
     this.contact.gatAllContact();
   }
@@ -26,6 +27,10 @@ export class ContactComponent implements OnInit{
           message: this.message,
           email: this.userEmail,
         });
+        setTimeout(() => {
+          window.location.reload();
+        }, 1000);
+        this.toast.success('Send Email Sucssesfuly')
       }
       userEmail: string='';
       gitItById(id: number) {

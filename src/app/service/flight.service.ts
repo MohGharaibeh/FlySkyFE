@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -7,13 +8,14 @@ import { Observable } from 'rxjs';
 })
 export class FlightService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient, private toast:ToastrService) { }
 
   formCountry:any[]=[];
   flight:any = [{}];
   getAllFlight(){
     this.http.get('https://localhost:7152/api/Flight').subscribe((res:any)=>{
       this.flight = res;
+      console.log(res);
       this.formCountry=res.fromcountry;
     }, err =>{
       console.log(err);
@@ -23,10 +25,13 @@ export class FlightService {
   deleteFlight(id : number){
     this.http.delete('https://localhost:7152/api/Flight/'+id).subscribe((res)=>{
       console.log(res);
-      window.location.reload();
+      setTimeout(() => {
+        window.location.reload();
+      }, 1000);
+      this.toast.success('Added Sucssesfuly')
     }, err=>{
       console.log(err);
-      
+      this.toast.error('Somthing Error')
     })
   }
 
@@ -34,10 +39,13 @@ export class FlightService {
     obj.image=this.showImage;
     this.http.put('https://localhost:7152/api/Flight/',obj).subscribe((res)=>{
       console.log(res);
-      window.location.reload();
+      setTimeout(() => {
+        window.location.reload();
+      }, 1000);
+      this.toast.success('Update Sucssesfuly')
     }, err=>{
       console.log(err);
-      
+      this.toast.error('Somthing Error')
     })
   }
 
@@ -46,10 +54,13 @@ export class FlightService {
     debugger;
     this.http.post('https://localhost:7152/api/Flight/', obj).subscribe((res)=>{
       console.log(res);
-      window.location.reload();
+      setTimeout(() => {
+        window.location.reload();
+      }, 1000);
+      this.toast.success('Added Sucssesfuly')
     }, err=>{
       console.log(err);
-      
+      this.toast.error('Somthing Error')
     })
   }
 
@@ -81,4 +92,19 @@ export class FlightService {
 getFlightById(id: number): Observable<any> {
   return this.http.get(`https://localhost:7152/api/Flight/GetByID/${id}`);
 }
+
+flightData: any;
+  gitItById(id: number) {
+    
+    this.getFlightById(id).subscribe(
+      (data) => {
+        this.showImage = data.image;
+        this.flightData = data; 
+        //this.dialog.open(this.openId, { data: { flightData: this.flightData } });
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+  }
 }

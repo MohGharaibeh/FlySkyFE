@@ -1,0 +1,46 @@
+<div #paypal></div>
+
+<!-- <div class="example-input-wrapper">
+    <label for="duration">Animation duration:</label>
+    <input id="duration" value="2000" type="number" min="0" step="100" #duration>
+  </div> -->
+  <form>
+  <mat-vertical-stepper [linear]="false" #stepper >
+    <mat-step [stepControl]="firstFormGroup">
+        <ng-template matStepLabel>Number Of Tickets</ng-template>
+        <mat-form-field>
+          <input matInput placeholder="Number Of Tickets" name="numberofticket" [(ngModel)]="numberofticket" required>
+        </mat-form-field>
+        <div>
+          <button  mat-button matStepperNext>Next</button>
+        </div>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup">
+        <ng-template matStepLabel>IBAN</ng-template>
+        <mat-form-field>
+          <input matInput placeholder="IBAN" name="iban" [(ngModel)]="iban" required>
+        </mat-form-field>
+        <ng-template matStepLabel>CVV</ng-template>
+        <mat-form-field>
+          <input matInput placeholder="CVV" name="cvv" [(ngModel)]="cvv" required>
+        </mat-form-field>
+        <ng-template matStepLabel>Expired Date</ng-template>
+        <mat-form-field>
+          <input matInput placeholder="Expired Date" name="exdate" [(ngModel)]="exdate" required>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      You are now done.
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        
+        <button mat-button (click)="sendPay()">Submit</button>
+      </div>
+    </mat-step>
+  </mat-vertical-stepper>
+</form>

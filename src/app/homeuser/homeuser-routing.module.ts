@@ -7,6 +7,7 @@ import { TestinomialComponent } from './testinomial/testinomial.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ContactusComponent } from './contactus/contactus.component';
 import { SearchflightComponent } from './searchflight/searchflight.component';
+import { PaymentComponent } from './payment/payment.component';
 
 const routes: Routes = [
   {
@@ -32,6 +33,10 @@ const routes: Routes = [
   {
     path: 'search',
     component: SearchflightComponent
+  },
+  {
+    path:'pay',
+    component: PaymentComponent
   }
 ];
 

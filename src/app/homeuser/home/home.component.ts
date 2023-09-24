@@ -114,6 +114,7 @@ export class HomeComponent implements OnInit{
       this.home.getHomeById();
     this.testi.getAllTestimonial();
     this.home.getAboutById();
+    this.fly.getAllFlight();
 
   }
 
@@ -134,5 +135,10 @@ export class HomeComponent implements OnInit{
     this.search.searchCountry(countryRange);
     //this.dialog.open(this.searchCountryDialog);
     this.router.navigate(['/user/search'])
+  }
+
+  goToPay(id:number){
+    this.fly.gitItById(id)
+    this.router.navigate(['/user/pay']);
   }
 }

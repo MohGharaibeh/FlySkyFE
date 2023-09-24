@@ -10,6 +10,9 @@ import { TestinomialComponent } from './testinomial/testinomial.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ContactusComponent } from './contactus/contactus.component';
 import { SearchflightComponent } from './searchflight/searchflight.component';
+import { PaymentComponent } from './payment/payment.component';
+import {MatStepperModule} from '@angular/material/stepper';
+
 @NgModule({
   declarations: [
     HomeComponent,
@@ -17,14 +20,16 @@ import { SearchflightComponent } from './searchflight/searchflight.component';
     TestinomialComponent,
     ProfileComponent,
     ContactusComponent,
-    SearchflightComponent
+    SearchflightComponent,
+    PaymentComponent
   ],
   imports: [
     CommonModule,
     HomeuserRoutingModule,
     ShareduserModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    MatStepperModule
     
   ]
 })

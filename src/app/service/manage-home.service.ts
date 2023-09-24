@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { Observable, catchError, tap, throwError } from 'rxjs';
 
 @Injectable({
@@ -8,7 +9,7 @@ import { Observable, catchError, tap, throwError } from 'rxjs';
 export class ManageHomeService {
 
  
-  constructor(private http : HttpClient) { }
+  constructor(private http : HttpClient, private toast:ToastrService) { }
 //Start Home Page
   homePage:any=[{}];
   showAllHomePage(){
@@ -24,10 +25,13 @@ export class ManageHomeService {
     body.image=this.showImage ;
     this.http.put('https://localhost:7152/api/Page/', body).subscribe((res)=>{
       console.log(res);
-      
+      setTimeout(() => {
+        window.location.reload();
+      }, 1000);
+      this.toast.success('Update Sucssesfuly')
     }, err=>{
       console.log(err);
-      
+      this.toast.error('Somthing Error')
     })
   }
 
@@ -56,12 +60,15 @@ export class ManageHomeService {
   updateAboutPage(obj:any){
     obj.image=this.aboutImage;
     this.http.put('https://localhost:7152/api/About/', obj).subscribe((res:any)=>{
-      window.location.reload();
+      setTimeout(() => {
+        window.location.reload();
+      }, 1000);
+      this.toast.success('Update Sucssesfuly')
       console.log(res);
       
     }, err=>{
       console.log(err);
-      
+      this.toast.error('Somthing Error')
     })
   }
 
@@ -92,11 +99,12 @@ export class ManageHomeService {
 //End Contact Page
 
 //Start Testimonial
-
+testForUser: any = [{}];
   test:any=[{}];
   getAllTestimonial(){
     this.http.get('https://localhost:7152/api/Testimonial').subscribe((res:any)=>{
       this.test = res;
+      this.testForUser = res.filter((testimonial:any) => testimonial.status === 'accept');
     }, err=>{
       console.log(err);
       

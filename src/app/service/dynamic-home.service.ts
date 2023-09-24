@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -7,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class DynamicHomeService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient, private toast:ToastrService) { }
   fullHome:any=[{}]
   imageHome:string='';
   t1:string=''
@@ -40,10 +41,13 @@ export class DynamicHomeService {
     body.senddate = currentDate.toISOString();
     this.http.post('https://localhost:7152/api/Contact', body).subscribe((res:any)=>{
       console.log(res);
-      window.location.reload();
+      setTimeout(() => {
+        window.location.reload();
+      }, 1000);
+      this.toast.success('Send Sucssesfuly')
     }, err=>{
       console.log('Error:'+err);
-      
+      this.toast.error('Somthing Error')
     })
   }
 
