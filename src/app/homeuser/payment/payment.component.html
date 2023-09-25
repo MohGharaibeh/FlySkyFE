@@ -4,7 +4,7 @@
     <label for="duration">Animation duration:</label>
     <input id="duration" value="2000" type="number" min="0" step="100" #duration>
   </div> -->
-  <form>
+  <!-- <form (ngSubmit)="sendPay()">
   <mat-vertical-stepper [linear]="false" #stepper >
     <mat-step [stepControl]="firstFormGroup">
         <ng-template matStepLabel>Number Of Tickets</ng-template>
@@ -39,8 +39,19 @@
       <div>
         <button mat-button matStepperPrevious>Back</button>
         
-        <button mat-button (click)="sendPay()">Submit</button>
+        <button mat-button type="submit">Submit</button>
       </div>
     </mat-step>
   </mat-vertical-stepper>
+</form> -->
+
+
+<form (ngSubmit)="sendPay()" [formGroup]="formPay">
+  <input formControlName="numberofticket" placeholder="number of ticket" (change)="totalPrice($event)">
+  <input formControlName="iban" placeholder="iban">
+  <input formControlName="cvv" placeholder="cvv">
+  <input formControlName="exdate" placeholder="Expired date">
+  <input formControlName="flightid" hidden>
+  <input formControlName="balance"  hidden>
+  <button type="submit">Submit</button>
 </form>

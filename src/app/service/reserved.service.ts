@@ -10,7 +10,11 @@ export class ReservedService {
 
   constructor(private http:HttpClient, private toast:ToastrService) { }
 
+
   reservedFlight(body:any){
+    debugger;
+    const reservedDate:Date = new Date();
+    body.reserveddate = reservedDate.toISOString();
     this.http.post('https://localhost:7152/api/ReservedFlight',body).subscribe((res:any)=>{
       console.log(res);
     }, err=>{
@@ -20,6 +24,7 @@ export class ReservedService {
   }
 
   updateBalance(body:any){
+    debugger;
     this.http.put('https://localhost:7152/api/Bank', body).subscribe((res:any)=>{
       console.log(res);
     }, err=>{

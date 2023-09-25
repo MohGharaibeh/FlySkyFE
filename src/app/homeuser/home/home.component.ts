@@ -136,9 +136,10 @@ export class HomeComponent implements OnInit{
     //this.dialog.open(this.searchCountryDialog);
     this.router.navigate(['/user/search'])
   }
-
+  
   goToPay(id:number){
-    this.fly.gitItById(id)
+    this.fly.gitItById(id);
+    this.fly.flightID = id;
     this.router.navigate(['/user/pay']);
   }
 }

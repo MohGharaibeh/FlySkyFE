@@ -67,7 +67,7 @@ export class FlightsComponent implements OnInit {
 
 createForms : FormGroup = new FormGroup({
   capacity : new FormControl(''),
-  status : new FormControl(''),
+  status : new FormControl('wait'),
   price : new FormControl(''),
   description : new FormControl(''),
   fromcountry : new FormControl(''),
