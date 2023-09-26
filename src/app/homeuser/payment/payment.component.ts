@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FlightService } from 'src/app/service/flight.service';
 import { ReservedService } from 'src/app/service/reserved.service';
 
@@ -10,80 +11,91 @@ import { ReservedService } from 'src/app/service/reserved.service';
   styleUrls: ['./payment.component.css']
 })
 export class PaymentComponent implements OnInit{
-  constructor(public reserv:ReservedService, private _formBuilder: FormBuilder, public fly:FlightService){
-    // if (this.fly?.flightData?.price) {
-    //   // Use the Number() function to convert strings to numbers safely
-    //   this.balance = new FormControl(
-    //     Number(this.fly.flightData.price) * Number(this.numberofticket)
-    //   );
-    //   this.flightid.setValue(this.fly.flightData.flightid);
-    // } else {
-    //   this.balance = new FormControl(0); // Set a default value if flightData or price is not defined
-    // }
+  constructor(public reserv:ReservedService, private _formBuilder: FormBuilder,
+     public fly:FlightService, private route: ActivatedRoute){
+  
   }
   firstFormGroup: FormGroup = this._formBuilder.group({firstCtrl: ['']});
   secondFormGroup: FormGroup = this._formBuilder.group({secondCtrl: ['']});
 
   ngOnInit(): void {
-    console.log(window.paypal);
-    console.log(this.Pay.nativeElement);
-    // Attempt to render PayPal buttons
-    if (window.paypal && this.Pay.nativeElement) {
-      window.paypal.Buttons(
-        {
-          style:{
-            layout:'horizontal',
-            label:'paypal',
-            color:'blue',
-            shape:'rect',
-          },
-          createOrder(data:any, action:any){
-            return action.order.Create({
-              burchase_units:[
-                {
-                  amount:{
-                    value:0, //dynamic amount put here 
-                    currency_code:'USD'
-                  }
-                }
-              ]
-            });
-          },
-          onApprove:(data:any, action:any)=>{
-            return action.order.Capture().then((details:any)=>{
-              console.log(details);
-              // put toastr here
-              
-            });
-          },
-          onError:(error:any)=>{
-            console.log(error);
-            //error toastr here
-          }
+    console.log(paypal); // Check if 'paypal' object is accessible globally
+console.log(this.Pay.nativeElement);
+
+// Attempt to render PayPal buttons
+if (paypal && this.Pay.nativeElement) {
+  paypal.Buttons(
+    {
+      style: {
+        layout: 'horizontal',
+        label: 'paypal',
+        color: 'blue',
+        shape: 'rect',
+      },
+      createOrder: (data: any, actions: any) => {
+        var total = this.fly.totalPrice;
+        return actions.order.create({
+          purchase_units: [
+            {
+              amount: {
+                value: total, // Dynamic amount goes here
+                currency_code: 'USD'
+              }
+            }
+          ]
+        });
+      },
+      onApprove: (data: any, actions: any) => {
+        var b ={
+          numberofticket:this.fly.ticket,
+          useracountid:localStorage.getItem('userID'),
+          flightid:this.fly.flightID
         }
-      ).render(this.Pay.nativeElement);
-    
-  }
+        this.reserv.reservedFlight(b)
+        return actions.order.capture().then((details: any) => {
+
+          console.log(details);
+          // Put toastr or any other handling here
+        });
+      },
+      onError: (error: any) => {
+        console.log(error);
+        // Handle errors here
+      }
+    }
+  ).render(this.Pay.nativeElement);
+
+  this.route.queryParams.subscribe((params) => {
+    const flightId = params['flightid'];
+    const price = params['price'];
+
+    // Now you can use flightId and price in your PayComponent
+    console.log('Flight ID:', flightId);
+    console.log('Price:', price);
+  });
+
+}
+  
 }
 
 
   @ViewChild('paypal', {static:true}) Pay !:ElementRef;
     
   formPay: FormGroup = new FormGroup({
-    numberofticket : new FormControl(),
+    numberofticket : new FormControl(this.fly.ticket),
     iban : new FormControl(),
     cvv : new FormControl(),
     exdate : new FormControl(),
-    balance : new FormControl,
+    balance : new FormControl(this.fly.totalPrice),
     useracountid : new FormControl(localStorage.getItem('userID')),
     flightid : new FormControl(this.fly.flightID),
   })
 
-  totalPrice = (ev:any)=>{
-    console.log(ev.target.value);
-    this.formPay.controls['balance'].setValue(ev.target.value * this.fly.priceFly);
+  // totalPrice = (ev:any)=>{
+  //   console.log(ev.target.value);
+  //   this.formPay.controls['balance'].setValue(this.fly.totalPrice);
     
-  }
+  // }
   
     async sendPay(){
       debugger;

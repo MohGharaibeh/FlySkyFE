@@ -96,6 +96,9 @@ getFlightById(id: number): Observable<any> {
 flightData: any;
 flightID:number=0;
 priceFly: number=0;
+priceMap:number=0;
+totalPrice:number=0;
+ticket:number=0;
   gitItById(id: number) {
     debugger;
     this.getFlightById(id).subscribe(
