@@ -94,12 +94,15 @@ getFlightById(id: number): Observable<any> {
 }
 
 flightData: any;
+flightID:number=0;
+priceFly: number=0;
   gitItById(id: number) {
-    
+    debugger;
     this.getFlightById(id).subscribe(
       (data) => {
         this.showImage = data.image;
         this.flightData = data; 
+        this.priceFly = data.price;
         //this.dialog.open(this.openId, { data: { flightData: this.flightData } });
       },
       (error) => {
