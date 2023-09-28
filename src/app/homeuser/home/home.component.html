@@ -217,6 +217,8 @@
                             <span><i class="fas fa-star"></i><span>Capacity {{fly.capacity}}</span> </span>
                             <h3><a href="#">{{fly.description}}</a></h3>
                             <p class="dolor">${{fly.price}} <span>/ Per Person</span></p>
+                            <input #total type="number" placeholder="Number of Ticket" min="1" (change)="numOfTicket($event, fly.price)">
+                            <p *ngIf="total !=null">Total Price = {{fly.price * totalPrice}}</p>
                         </div>
                         <div class="place-cap-bottom">
                             <ul>
@@ -442,3 +444,9 @@
     <!-- Blog Area End -->
 
 </main><app-footer></app-footer>
+
+
+<ng-template #putTicket>
+    <input type="number" min="1" placeholder="Number of Ticket" (change)="tikMap($event)">
+    <button type="submet" (click)="takeTicket()">Booked</button>
+</ng-template>

@@ -27,11 +27,14 @@ export class HomeComponent implements OnInit{
   private flights: any[] = []; // Flight data from your API
   private markers!: L.MarkerClusterGroup;
   private opencageApiKey = '94d327738f5447bf845fb218ae53abde';
+
   startDate: string ='';
   endDate: string ='';
   fromCountry: string ='';
   toCountry: string ='';
-  constructor(public search: SearchDateUserService,public dialog: MatDialog, private readonly geolocation$: GeolocationService,public fly : FlightService, public router:Router, public home:DynamicHomeService, public testi:ManageHomeService){}
+  constructor(public search: SearchDateUserService,public dialog: MatDialog,
+    private readonly geolocation$: GeolocationService,public fly : FlightService, 
+    public router:Router, public home:DynamicHomeService, public testi:ManageHomeService){}
   
   async ngOnInit() {
     // Create a Leaflet map
@@ -78,16 +81,15 @@ export class HomeComponent implements OnInit{
   private geocodeCities() {
     this.flights.forEach((flight: any) => {
       const city = flight.fromcountry; // Use 'fromcountry' as the city name
-      const flightDetails = `<br> Departure : ${flight.departuredate},<br>Arrival : ${flight.arrivaldate},
-       <br>Price: ${flight.price}.<br> ${flight.fromcountry} - ${flight.tocountry}`; // Replace with actual flight details
-
+      const flightDetails = `<br>Departure : ${flight.departuredate},<br>Arrival : ${flight.arrivaldate},
+       <br>Price: ${flight.price}.<br>${flight.fromcountry} - ${flight.tocountry}`;
       if (city) {
-        this.geocodeCity(city, flightDetails);
+        this.geocodeCity(city, flightDetails, flight.flightid, flight.price);
       }
     });
   }
 
-  private geocodeCity(city: string, flightDetails: string) {
+  private geocodeCity(city: string, flightDetails: string, flightid: number, price: number) {
     const geocodeUrl = `https://api.opencagedata.com/geocode/v1/json?q=${city}&key=${this.opencageApiKey}`;
 
     axios
@@ -103,6 +105,15 @@ export class HomeComponent implements OnInit{
           })
           .on('mouseout', () => {
             marker.closePopup(); // Use an arrow function to capture the 'this' context
+          })
+          .on('click', () => {
+            // Set flightID and price directly in the FlightService
+            this.dialog.open(this.ticketMap)
+            this.fly.flightID = flightid;
+            this.fly.priceMap = price;
+            
+            // Navigate to the pay route
+            //this.router.navigate(['/user/pay']);
           });
 
         this.markers.addLayer(marker); // Add the marker to the cluster group
@@ -110,6 +121,7 @@ export class HomeComponent implements OnInit{
       .catch((error) => {
         console.error(`Error geocoding ${city}:`, error);
       });
+
 
       this.home.getHomeById();
     this.testi.getAllTestimonial();
@@ -119,7 +131,7 @@ export class HomeComponent implements OnInit{
   }
 
 
-  
+  @ViewChild('putTicket') ticketMap !: TemplateRef<any>
   @ViewChild('searchDialog') searchDialog !: TemplateRef<any>
   @ViewChild('searchCountryDialog') searchCountryDialog !: TemplateRef<any>
   onSearch(){
@@ -141,5 +153,25 @@ export class HomeComponent implements OnInit{
     this.fly.gitItById(id);
     this.fly.flightID = id;
     this.router.navigate(['/user/pay']);
+  }
+  totalPrice:number=0;
+
+  numOfTicket=(ev:any, price:number)=>{
+    console.log(ev.target.value);
+    this.totalPrice= Number(ev.target.value) ;
+    this.fly.totalPrice = Number(ev.target.value) * +price;
+    this.fly.ticket = Number(ev.target.value) ;
+  }
+  tickMap:number=0;
+  tikMap=(ev:any)=>{
+    this.tickMap = Number(ev.target.value);
+    this.fly.ticket = Number(ev.target.value);
+  }
+
+  takeTicket(){
+    this.fly.totalPrice = this.tickMap * this.fly.priceMap;
+    setTimeout(() => {
+      this.router.navigate(['/user/pay']);
+    }, 2000);
   }
 }

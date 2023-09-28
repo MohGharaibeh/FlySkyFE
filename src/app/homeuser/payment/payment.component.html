@@ -1,3 +1,4 @@
+<app-navbar></app-navbar>
 <div #paypal></div>
 
 <!-- <div class="example-input-wrapper">
@@ -47,7 +48,7 @@
 
 
 <form (ngSubmit)="sendPay()" [formGroup]="formPay">
-  <input formControlName="numberofticket" placeholder="number of ticket" (change)="totalPrice($event)">
+  <!-- <input hidden formControlName="numberofticket" placeholder="number of ticket" (change)="totalPrice($event)"> -->
   <input formControlName="iban" placeholder="iban">
   <input formControlName="cvv" placeholder="cvv">
   <input formControlName="exdate" placeholder="Expired date">
@@ -55,3 +56,4 @@
   <input formControlName="balance"  hidden>
   <button type="submit">Submit</button>
 </form>
+<app-footer></app-footer>
