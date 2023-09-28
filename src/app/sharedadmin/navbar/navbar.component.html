@@ -1,3 +1,14 @@
+<style>
+  h1 {
+      text-align: center;
+      margin-left: 400px;
+      color: #ffa801;
+      font-size: 45px;
+      font-weight: bold;
+      letter-spacing: 3px;
+      font-family: Arial, sans-serif; /* Add your desired font family here */
+  }
+</style>
 <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent" style="background-color: white !important; box-shadow: 2px 2px 5px #aaa;">
     <div class="container-fluid">
       <div class="navbar-wrapper">
@@ -8,9 +19,10 @@
             <span class="navbar-toggler-bar bar3"></span>
           </button>
         </div>
-        <a style="font-size: 30px; transform: rotate(-45deg);" class="navbar-brand" href="javascript:;"><i class="fas fa-plane"></i></a>
-        <h1 style="text-align: center; margin-left: 400px;">GoTrip</h1>
-
+        <a style="font-size: 30px;" class="navbar-brand" href="javascript:;"> 
+          <img src="../../../assets/homeAssets/img/logo/logo.png">
+        </a>
+        <h1><span style="color: #014b85;">Go</span>trip</h1>
       </div>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -52,7 +64,7 @@
           </li> -->
           <li class="nav-item">
             <a class="nav-link btn-rotate" (click)="logout()">
-              <i style="font-size: 30px;" title="Logout" class="fas fa-sign-out-alt"></i>
+              <i style="font-size: 30px;color: #014b85;" title="Logout" class="fas fa-sign-out-alt"></i>
               <p>
                 <span class="d-lg-none d-md-block">Account</span>
               </p>

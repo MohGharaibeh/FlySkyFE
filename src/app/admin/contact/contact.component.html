@@ -1,3 +1,8 @@
+<style>
+  th {
+    color: #014b85;
+  }
+</style>
 <div class="wrapper ">
     <app-sidebar></app-sidebar>
     <div class="main-panel" style="height: 90%;">
@@ -16,6 +21,7 @@
               <th >email</th>
               <th >phone</th>
               <th >senddate</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
@@ -26,8 +32,13 @@
               <td>{{f.email}}</td>
               <td>{{f.phone}}</td>
               <td>{{f.senddate | date:'short'}}</td>
-              <button (click)="gitItById(f.contactid)">Replay</button>
-              
+              <td>
+                <button (click)="gitItById(f.contactid)" style="background-color: #014b85; color: white; border: none; padding: 8px 16px; border-radius: 4px;">
+                    <i class="fas fa-reply"></i>
+                     Replay
+                </button>
+            </td>
+            
             </tr>
             
           </tbody>
@@ -35,7 +46,10 @@
 </div>
 </div>
 
-<ng-template #replay style="padding: 15px;">
-  <textarea [(ngModel)]="message" style="display: block;" placeholder="Enter Replay"></textarea>
-  <button (click)="send()">Send</button>
+<ng-template #replay style="padding: 15px; border: 1px solid #ccc; border-radius: 5px; background-color: #f9f9f9;border-radius: 15px;">
+  <textarea [(ngModel)]="message" style="display: block; width: 100%; box-sizing: border-box; margin-bottom: 10px;width: 300px;height: 400px;padding: 25px;" placeholder="Enter Replay"></textarea>
+  <button (click)="send()" style="background-color: #007bff; color: #fff; border: none; border-radius: 3px; padding: 5px 10px; cursor: pointer;">
+    <i class="fa fa-paper-plane" aria-hidden="true"></i> Send
+  </button>
 </ng-template>
+

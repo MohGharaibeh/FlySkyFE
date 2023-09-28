@@ -1,17 +1,19 @@
 <app-navbar></app-navbar>
 
+<div style="padding: 25px;background-image: url('../../../assets/homeAssets/img/testimonials.jpg'); margin: 20px 0;display: flex; align-items: center;justify-content: center;flex-direction: column;">
+  <h1 style="padding: 25px;text-align: center; margin: 0; font-size: 2rem; color: #333; font-family: 'Arial', sans-serif;" mat-dialog-title>Add Testimonial</h1>
+  <form class="formAddFlight" [formGroup]="createForm" style="width: 500px;height: 400px; overflow: auto; display: flex; flex-direction: column;align-items: center;">
+  
+    <input type="text" formControlName="Message" matInput placeholder="Message..." style="margin-bottom: 16px;border-radius: 10px;height: 200px;width: 400px;">
+  
+    <div name="button" mat-dialog-actions style="display: flex; justify-content: flex-end;">
+      <button (click)="create()" mat-button style="width: 100px;background-color: #014b85;color: #fff;padding: 0 10px;">
+        <i class="fa fa-plus"></i> Add
+      </button>
+    </div>
+  
+  </form>
+</div>
 
-<h1 style="text-align: center; margin: 0;" mat-dialog-title>Add Testimonial</h1>
-    <form class="formAddFlight" [formGroup]="createForm" style="max-height: 85vh;overflow: auto;">
-   
-          
-            <label for="Message">Message</label>
-            <input type="text" formControlName="Message" matInput placeholder="Message...">
-            
 
-          <div name="button" mat-dialog-actions>
-            <button style="background-color: #04aa6d;color:#fff" (click)="create()" mat-button>Add</button>
-            
-          </div>
-      </form>
 <app-footer></app-footer>

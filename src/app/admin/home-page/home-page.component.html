@@ -10,6 +10,9 @@
     button {
       transition: all .5s;
     }
+    th {
+      color: #014b85;
+    }
   </style>
 </head>
   <div class="wrapper">
@@ -21,7 +24,7 @@
           <div class="col-lg-12 col-md-12 col-sm-12">
             <!-- <button (click)="openCreateDialog()" style="display: block;" mat-raised-button>Add one!</button> -->
             <br>
-    <table class="table table-light table-hover" style="width: 100%;">
+    <table class="table table-light table-hover" style="width: 100%;box-shadow: 3px 3px 5px #aaa;">
         <thead>
             <tr>
               <th >#</th>
@@ -50,8 +53,11 @@
               <td>{{f.text7}}</td>
               <td><img width="100px" src="../../../assets/ApiImage/{{f.image}}"></td>
               <td>
-                <button (click)="openUpdateDialog(f)" mat-raised-button color="primary">Update</button>
-              </td>
+                <button (click)="openUpdateDialog(f)" mat-raised-button style="background-color: #014b85;" color="primary">
+                  <mat-icon>update</mat-icon>
+                  Update
+              </button>
+                            </td>
             </tr>
             
           </tbody>
@@ -63,7 +69,7 @@
   <ng-template #updateDialog class="update-dialog">
 
       <!-- <h1 mat-dialog-title>Update Airport</h1> -->
-      <form [formGroup]="updateForms" style="max-height: 85vh;overflow-y: scroll; padding:30 0px;">
+      <form [formGroup]="updateForms" style="max-height: 450px;width: 450px;overflow-y: scroll; padding:30 0px;display: flex;justify-content: center;align-items: center;flex-direction: column;">
       <p>
           <mat-form-field appearance="fill">
             <input formControlName="paragraph" [(ngModel)]="data.paragraph" matInput >
@@ -110,9 +116,16 @@
       </form>
       
       <div mat-dialog-actions>
-        <button (click)="updateHome()" mat-button mat-dialog-close="yes">Update</button>
-        <button mat-button mat-dialog-close="no" cdkFocusInitial>Cancel</button>
-      </div>
+        <button (click)="updateHome()" mat-button mat-dialog-close="yes" style="background-color: #4caf50; color: white; margin-right: 8px;">
+            <mat-icon>update</mat-icon>
+            Update
+        </button>
+        <button mat-button mat-dialog-close="no" cdkFocusInitial style="background-color: #f44336; color: white;">
+            <mat-icon>cancel</mat-icon>
+            Cancel
+        </button>
+    </div>
+    
       </ng-template>
 </div>
 

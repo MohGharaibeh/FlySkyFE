@@ -5,6 +5,10 @@
   button {
     transition: all .5s;
   }
+  th {
+    color: #014b85;
+  }
+
 </style>
 <div class="wrapper">
     <app-sidebar></app-sidebar>
@@ -13,7 +17,7 @@
     <div class="content">
         <div class="row">
           <div class="col-lg-10 col-md-12 col-sm-12">
-            <button (click)="openCreateDialog()" style="display: block;" mat-raised-button>Add Airport</button>
+            <button (click)="openCreateDialog()" style="display: block;background-color: #014b85;color: #fff;" mat-raised-button>Add Airport</button>
             <br>
     <table class="table table-light table-hover">
         <thead>
@@ -84,7 +88,7 @@
 
 
     <ng-template #createDialog>
-        <h1 mat-dialog-title>Add Airport</h1>
+        <h1 mat-dialog-title >Add Airport</h1>
         <form [formGroup]="createForm" style="padding-left: 30px; ">
         <p>
             <mat-form-field appearance="fill">

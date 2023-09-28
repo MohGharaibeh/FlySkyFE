@@ -1,3 +1,29 @@
+<style>
+  .sidebar-wrapper {
+  position: relative;
+  width: 250px;
+  height: 100%;
+  overflow: hidden;
+}
+
+.sidebar-container {
+  height: 100%;
+  overflow-y: auto;
+}
+
+.sidebar-wrapper ul.nav {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-wrapper ul.nav li {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+</style>
+
+
 <div class="sidebar" data-color="white" data-active-color="danger">
     <div class="logo">
       <a  class="simple-text logo-mini">
@@ -14,68 +40,70 @@
       </a>
     </div>
     <div class="sidebar-wrapper">
-      <ul class="nav">
-        <li class="active ">
-          <a routerLink="/admin/index">
-            <i class="nc-icon nc-bank"></i>
-            <p>Dashboard</p>
-          </a>
-        </li>
-        <li>
-          <a routerLink="/admin/airport">
-            <i class="nc-icon nc-diamond"></i>
-            <p>Airports</p>
-          </a>
-        </li>
-        <li>
-          <a routerLink="/admin/flight">
-            <i class="nc-icon nc-diamond"></i>
-            <p>Flights</p>
-          </a>
-        </li>
-        <li>
-          <a routerLink="/admin/aboutpage">
-            <i class="nc-icon nc-pin-3"></i>
-            <p>About</p>
-          </a>
-        </li>
-        <li>
-          <a routerLink="/admin/homepage">
-            <i class="nc-icon nc-bell-55"></i>
-            <p>Home Page</p>
-          </a>
-        </li>
-        <li>
-          <a routerLink="/admin/users">
-            <i class="nc-icon nc-single-02"></i>
-            <p>User Profile</p>
-          </a>
-        </li>
-        <li>
-          <a routerLink="/admin/profile">
-            <i class="nc-icon nc-single-02"></i>
-            <p>Profile</p>
-          </a>
-        </li>
-        <li>
-          <a routerLink="/admin/contact">
-            <i class="nc-icon nc-tile-56"></i>
-            <p>Contact</p>
-          </a>
-        </li>
-        <li>
-          <a routerLink="/admin/report">
-            <i class="nc-icon nc-tile-56"></i>
-            <p>Report</p>
-          </a>
-        </li>
-        <li>
-          <a routerLink="/admin/testimonial">
-            <i class="nc-icon nc-caps-small"></i>
-            <p>Testimonial</p>
-          </a>
-        </li>
-        
-      </ul>
-    </div>
+      <div class="sidebar-container">
+          <ul class="nav">
+              <li class="active">
+                  <a routerLink="/admin/index">
+                      <i class="fas fa-chart-line"></i>
+                      <p>Dashboard</p>
+                  </a>
+              </li>
+              <li>
+                  <a routerLink="/admin/airport">
+                      <i class="fas fa-plane"></i>
+                      <p>Airports</p>
+                  </a>
+              </li>
+              <li>
+                  <a routerLink="/admin/flight">
+                      <i class="fas fa-plane"></i>
+                      <p>Flights</p>
+                  </a>
+              </li>
+              <li>
+                  <a routerLink="/admin/aboutpage">
+                      <i class="fas fa-info"></i>
+                      <p>About</p>
+                  </a>
+              </li>
+              <li>
+                  <a routerLink="/admin/homepage">
+                      <i class="fas fa-home"></i>
+                      <p>Home Page</p>
+                  </a>
+              </li>
+              <li>
+                  <a routerLink="/admin/users">
+                      <i class="fas fa-users"></i>
+                      <p>Users</p>
+                  </a>
+              </li>
+              <li>
+                  <a routerLink="/admin/profile">
+                      <i class="fas fa-user"></i>
+                      <p>Profile</p>
+                  </a>
+              </li>
+              <li>
+                  <a routerLink="/admin/contact">
+                      <i class="fas fa-envelope"></i>
+                      <p>Contact</p>
+                  </a>
+              </li>
+              <li>
+                  <a routerLink="/admin/report">
+                      <i class="fas fa-file"></i>
+                      <p>Report</p>
+                  </a>
+              </li>
+              <li>
+                  <a routerLink="/admin/testimonial">
+                      <i class="fas fa-comment"></i>
+                      <p>Testimonial</p>
+                  </a>
+              </li>
+          </ul>
+      </div>
+  </div>
+  
   </div>
