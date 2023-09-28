@@ -8,7 +8,15 @@
   p {
     /* margin: auto; */
   }
-
+  button:hover {
+    transform: scale(1.1);
+  }
+  button {
+    transition: all .5s;
+  }
+  th {
+    color: #014b85;
+  }
 </style>
 <div class="wrapper" >
     <app-sidebar></app-sidebar>
@@ -17,7 +25,7 @@
       <div class="content" style="margin-bottom: 40px;max-height: 100%;">
           <div class="row">
 
-              <button  (click)="openCreateDialog()" style="display: block;  color: #000;" mat-raised-button>Add one!</button>
+              <button  (click)="openCreateDialog()" style="display: block;width: 150px;background-color: #014b85;  color: #fff;" mat-raised-button>Add one!</button>
               <br>
               <form (submit)="onSearch()" style="text-align: center;max-width: 400px; margin: 10px 0; padding: 20px; border: 1px solid #ccc; border-radius: 10px; background-color: #f9f9f9;">
 

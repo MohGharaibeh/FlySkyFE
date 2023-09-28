@@ -16,7 +16,7 @@
     <div class="slider-area ">
         <!-- Mobile Menu -->
         <div class="slider-active">
-            <div class="single-slider hero-overly slider-height d-flex align-items-center" style="background-image:url('../../../assets/ApiImage/{{home.imageHome}}')">
+            <div class="single-slider hero-overly slider-height d-flex align-items-center" style="background-image: url('../../../assets/adminAssets/img/form.jpg');">
                 <div class="container">
                     <div class="row">
                         <div class="col-xl-9 col-lg-9 col-md-9">
@@ -38,8 +38,11 @@
                                     <input type="text" [(ngModel)]="toCountry" name="toCountry" id="toCountry"  placeholder="Where Would you like to go ?">
                                 </div>
                                 <div class="search-form mb-30">
-                                    <button type="submit">Search</button>
-                                    <!-- <a href="#">Search</a> -->
+                                    <button class="search-button" style="padding: 10px 20px; border: none; background-color: #007bff; color: #fff; cursor: pointer;">
+                                        <i class="fa fa-search" style="margin-right: 5px;"></i>
+                                        Search
+                                    </button>
+                                                                        <!-- <a href="#">Search</a> -->
                                 </div>	
                             </form>	
                             <form (submit)="onSearch()" class="search-box" style="margin-top: 10px;">
@@ -51,8 +54,11 @@
                                 </div>
                                 
                                 <div class="search-form mb-30">
-                                    <button type="submit">Search</button>
-                                    <!-- <a type="submit">Search</a> -->
+                                    <button type="submit" style="padding: 10px 20px; border: none; background-color: #007bff; color: #fff; cursor: pointer;">
+                                        <i class="fa fa-search" style="margin-right: 5px;"></i>
+                                        Search
+                                    </button>
+                                                                        <!-- <a type="submit">Search</a> -->
                                 </div>	
                             </form>	
                         </div>
@@ -224,8 +230,13 @@
                                 <li><i class="fas fa-map-marker-alt"></i>{{fly.tocountry}}</li>
                             </ul>
                             <div>
-                                <button (click)="goToPay(fly.flightid)">Booked</button>
-                            </div>
+                                <button 
+                                style="background-color: #007bff; color: #ffffff; border: none; padding: 10px 20px; border-radius: 5px; font-size: 16px; cursor: pointer;" 
+                                (click)="goToPay(fly.flightid)"
+                              >
+                                <i style="margin-right: 5px;" class="fas fa-plane"></i> Booked
+                              </button>
+                                                          </div>
                         </div>
                     </div>
                 </div>

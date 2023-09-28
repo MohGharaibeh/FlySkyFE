@@ -42,10 +42,10 @@
                         {{f.descriptions}}
                       </p>
                     </div>
-                    <span class="stock" style="font-style: italic;padding: 0 5px;">Email </span>
+                    <span class="" style="font-style: italic;padding: 0 5px;color: #ffa801;font-weight: bold;">Email </span>
                     <div class="reviews" style="display: inline-block; font-family: Arial;">{{f.text1}}</div>
                       <br>
-                      <span class="stock" style="font-style: italic;padding:0 5px;">Phone </span>
+                      <span class="" style="font-style: italic;padding:0 5px;color: #ffa801;font-weight: bold;">Phone </span>
                       <div class="reviews" style="display: inline-block; font-family: Arial;">{{f.text2}}</div>
                   </div>
                 </div>
@@ -55,7 +55,7 @@
                     <h3><i class="fa fa-plane"></i> Andrew Palmer</h3>
                   </div>
                   <div class="action">
-                    <button (click)="openUpdateDialog(f)" mat-raised-button color="primary">Update</button>
+                    <button (click)="openUpdateDialog(f)" style="background-color: #014b85;"  mat-raised-button color="primary">Update</button>
                   </div>
                 </div>
               </div>
@@ -67,7 +67,7 @@
 <app-footer style="position: absolute;top: 100%;left: 0;right: 0;padding: 15px;"></app-footer>
 </div>
 <ng-template #updateDialog>
-    <h1 mat-dialog-title style="text-align: center;">Update About</h1>
+    <h1 mat-dialog-title style="text-align: center;color: #ffa801;">Update About</h1>
     <form [formGroup]="updateForms" style="width:400px;height: 400px;display: flex;align-items: center;flex-direction: column;">
     <p>
         <mat-form-field appearance="fill">
