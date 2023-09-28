@@ -149,9 +149,11 @@ export class HomeComponent implements OnInit{
     this.router.navigate(['/user/search'])
   }
   
-  goToPay(id:number){
+  goToPay(id:number,dep:Date,arr:Date){
     this.fly.gitItById(id);
     this.fly.flightID = id;
+    this.fly.depDate = dep;
+    this.fly.arrDate = arr;
     this.router.navigate(['/user/pay']);
   }
   totalPrice:number=0;

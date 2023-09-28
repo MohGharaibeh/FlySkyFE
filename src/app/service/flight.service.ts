@@ -99,6 +99,8 @@ priceFly: number=0;
 priceMap:number=0;
 totalPrice:number=0;
 ticket:number=0;
+depDate:Date = new Date();
+arrDate: Date = new Date();
   gitItById(id: number) {
     debugger;
     this.getFlightById(id).subscribe(

@@ -11,11 +11,16 @@ export class ReservedService {
   constructor(private http:HttpClient, private toast:ToastrService) { }
 
 
-  reservedFlight(body:any){
+  reservedFlight(body:any,email:any){
     debugger;
     const reservedDate:Date = new Date();
     body.reserveddate = reservedDate.toISOString();
-    this.http.post('https://localhost:7152/api/ReservedFlight',body).subscribe((res:any)=>{
+    email.reservedDate = reservedDate.toISOString();
+    const requestData = {
+      reservedflight: body,
+      data: email
+    };
+    this.http.post('https://localhost:7152/api/ReservedFlight',requestData).subscribe((res:any)=>{
       console.log(res);
     }, err=>{
       console.log(err);
