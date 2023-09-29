@@ -1,18 +1,14 @@
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { SearchDateUserService } from 'src/app/service/search-date-user.service';
 import {GeolocationService} from '@ng-web-apis/geolocation';
 import * as L from 'leaflet';
 import { FlightService } from 'src/app/service/flight.service';
-import * as MapboxGeocoder from 'mapbox-gl-geocoder';
 import 'leaflet-routing-machine'; 
-import * as mapboxgl from 'mapbox-gl';
 import axios from 'axios';
 import 'leaflet';
 import 'leaflet.markercluster';
 import { Router } from '@angular/router';
-import {ToastrService} from 'ngx-toastr';
 import { DynamicHomeService } from 'src/app/service/dynamic-home.service';
 import { ManageHomeService } from 'src/app/service/manage-home.service';
 //import 'leaflet.markercluster/dist/MarkerCluster.Default.css'; // Add this line to import the default styles

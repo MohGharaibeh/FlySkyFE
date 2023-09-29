@@ -1,0 +1,33 @@
+<app-navbar></app-navbar>
+<table class="table table-light table-hover" style="width: 100%;max-height:100% ;overflow-x: scroll;box-shadow: 3px 3px 3px #aaa;">
+    <thead>
+        <tr>
+          <th >#</th>
+          <th >status</th>
+          <th >Departuredate</th>
+          <th >Arrivaldate</th>
+        
+          <th>Ticket Number</th>
+          <th>Reserveddate</th>
+
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let f of reserved.flightUser; index as i" >
+          <th >{{i+1}}</th>
+          <td>{{f.status}}</td>
+          <td>{{f.departuredate | date:'short'}}</td>
+          <td>{{f.arrivaldate | date:'short'}}</td>
+          
+          <td>{{f.numberofticket }}</td>
+      <td>{{f.reserveddate | date:'short'}}</td>
+          <td>
+                        </td>
+        </tr>
+        
+      </tbody>
+  </table>
+
+<div id="map" style="height: 500px;width: 100%;"></div>
+<app-footer></app-footer>

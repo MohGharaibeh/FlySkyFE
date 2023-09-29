@@ -36,4 +36,15 @@ export class ReservedService {
       console.log(err);
     })
   }
+
+  flightUser:any=[{}];
+  getReservedUser(id:number){
+    //id:number = localStorage.getItem('userID')
+    this.http.get(`https://localhost:7152/api/UserAccount/getres/${id}`).subscribe((res:any)=>{
+      this.flightUser = res;
+      console.log(res);
+    }, err=>{
+      console.log(err);
+    })
+  }
 }

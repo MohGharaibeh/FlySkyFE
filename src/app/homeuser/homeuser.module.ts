@@ -12,6 +12,7 @@ import { ContactusComponent } from './contactus/contactus.component';
 import { SearchflightComponent } from './searchflight/searchflight.component';
 import { PaymentComponent } from './payment/payment.component';
 import {MatStepperModule} from '@angular/material/stepper';
+import { TrackingComponent } from './tracking/tracking.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import {MatStepperModule} from '@angular/material/stepper';
     ProfileComponent,
     ContactusComponent,
     SearchflightComponent,
-    PaymentComponent
+    PaymentComponent,
+    TrackingComponent
   ],
   imports: [
     CommonModule,

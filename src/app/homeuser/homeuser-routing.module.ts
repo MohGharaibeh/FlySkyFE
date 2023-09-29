@@ -8,6 +8,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { ContactusComponent } from './contactus/contactus.component';
 import { SearchflightComponent } from './searchflight/searchflight.component';
 import { PaymentComponent } from './payment/payment.component';
+import { TrackingComponent } from './tracking/tracking.component';
 
 const routes: Routes = [
   {
@@ -37,6 +38,10 @@ const routes: Routes = [
   {
     path:'pay',
     component: PaymentComponent
+  },
+  {
+    path: 'track',
+    component:TrackingComponent
   }
 ];
 
