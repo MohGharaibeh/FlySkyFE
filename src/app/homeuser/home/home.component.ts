@@ -33,8 +33,10 @@ export class HomeComponent implements OnInit{
   fromCountry: string ='';
   toCountry: string ='';
   constructor(public search: SearchDateUserService,public dialog: MatDialog,
-    private readonly geolocation$: GeolocationService,public fly : FlightService, 
-    public router:Router, public home:DynamicHomeService, public testi:ManageHomeService){}
+    private readonly geolocation$: GeolocationService,
+    public fly : FlightService, 
+    public router:Router, public home:DynamicHomeService,
+    public testi:ManageHomeService){}
   
   async ngOnInit() {
     // Create a Leaflet map

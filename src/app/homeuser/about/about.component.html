@@ -131,81 +131,35 @@
     </div> -->
     <!-- Video Start End -->
      <!-- Testimonial Start -->
-     <div class="testimonial-area testimonial-padding" style="background-image: url('../../../assets/homeAssets/img/testmonial/testimonial_bg.jpg'); background-repeat: no-repeat; background-size: contain;width: 100%;" >
-        <div class="container ">
-            <div class="row d-flex justify-content-center">
-                <div class="col-xl-11 col-lg-11 col-md-9">
-                    <div class="h1-testimonial">
-                        <!-- Single Testimonial -->
-                        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true" >
-                            <!-- <div class="carousel-indicators">
-                              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                            </div> -->
-                            <div class="carousel-inner" >
-                              <div class="carousel-item active" style="text-align: center;" *ngFor="let t of testi.testForUser">
-                                <img style="height: 150px; width: 150px;border-radius: 100px;" src="../../../assets/ApiImage/{{t.userImage}}" alt="...">
-                                <h2 style="color: white;">{{t.message}}</h2>
-                                <p style="color: white;">{{t.fullName}}</p>
-                              </div>
-                              
-                            </div>
-                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                              <span class="visually-hidden">Previous</span>
-                            </button>
-                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                              <span class="visually-hidden">Next</span>
-                            </button>
-                          </div>
-                        <!-- <div class="single-testimonial text-center">
-                           
-                            <ng-container *ngFor="let t of testi.testForUser">
-                            <div  class="testimonial-caption ">
-                                <div  class="testimonial-top-cap">
-                                    <img style="height: 150px; width: 150px;border-radius: 100px;" src="../../../assets/ApiImage/{{t.userImage}}" alt="">
-                                    <p>{{t.message}}</p>
-                                </div>
-                                
-                                <div class="testimonial-founder d-flex align-items-center justify-content-center">
-                                    <div class="founder-img">
-                                       
-                                    </div>
-                                    <div class="founder-text">
-                                       
-                                        <p>{{t.fullName}}</p>
-                                    </div>
-                                </div>
-                            </div>
-                                                            </ng-container>
-
-                        </div> -->
-                        <!-- Single Testimonial -->
-                        <!-- <div class="single-testimonial text-center">
-                            <div class="testimonial-caption ">
-                                <div class="testimonial-top-cap">
-                                    <img src="../../../assets/homeAssets/img/icon/testimonial.png" alt="">
-                                    <p>Logisti Group is a representative logistics operator providing full range of ser
-                                        of customs clearance and transportation worl.</p>
-                                </div>
-                                <div class="testimonial-founder d-flex align-items-center justify-content-center">
-                                    <div class="founder-img">
-                                        <img src="../../../assets/homeAssets/img/testmonial/Homepage_testi.png" alt="">
-                                    </div>
-                                    <div class="founder-text">
-                                        <span>Jessya Inn</span>
-                                        <p>Co Founder</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> -->
+     <div class="testimonial-area testimonial-padding" style="background-image: url('../../../assets/adminAssets/img/header.jpg'); margin: 15px 0; background-repeat: no-repeat; background-size: cover; width: 100%;">
+        <div class="container">
+          <div class="row d-flex justify-content-center">
+            <div class="col-xl-11 col-lg-11 col-md-9">
+              <div class="h1-testimonial">
+                <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                  <div class="carousel-inner">
+                    <div class="carousel-item" *ngFor="let t of testi.testForUser" [class.active]="t === testi.testForUser[0]">
+                      <div style="text-align: center;">
+                        <img src="../../../assets/ApiImage/{{t.userImage}}" alt="User Image" style="height: 150px; width: 150px; border-radius: 50%;">
+                        <h2 style="color: white;">{{t.fullName}}</h2>
+                        <p style="color: white;">{{t.message}}</p>
+                      </div>
                     </div>
+                  </div>
+                  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                  </button>
+                  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                  </button>
                 </div>
+              </div>
             </div>
+          </div>
         </div>
-    </div>
+      </div>
     <!-- Testimonial End -->
 </main>
 <app-footer></app-footer>

@@ -1,5 +1,4 @@
 <app-navbar></app-navbar>
-<div #paypal></div>
 
 <!-- <div class="example-input-wrapper">
     <label for="duration">Animation duration:</label>
@@ -47,13 +46,55 @@
 </form> -->
 
 
-<form (ngSubmit)="sendPay()" [formGroup]="formPay">
+<head>
+  <!-- <link rel="stylesheet" href="style.css"> -->
+  <style>
+      input {
+          margin-bottom: 10px;
+      }
+  </style>
+</head>
+<div class="container">
+  <div class="card">
+    <button class="proceed"><svg class="sendicon" width="24" height="24" viewBox="0 0 24 24">
+  <path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z"></path>
+</svg></button>
+   <img src="https://seeklogo.com/images/V/VISA-logo-62D5B26FE1-seeklogo.com.png" class="logo-card">
+ <form (ngSubmit)="sendPay()" [formGroup]="formPay">
   <!-- <input hidden formControlName="numberofticket" placeholder="number of ticket" (change)="totalPrice($event)"> -->
   <input formControlName="iban" placeholder="iban">
   <input formControlName="cvv" placeholder="cvv">
   <input formControlName="exdate" placeholder="Expired date">
   <input formControlName="flightid" hidden>
   <input formControlName="balance"  hidden>
-  <button type="submit">Submit</button>
-</form>
+  <button type="submit" style="background-color: #0074cc; color: #fff; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; display: flex; align-items: center;">
+      <!-- <img src="https://seeklogo.com/images/V/VISA-logo-62D5B26FE1-seeklogo.com.png" alt="Visa Logo" style="height: 30px; margin-right: 10px;"> -->
+      Pay
+  </button>
+    </form>
+  </div>
+  <div class="receipt">
+    <div class="col"><p>Cost:</p>
+    <h2 class="cost">$400</h2><br>
+    <p>Name:</p>
+    <h2 class="seller">Codedgar</h2>
+    </div>
+    <div class="col">
+      <p>Bought Items:</p>
+      <h3 class="bought-items">Corsair Mouse</h3>
+      <p class="bought-items description">Gaming mouse with shiny lights</p>
+      <p class="bought-items price">$200 (50% discount)</p><br>
+      <h3 class="bought-items">Gaming keyboard</h3>
+      <p class="bought-items description">Look mommmy, it has colors!</p>
+      <p class="bought-items price">$200 (50% discount)</p><br>
+    </div>
+    <p class="comprobe">This information will be sended to your email</p>
+   
+
+  </div>
+  <div class="custom" style="display: flex;justify-content: center;padding: 15px;">
+    <div #paypal style="width: 200px;height: 50px; "></div>
+
+  </div>
+</div>
 <app-footer></app-footer>

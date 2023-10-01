@@ -23,35 +23,37 @@
   
     <!-- Video Start End -->
      <!-- Testimonial Start -->
+     <!-- Testimonial Start -->
      <div class="testimonial-area testimonial-padding" style="background-image: url('../../../assets/adminAssets/img/header.jpg'); margin: 15px 0; background-repeat: no-repeat; background-size: cover; width: 100%;">
-        <div class="container">
-          <div class="row d-flex justify-content-center">
-            <div class="col-xl-11 col-lg-11 col-md-9">
-              <div class="h1-testimonial">
-                <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-                  <div class="carousel-inner">
-                    <div class="carousel-item" *ngFor="let t of testi.testForUser" [class.active]="t === testi.testForUser[0]">
-                      <div style="text-align: center;">
-                        <img src="../../../assets/ApiImage/{{t.userImage}}" alt="User Image" style="height: 150px; width: 150px; border-radius: 50%;">
-                        <h2 style="color: white;">{{t.fullName}}</h2>
-                        <p style="color: white;">{{t.message}}</p>
-                      </div>
+      <div class="container">
+        <div class="row d-flex justify-content-center">
+          <div class="col-xl-11 col-lg-11 col-md-9">
+            <div class="h1-testimonial">
+              <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                  <div class="carousel-item" *ngFor="let t of testi.testForUser" [class.active]="t === testi.testForUser[0]">
+                    <div style="text-align: center;">
+                      <img src="../../../assets/ApiImage/{{t.userImage}}" alt="User Image" style="height: 150px; width: 150px; border-radius: 50%;">
+                      <h2 style="color: white;">{{t.fullName}}</h2>
+                      <p style="color: white;">{{t.message}}</p>
                     </div>
                   </div>
-                  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                  </button>
-                  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                  </button>
                 </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
               </div>
             </div>
           </div>
         </div>
       </div>
+    </div>
+  <!-- Testimonial End -->
       
     <!-- Testimonial End -->
 </main>
