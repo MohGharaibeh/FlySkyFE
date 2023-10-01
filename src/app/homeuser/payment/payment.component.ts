@@ -51,7 +51,14 @@ if (paypal && this.Pay.nativeElement) {
           useracountid:localStorage.getItem('userID'),
           flightid:this.fly.flightID
         }
-        this.reserv.reservedFlight(b)
+        var email = {
+          NumOfTicket:this.fly.ticket,
+          UserEmail:localStorage.getItem('userID'),
+          TotalPrice:this.fly.totalPrice,
+          ArrivalDate: this.fly.arrDate,
+          DepartureDate: this.fly.depDate
+        }
+        this.reserv.reservedFlight(b,email)
         return actions.order.capture().then((details: any) => {
 
           console.log(details);
@@ -89,6 +96,9 @@ if (paypal && this.Pay.nativeElement) {
     balance : new FormControl(this.fly.totalPrice),
     useracountid : new FormControl(localStorage.getItem('userID')),
     flightid : new FormControl(this.fly.flightID),
+    UserEmail: new FormControl(localStorage.getItem('userEmail')),
+    DepartureDate: new FormControl(this.fly.depDate),
+    ArrivalDate: new FormControl(this.fly.arrDate)
   })
 
   // totalPrice = (ev:any)=>{
@@ -104,7 +114,14 @@ if (paypal && this.Pay.nativeElement) {
         useracountid:this.formPay.controls['useracountid'].value,
         flightid:this.formPay.controls['flightid'].value
       }
-      await this.reserv.reservedFlight(b)
+      var email = {
+        NumOfTicket:this.formPay.controls['numberofticket'].value,
+        UserEmail:this.formPay.controls['UserEmail'].value,
+        TotalPrice:this.formPay.controls['balance'].value,
+        ArrivalDate: this.formPay.controls['ArrivalDate'].value,
+        DepartureDate: this.formPay.controls['DepartureDate'].value
+      }
+      await this.reserv.reservedFlight(b,email)
 
       var bank={
         iban:this.formPay.controls['iban'].value,

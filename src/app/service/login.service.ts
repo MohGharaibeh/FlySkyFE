@@ -32,6 +32,7 @@ export class LoginService {
       let data:any = jwt_decode(response.token); // decode for token هون فكينا التشفير
       localStorage.setItem('userID',data['Useracountid']);
       localStorage.setItem('user', JSON.stringify(data))
+      localStorage.setItem('userEmail',data['email'])
       const role = data['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'];
       
       if(role=='1'){
