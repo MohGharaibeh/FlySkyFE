@@ -9,6 +9,8 @@ import { ContactusComponent } from './contactus/contactus.component';
 import { SearchflightComponent } from './searchflight/searchflight.component';
 import { PaymentComponent } from './payment/payment.component';
 import { TrackingComponent } from './tracking/tracking.component';
+import { ChatComponent } from './chat/chat.component';
+import { ChatbotComponent } from './chatbot/chatbot.component';
 
 const routes: Routes = [
   {
@@ -42,6 +44,14 @@ const routes: Routes = [
   {
     path: 'track',
     component:TrackingComponent
+  },
+  {
+    path:'chat',
+    component: ChatComponent
+  },
+  {
+    path:'chatbot',
+    component:ChatbotComponent
   }
 ];
 

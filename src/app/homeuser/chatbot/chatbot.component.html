@@ -1,0 +1,17 @@
+<app-navbar></app-navbar>
+<br><br>
+<img src="https://img.freepik.com/free-vector/chat-bot-concept-illustration_114360-5522.jpg" width="500" height="400" style="position: absolute; right: 25px; border: 10px; border-radius: 10px;" />
+  <div class="chat-container" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;width:620px;margin-left:20px;border:5px solid #C0C0C0;border-radius:10px">
+    <div id="chat" style="border:20px;border-radius:25px">
+      <div class="message bot-message">Hello, Where do you want to go?</div>
+      <div *ngFor="let message of chatMessages" class="message" [class.bot-message]="message.isBot">
+        {{ message.text }}
+      </div>
+    </div>
+    <input type="text" id="input" style="width:590px" [(ngModel)]="question" autocomplete="off">
+    <button id="send" (click)="askQuestion()" style="width:97%">Send</button>
+  </div>
+  <!-- <div *ngIf="answer">
+    <p>Answer: {{ answer }}</p>
+  </div> --><br><br>
+  <app-footer></app-footer>

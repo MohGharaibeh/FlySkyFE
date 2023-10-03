@@ -13,6 +13,10 @@ import { SearchflightComponent } from './searchflight/searchflight.component';
 import { PaymentComponent } from './payment/payment.component';
 import {MatStepperModule} from '@angular/material/stepper';
 import { TrackingComponent } from './tracking/tracking.component';
+import { ChatComponent } from './chat/chat.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ChatbotComponent } from './chatbot/chatbot.component';
+import { ChatbotService } from '../service/chatbot.service';
 
 @NgModule({
   declarations: [
@@ -23,7 +27,9 @@ import { TrackingComponent } from './tracking/tracking.component';
     ContactusComponent,
     SearchflightComponent,
     PaymentComponent,
-    TrackingComponent
+    TrackingComponent,
+    ChatComponent,
+    ChatbotComponent
   ],
   imports: [
     CommonModule,
@@ -31,8 +37,10 @@ import { TrackingComponent } from './tracking/tracking.component';
     ShareduserModule,
     ReactiveFormsModule,
     FormsModule,
-    MatStepperModule
+    MatStepperModule,
+    HttpClientModule
     
-  ]
+  ],
+  providers:[ChatbotService]
 })
 export class HomeuserModule { }
