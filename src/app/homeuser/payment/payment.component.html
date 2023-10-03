@@ -75,18 +75,22 @@
   </div>
   <div class="receipt">
     <div class="col"><p>Cost:</p>
-    <h2 class="cost">$400</h2><br>
-    <p>Name:</p>
-    <h2 class="seller">Codedgar</h2>
+    <h2 class="cost">${{fly.totalPrice}}</h2><br>
+    <p>Email:</p>
+    <p class="seller">{{userEmail}}</p>
     </div>
     <div class="col">
-      <p>Bought Items:</p>
-      <h3 class="bought-items">Corsair Mouse</h3>
-      <p class="bought-items description">Gaming mouse with shiny lights</p>
-      <p class="bought-items price">$200 (50% discount)</p><br>
-      <h3 class="bought-items">Gaming keyboard</h3>
-      <p class="bought-items description">Look mommmy, it has colors!</p>
-      <p class="bought-items price">$200 (50% discount)</p><br>
+      <p>Info:</p>
+      <h3 class="bought-items">Number Of Tickets:</h3>
+      <p class="bought-items description">{{fly.ticket}}</p>
+      <!-- <p class="bought-items price">$200 (50% discount)</p> -->
+      <br>
+      <h3 class="bought-items">Arrival Date:</h3>
+      <p class="bought-items description">{{fly.arrDate}}</p>
+      <!-- <p class="bought-items price">$200 (50% discount)</p> -->
+      <br>
+      <h3 class="bought-items">Departule Date:</h3>
+      <p class="bought-items description">{{fly.depDate}}</p>
     </div>
     <p class="comprobe">This information will be sended to your email</p>
    

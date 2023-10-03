@@ -100,7 +100,7 @@ if (paypal && this.Pay.nativeElement) {
     DepartureDate: new FormControl(this.fly.depDate),
     ArrivalDate: new FormControl(this.fly.arrDate)
   })
-
+userEmail:any =localStorage.getItem('userEmail');
   // totalPrice = (ev:any)=>{
   //   console.log(ev.target.value);
   //   this.formPay.controls['balance'].setValue(this.fly.totalPrice);

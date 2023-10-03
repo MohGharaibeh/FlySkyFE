@@ -11,6 +11,7 @@ import 'leaflet.markercluster';
 import { Router } from '@angular/router';
 import { DynamicHomeService } from 'src/app/service/dynamic-home.service';
 import { ManageHomeService } from 'src/app/service/manage-home.service';
+import { StatisticService } from 'src/app/service/statistic.service';
 //import 'leaflet.markercluster/dist/MarkerCluster.Default.css'; // Add this line to import the default styles
 
 @Component({
@@ -32,9 +33,13 @@ export class HomeComponent implements OnInit{
     private readonly geolocation$: GeolocationService,
     public fly : FlightService, 
     public router:Router, public home:DynamicHomeService,
-    public testi:ManageHomeService){}
+    public testi:ManageHomeService,
+    public stat: StatisticService){}
   
   async ngOnInit() {
+    this.stat.getNum();
+		this.stat.getNumOfAirport();
+		this.stat.getMaxReserved();
     // Create a Leaflet map
     this.map = L.map('map').setView([0, 0], 3);
 
@@ -156,11 +161,14 @@ export class HomeComponent implements OnInit{
   }
   totalPrice:number=0;
 
+  checkTotal:number=0;
   numOfTicket=(ev:any, price:number)=>{
     console.log(ev.target.value);
     this.totalPrice= Number(ev.target.value) ;
     this.fly.totalPrice = Number(ev.target.value) * +price;
     this.fly.ticket = Number(ev.target.value) ;
+
+    this.checkTotal = ev.target.value * price;
   }
   tickMap:number=0;
   tikMap=(ev:any)=>{
