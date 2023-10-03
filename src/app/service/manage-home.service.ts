@@ -203,6 +203,20 @@ realdata:any[]=[];
       
     })
   }
+  myProfit:any;
+  profit(){
+    debugger;
+    this.http.get('https://localhost:7152/api/AdminReport/profit').subscribe((res:any)=>{
+      
+      this.myProfit = res.profit;
+      console.log(this.myProfit);
+    }, err=>{
+      console.log(err);
+      
+    })
+  }
+
+  
 
 
 }

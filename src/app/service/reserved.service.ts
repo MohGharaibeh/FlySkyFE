@@ -32,8 +32,10 @@ export class ReservedService {
     debugger;
     this.http.put('https://localhost:7152/api/Bank', body).subscribe((res:any)=>{
       console.log(res);
+      this.toast.success('Reserved Complete')
     }, err=>{
       console.log(err);
+      this.toast.error('Somthing error')
     })
   }
 
