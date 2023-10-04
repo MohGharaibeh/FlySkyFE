@@ -37,6 +37,54 @@ export class ReservedService {
     })
   }
 
+  bankCheck:any = {};
+  checkBank(bank:any){
+    debugger;
+    this.http.post('https://localhost:7152/api/Bank/checkBank',bank).subscribe((res:any)=>{
+      this.bankCheck = res;
+      console.log(this.bankCheck);
+    },err=>{
+      console.log(err)
+    })
+  }
+
+  BalanceCheck: any ={};
+  checkBalance(bank:any){
+    this.http.post('https://localhost:7152/api/Bank/checkBalance',bank).subscribe((res:any)=>{
+      this.BalanceCheck = res;
+      console.log(this.BalanceCheck);
+    },err=>{
+      console.log(err)
+    })
+  }
+
+  async reservedAndCheck(reserved:any,email:any , chBank:any, updBaln:any){
+    debugger;
+   // this.checkBalance(chBaln);
+    this.checkBank(chBank);
+    if(this.bankCheck == null) {
+      
+      this.toast.error('This card is not exist');
+      //window.location.reload();
+      console.log('bank res',this.bankCheck)
+    }
+  
+      if(this.bankCheck.balance >= updBaln.balance){
+        await this.reservedFlight(reserved,email);
+       await this.updateBalance(updBaln);
+
+       this.toast.success('Success Payment');
+      // window.location.reload();
+       
+      }
+      if(this.bankCheck.balance < updBaln.balance){
+        this.toast.error('Your balance not enough');
+       // window.location.reload();
+      }
+      
+    
+  }
+
   flightUser:any=[{}];
   getReservedUser(id:number){
     //id:number = localStorage.getItem('userID')
