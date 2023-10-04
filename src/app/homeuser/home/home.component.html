@@ -400,7 +400,8 @@
 </main><app-footer></app-footer>
 
 
-<ng-template #putTicket>
-    <input type="number" min="1" placeholder="Number of Ticket" (change)="tikMap($event)">
-    <button type="submet" (click)="takeTicket()">Booked</button>
+<ng-template #putTicket style="margin: 50px;">
+    <h2 style="margin: 50px;">Please enter number of ticket </h2>
+    <input style="margin: 20px 20px 20px 50px;" type="number" min="1" placeholder="Number of Ticket" (change)="tikMap($event)">
+    <button style="background-color: green;color: white;" type="submet" (click)="takeTicket()">Booked</button>
 </ng-template>
