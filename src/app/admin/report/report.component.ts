@@ -19,12 +19,13 @@ export class ReportComponent implements OnInit{
   ngOnInit(): void {
   this.reports.viewReport();
   this.reports.viewChart();
+  this.reports.profit();
     setTimeout(() => {
       this.renderChart(this.reports.labeldata, this.reports.realdata);
     }, 1000);
   
 }
-
+// <img [src]="this.reports.labeldata">
 onSearch(){
   const report = {departuredate: this.departulDate, arrivaldate: this.arrivelDate};
   this.reports.searchDate(report);

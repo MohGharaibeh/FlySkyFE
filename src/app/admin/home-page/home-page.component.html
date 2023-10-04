@@ -111,7 +111,7 @@
           </mat-form-field>
         </p>
         <div>
-          <input type="file" #file formControlName="image" (change)="uploadImage(file.files)" >
+          <input type="file" #file formControlName="image" (change)="uploadImage(file.files)" [(ngModel)]="data.image" >
         </div>
       </form>
       

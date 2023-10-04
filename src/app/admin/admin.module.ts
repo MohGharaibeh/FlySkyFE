@@ -15,6 +15,8 @@ import { ContactComponent } from './contact/contact.component';
 import { TestimonialComponent } from './testimonial/testimonial.component';
 import { ReportComponent } from './report/report.component';
 import { ProfileComponent } from './profile/profile.component';
+import { ChatComponent } from './chat/chat.component';
+import { ManageHomeService } from '../service/manage-home.service';
 @NgModule({
   declarations: [
     DashboardComponent,
@@ -27,12 +29,14 @@ import { ProfileComponent } from './profile/profile.component';
     TestimonialComponent,
     ReportComponent,
     ProfileComponent,
+    ChatComponent,
   ],
   imports: [
     CommonModule,
     AdminRoutingModule,
     SharedadminModule,
     CanvasJSAngularChartsModule
-  ]
+  ],
+  providers:[ManageHomeService]
 })
 export class AdminModule { }

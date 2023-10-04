@@ -100,7 +100,7 @@ if (paypal && this.Pay.nativeElement) {
     DepartureDate: new FormControl(this.fly.depDate),
     ArrivalDate: new FormControl(this.fly.arrDate)
   })
-
+userEmail:any =localStorage.getItem('userEmail');
   // totalPrice = (ev:any)=>{
   //   console.log(ev.target.value);
   //   this.formPay.controls['balance'].setValue(this.fly.totalPrice);
@@ -121,7 +121,7 @@ if (paypal && this.Pay.nativeElement) {
         ArrivalDate: this.formPay.controls['ArrivalDate'].value,
         DepartureDate: this.formPay.controls['DepartureDate'].value
       }
-      await this.reserv.reservedFlight(b,email)
+     // await this.reserv.reservedFlight(b,email)
 
       var bank={
         iban:this.formPay.controls['iban'].value,
@@ -129,7 +129,20 @@ if (paypal && this.Pay.nativeElement) {
         exdate:this.formPay.controls['exdate'].value,
         balance:this.formPay.controls['balance'].value
       }
-      await this.reserv.updateBalance(bank)
+
+      // var chBaln ={
+      //   iban:this.formPay.controls['iban'].value,
+      //   cvv:this.formPay.controls['cvv'].value,
+      //   exdate:this.formPay.controls['exdate'].value,
+      //   balance:this.formPay.controls['balance'].value
+      // }
+      var chBank ={
+        iban:this.formPay.controls['iban'].value,
+        cvv:this.formPay.controls['cvv'].value,
+        exdate:this.formPay.controls['exdate'].value
+      }
+      this.reserv.reservedAndCheck(b,email,chBank,bank)
+     // await this.reserv.updateBalance(bank)
       
     }
     

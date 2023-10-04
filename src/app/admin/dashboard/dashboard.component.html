@@ -26,7 +26,7 @@
             <hr>
             <div class="stats">
               <i class="fa fa-refresh"></i>
-              Update Now
+              <!-- Update Now -->
             </div>
           </div>
         </div>
@@ -53,7 +53,7 @@
             <hr>
             <div class="stats">
               <i class="fa fa-calendar-o"></i>
-              Last day
+              <!-- Last day -->
             </div>
           </div>
         </div>
@@ -90,13 +90,13 @@
             <div class="row">
               <div class="col-5 col-md-4">
                 <div class="icon-big text-center icon-warning">
-                  <i class="nc-icon nc-favourite-28 text-primary"></i>
+                  <i class="fas fa-dollar-sign text-primary"></i>
                 </div>
               </div>
               <div class="col-7 col-md-8">
                 <div class="numbers">
-                  <p class="card-category">Followers</p>
-                  <p class="card-title">+45K<p>
+                  <p class="card-category">Total Profit</p>
+                  <p class="card-title">${{report.myProfit}}<p>
                 </div>
               </div>
             </div>
@@ -105,7 +105,7 @@
             <hr>
             <div class="stats">
               <i class="fa fa-refresh"></i>
-              Update now
+              <!-- Update now -->
             </div>
           </div>
         </div>
@@ -115,8 +115,8 @@
     
     <div class="row" style="box-sizing: content-box;">
       <h1></h1>
-        <canvasjs-chart [options]="chartOptions" styles="padding:15px"></canvasjs-chart>    
-           
+      
     </div>
+    <canvas  id="chart"></canvas>
     <app-footer style="position: absolute;right: 0;left: 0;bottom: 0;margin-top: 25px;"></app-footer>
 </div>

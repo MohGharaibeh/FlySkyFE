@@ -13,8 +13,9 @@ export class ManageHomeService {
 //Start Home Page
   homePage:any=[{}];
   showAllHomePage(){
-    this.http.get('https://localhost:7152/api/Page').subscribe((res)=>{
+    this.http.get('https://localhost:7152/api/Page').subscribe((res:any)=>{
       this.homePage = res;
+      this.showImage = res[0].image;
     }, err=>{
       console.log(err);
       
@@ -45,12 +46,24 @@ export class ManageHomeService {
     })
   }
 //End Home Page
-
+aboutImage:any;
+uploadAboutImage(img:FormData){
+  this.http.post('https://localhost:7152/api/About/uploadImage/', img).subscribe((res:any)=>{
+    this.aboutImage=res.image;
+  }, err=>{
+    console.log(err);
+    
+  })
+}
 //start About Page
   aboutPage:any=[{}];
   showAllAboutPage(){
-    this.http.get('https://localhost:7152/api/About').subscribe((res)=>{
+    debugger;
+    this.http.get('https://localhost:7152/api/About').subscribe((res:any)=>{
       this.aboutPage = res;
+      this.aboutImage = res[0].image;
+      console.log(this.aboutPage);
+      console.log(this.aboutImage);
     }, err=>{
       console.log(err);
       
@@ -58,6 +71,7 @@ export class ManageHomeService {
   }
 
   updateAboutPage(obj:any){
+    debugger;
     obj.image=this.aboutImage;
     this.http.put('https://localhost:7152/api/About/', obj).subscribe((res:any)=>{
       setTimeout(() => {
@@ -72,15 +86,7 @@ export class ManageHomeService {
     })
   }
 
-  aboutImage:any;
-  uploadAboutImage(img:FormData){
-    this.http.post('https://localhost:7152/api/About/uploadImage/', img).subscribe((res:any)=>{
-      this.aboutImage=res.image;
-    }, err=>{
-      console.log(err);
-      
-    })
-  }
+ 
 // End About Page
 
 //Start Contact Page
@@ -197,6 +203,20 @@ realdata:any[]=[];
       
     })
   }
+  myProfit:any;
+  profit(){
+    debugger;
+    this.http.get('https://localhost:7152/api/AdminReport/profit').subscribe((res:any)=>{
+      
+      this.myProfit = res.profit;
+      console.log(this.myProfit);
+    }, err=>{
+      console.log(err);
+      
+    })
+  }
+
+  
 
 
 }

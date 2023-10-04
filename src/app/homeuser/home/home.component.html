@@ -16,7 +16,7 @@
     <div class="slider-area ">
         <!-- Mobile Menu -->
         <div class="slider-active">
-            <div class="single-slider hero-overly slider-height d-flex align-items-center" style="background-image: url('../../../assets/adminAssets/img/form.jpg');">
+            <div class="single-slider hero-overly slider-height d-flex align-items-center" style="background-image: url('../../../assets/ApiImage/{{home.fullHome.image}}');">
                 <div class="container">
                     <div class="row">
                         <div class="col-xl-9 col-lg-9 col-md-9">
@@ -156,7 +156,7 @@
                             <span class="flaticon-tour"></span>
                         </div>
                         <div class="services-cap">
-                            <h5>8000+ Our Local<br>Guides</h5>
+                            <h5>{{stat.num}}<br>Number Of Users</h5>
                         </div>
                     </div>
                 </div>
@@ -166,7 +166,7 @@
                             <span class="flaticon-pay"></span>
                         </div>
                         <div class="services-cap">
-                            <h5>100% Trusted Tour<br>Agency</h5>
+                            <h5>{{stat.NumOfAirport}}<br>Number Of Airports</h5>
                         </div>
                     </div>
                 </div>
@@ -176,7 +176,7 @@
                             <span class="flaticon-experience"></span>
                         </div>
                         <div class="services-cap">
-                            <h5>28+ Years of Travel<br>Experience</h5>
+                            <h5>{{stat.maxReserved.totaL_TICKETS}}<br>Max Reserved Flight</h5>
                         </div>
                     </div>
                 </div>
@@ -207,7 +207,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-xl-4 col-lg-4 col-md-6" *ngFor="let fly of fly.flight">
+            <div class="col-xl-4 col-lg-4 col-md-6" *ngFor="let fly of fly.flightForUser">
                 <div class="single-place mb-30">
                     <div class="place-img">
                         <img src="../../../assets/ApiImage/{{fly.image}}" alt="">
@@ -232,7 +232,7 @@
                             <div>
                                 <button 
                                 style="background-color: #007bff; color: #ffffff; border: none; padding: 10px 20px; border-radius: 5px; font-size: 16px; cursor: pointer;" 
-                                (click)="goToPay(fly.flightid)"
+                                (click)="goToPay(fly.flightid,fly.departuredate,fly.arrivaldate)"
                               >
                                 <i style="margin-right: 5px;" class="fas fa-plane"></i> Booked
                               </button>
@@ -400,7 +400,8 @@
 </main><app-footer></app-footer>
 
 
-<ng-template #putTicket>
-    <input type="number" min="1" placeholder="Number of Ticket" (change)="tikMap($event)">
-    <button type="submet" (click)="takeTicket()">Booked</button>
+<ng-template #putTicket style="margin: 50px;">
+    <h2 style="margin: 50px;">Please enter number of ticket </h2>
+    <input style="margin: 20px 20px 20px 50px;" type="number" min="1" placeholder="Number of Ticket" (change)="tikMap($event)">
+    <button style="background-color: green;color: white;" type="submet" (click)="takeTicket()">Booked</button>
 </ng-template>
