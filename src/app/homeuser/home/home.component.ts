@@ -70,7 +70,7 @@ export class HomeComponent implements OnInit{
       .get('https://localhost:7152/api/flight')
       .then((response) => {
         if (Array.isArray(response.data)) {
-          this.flights = response.data;
+          this.flights = response.data.filter((ress:any)=>{ress.status === 'wait'});
           this.geocodeCities();
         } else {
           console.error('Invalid API response format:', response.data);
@@ -111,9 +111,10 @@ export class HomeComponent implements OnInit{
           })
           .on('click', () => {
             // Set flightID and price directly in the FlightService
-            this.dialog.open(this.ticketMap)
+            const d =this.dialog.open(this.ticketMap)
             this.fly.flightID = flightid;
             this.fly.priceMap = price;
+          
             
             // Navigate to the pay route
             //this.router.navigate(['/user/pay']);
@@ -178,8 +179,11 @@ export class HomeComponent implements OnInit{
 
   takeTicket(){
     this.fly.totalPrice = this.tickMap * this.fly.priceMap;
-    setTimeout(() => {
-      this.router.navigate(['/user/pay']);
-    }, 2000);
+    this.dialog.closeAll();
+    this.router.navigate(['/user/pay']);
+    //this.router.navigate(['/user/pay']);
+    // setTimeout(() => {
+    //   this.router.navigate(['/user/pay']);
+    // }, 2000);
   }
 }

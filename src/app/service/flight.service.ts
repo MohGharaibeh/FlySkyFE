@@ -12,9 +12,13 @@ export class FlightService {
 
   formCountry:any[]=[];
   flight:any = [{}];
+  flightForUser: any = [{}];
   getAllFlight(){
     this.http.get('https://localhost:7152/api/Flight').subscribe((res:any)=>{
       this.flight = res;
+      this.flightForUser = res.filter((ress:any)=>{
+        ress.status == 'wait'
+      })
       console.log(res);
       this.formCountry=res.fromcountry;
     }, err =>{

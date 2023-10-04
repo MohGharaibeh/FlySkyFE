@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 
 @Injectable({
@@ -8,7 +9,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class ReservedService {
 
-  constructor(private http:HttpClient, private toast:ToastrService) { }
+  constructor(private http:HttpClient, private toast:ToastrService,public router: Router) { }
 
 
   reservedFlight(body:any,email:any){
@@ -75,7 +76,11 @@ export class ReservedService {
         await this.reservedFlight(reserved,email);
        await this.updateBalance(updBaln);
 
-       this.toast.success('Success Payment');
+      setTimeout(() => {
+        this.router.navigate(['/user/track']);
+        
+      }, 2000);
+      this.toast.success('Success Payment');
       // window.location.reload();
        
       }
