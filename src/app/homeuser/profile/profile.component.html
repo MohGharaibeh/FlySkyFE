@@ -1,29 +1,30 @@
 <app-navbar></app-navbar>
-<div class="container" style="margin: 5% 6%; max-width: 400px; background-color: #fff; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 20px; text-align: center;">
-
-    <div class="wrapper">
-        <section class="editPhoto" >
-            <form [formGroup]="updateForm" style="margin-top: 20px;">
-                <input type="file" #file accept="image/*" name="photo" id="photo" formControlName="image" (change)="uploadImage(file.files)" [(ngModel)]="user.profileUser.image" style="display: none;" />
-
-                <img src="../../../assets/ApiImage/{{user.profileUser.image}}" style="border-radius: 50%; cursor: pointer;" width="150" height="150" alt="" onclick="document.getElementById('photo').click();" />
-
-                <input type="text" formControlName="fname" [(ngModel)]="user.profileUser.fname" style="width: 100%; margin-top: 10px; padding: 8px; border: 1px solid #ccc; border-radius: 4px;" placeholder="First Name" required />
-
-                <input type="text" formControlName="lname" [(ngModel)]="user.profileUser.lname" style="width: 100%; margin-top: 10px; padding: 8px; border: 1px solid #ccc; border-radius: 4px;" placeholder="Last Name" required />
-
-                <input type="text" formControlName="email" [(ngModel)]="user.profileUser.email" style="width: 100%; margin-top: 10px; padding: 8px; border: 1px solid #ccc; border-radius: 4px;" placeholder="Email" required />
-
-                <input type="password" formControlName="password" [(ngModel)]="user.profileUser.password" hidden />
-
-                <input type="date" formControlName="birthdate" [(ngModel)]="user.profileUser.birthdate" hidden />
-
-                <button (click)="submitUdpate()" style="width: 100%; margin-top: 20px; padding: 10px; background-color: #007bff; color: #fff; border: none; border-radius: 4px; cursor: pointer;">Update</button>
-            </form>
-        </section>
+<div class="container" style="margin: 5% auto; max-width: 800px; background-color: #fff; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 40px; text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+    <div class="wrapper" style="display: flex; align-items: center; justify-content: center;">
+        <div class="left-section" style="flex: auto;">
+            <div style="position: relative; margin-bottom: 20px; height: 350px;">
+                <img src="../../../assets/ApiImage/{{user.profileUser.image}}" style="cursor: pointer; border: 2px solid #007bff; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); height: 100%;" width="340px" alt="" onclick="document.getElementById('photo').click();" />
+                <input type="file" #file accept="image/*" name="photo" id="photo" formControlName="image" (change)="uploadImage(file.files)" [(ngModel)]="user.profileUser.image" style="display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%;" />
+            </div>
+        </div>
+        <div class="right-section" style="flex: auto; text-align: left; height: 350px;">
+            <section class="editPhoto" style="">
+                <form [formGroup]="updateForm">
+                    <div style="margin-bottom: 15px;">
+                        <input type="text" formControlName="fname" [(ngModel)]="user.profileUser.fname" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; display: block;" placeholder="First Name" required />
+                    </div>
+                    <div style="margin-bottom: 15px;">
+                        <input type="text" formControlName="lname" [(ngModel)]="user.profileUser.lname" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; display: block;" placeholder="Last Name" required />
+                    </div>
+                    <div style="margin-bottom: 15px;">
+                        <input type="email" formControlName="email" [(ngModel)]="user.profileUser.email" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; display: block;" placeholder="Email" required />
+                    </div>
+                    <input type="password" formControlName="password" [(ngModel)]="user.profileUser.password" hidden />
+                    <input type="date" formControlName="birthdate" [(ngModel)]="user.profileUser.birthdate" hidden />
+                    <button (click)="submitUdpate()" style="width: 100%; padding: 10px; background-color: #007bff; color: #fff; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; font-weight: bold;">Update</button>
+                </form>
+            </section>
+        </div>
     </div>
-
 </div>
-
-
 <app-footer></app-footer>
