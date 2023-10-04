@@ -70,7 +70,7 @@ export class HomeComponent implements OnInit{
       .get('https://localhost:7152/api/flight')
       .then((response) => {
         if (Array.isArray(response.data)) {
-          this.flights = response.data.filter((ress:any)=>{ress.status === 'wait'});
+          this.flights = response.data.filter((x:any)=> x.status==='wait');
           this.geocodeCities();
         } else {
           console.error('Invalid API response format:', response.data);

@@ -1,6 +1,7 @@
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { ToastrService } from 'ngx-toastr';
 import { ManageHomeService } from 'src/app/service/manage-home.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { ManageHomeService } from 'src/app/service/manage-home.service';
 })
 export class TestinomialComponent{
 
-  constructor(public tests: ManageHomeService){}
+  constructor(public tests: ManageHomeService, public toast:ToastrService){}
   
   createForm: FormGroup = new FormGroup({
     Message: new FormControl(''),
@@ -20,6 +21,10 @@ export class TestinomialComponent{
   })
   create(){
     this.tests.createTestimonial(this.createForm.value);
+    this.toast.success('Testimonial Sent');
+    setTimeout(() => {
+      window.location.reload();
+    }, 1000);
   }
   
 }

@@ -14,17 +14,31 @@ export class FlightService {
   flight:any = [{}];
   flightForUser: any = [{}];
   getAllFlight(){
+    debugger;
     this.http.get('https://localhost:7152/api/Flight').subscribe((res:any)=>{
       this.flight = res;
-      this.flightForUser = res.filter((ress:any)=>{
-        ress.status == 'wait'
-      })
+      this.flightForUser = res.filter((x:any)=>x.status ==='wait');
       console.log(res);
+      
       this.formCountry=res.fromcountry;
     }, err =>{
       console.log(err);
     })
   }
+
+  // getAllFlightUser(){
+  //   debugger;
+  //   this.http.get('https://localhost:7152/api/Flight/flightforuser').subscribe((res:any)=>{
+  //     this.flightForUser = res;
+  //     // this.flightForUser = res.filter((ress:any)=>
+  //     //   ress.status === 'wait'
+  //     // )
+  //     console.log(res);
+  //     //this.formCountry=res.fromcountry;
+  //   }, err =>{
+  //     console.log(err);
+  //   })
+  // }
 
   deleteFlight(id : number){
     this.http.delete('https://localhost:7152/api/Flight/'+id).subscribe((res)=>{
