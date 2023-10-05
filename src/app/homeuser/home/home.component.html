@@ -217,8 +217,8 @@
                             <span><i class="fas fa-star"></i><span>Capacity {{fly.capacity}}</span> </span>
                             <h3><a href="#">{{fly.description}}</a></h3>
                             <p class="dolor">${{fly.price}} <span>/ Per Person</span></p>
-                            <input #total type="number" placeholder="Number of Ticket" min="1" (change)="numOfTicket($event, fly.price)">
-                            <p *ngIf="total !=null">Total Price = {{fly.price * totalPrice}}</p>
+                            <!-- <input #total type="number" placeholder="Number of Ticket" min="1" (change)="numOfTicket($event, fly.price)">
+                            <p *ngIf="total !=null">Total Price = {{fly.price * totalPrice}}</p> -->
                         </div>
                         <div class="place-cap-bottom">
                             <ul>
@@ -230,9 +230,10 @@
                                 <li><i class="fas fa-map-marker-alt"></i>{{fly.tocountry}}</li>
                             </ul>
                             <div>
+                                
                                 <button 
                                 style="background-color: #007bff; color: #ffffff; border: none; padding: 10px 20px; border-radius: 5px; font-size: 16px; cursor: pointer;" 
-                                (click)="goToPay(fly.flightid,fly.departuredate,fly.arrivaldate)"
+                                (click)="cardDialog(fly.flightid, fly.price)"
                               >
                                 <i style="margin-right: 5px;" class="fas fa-plane"></i> Booked
                               </button>
@@ -245,6 +246,12 @@
         </div>
     </div>
 </div>
+
+<ng-template #putTicketCard style="margin: 50px;">
+    <h2 style="margin: 50px;">Please enter number of ticket </h2>
+    <input style="margin: 20px 20px 20px 50px;" type="number" min="1" placeholder="Number of Ticket" (change)="tickCard($event)">
+    <button style="background-color: green;color: white;" type="submet" (click)="takeCardTicket()">Booked</button>
+</ng-template>
 <!-- Favourite Places End -->
     <!-- Video Start Arera -->
     <!-- <div class="video-area video-bg pt-200 pb-200"  data-background="../../../assets/homeAssets/img/service/video-bg.jpg">

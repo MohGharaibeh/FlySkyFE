@@ -136,6 +136,8 @@ export class HomeComponent implements OnInit{
 
 
   @ViewChild('putTicket') ticketMap !: TemplateRef<any>
+  @ViewChild('putTicketCard') ticketCard !: TemplateRef<any>
+
   @ViewChild('searchDialog') searchDialog !: TemplateRef<any>
   @ViewChild('searchCountryDialog') searchCountryDialog !: TemplateRef<any>
   onSearch(){
@@ -185,5 +187,25 @@ export class HomeComponent implements OnInit{
     // setTimeout(() => {
     //   this.router.navigate(['/user/pay']);
     // }, 2000);
+  }
+
+  cardDialog(id:number, price:number){
+    this.fly.flightID = id;
+    this.fly.priceMap = price;
+    this.fly.ticket = this.tikCard;
+    this.dialog.open(this.ticketCard);
+  }
+  tikCard:number=0;
+  tickCard = (ev:any)=>{
+    this.tikCard = Number(ev.target.value);
+    this.fly.ticket = Number(ev.target.value);
+    
+  }
+
+  takeCardTicket(){
+    this.fly.totalPrice = this.tikCard * this.fly.priceMap;
+    
+    this.dialog.closeAll();
+    this.router.navigate(['/user/pay'])
   }
 }
