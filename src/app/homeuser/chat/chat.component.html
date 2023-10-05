@@ -1,11 +1,11 @@
 <app-navbar></app-navbar>
-<div class="row">
-<div class="container parent col-6">
+<div class="row" style="width: 100%; display: flex; justify-content: center; align-items: center;">
+  <div class="container parent" style="margin: auto; min-width: 400px; border: 1px solid #ccc; border-radius: 8px;">
     <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white">
-      <div class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
+      <div class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom" style="background-color: #f5f5f5; border-top-left-radius: 8px; border-top-right-radius: 8px;">
         <!-- <input class="fs-5 fw-semibold" [(ngModel)]="username"/> -->
       </div>
-      <div class="list-group list-group-flush border-bottom scrollarea">
+      <div class="list-group list-group-flush border-bottom scrollarea" style="max-height: 300px; overflow-y: auto;">
         <div class="list-group-item list-group-item-action py-3 lh-tight"
              *ngFor="let msg of messages"
         >
@@ -16,15 +16,11 @@
         </div>
       </div>
     </div>
-    <form (submit)="submit()">
-      <input class="form-control" placeholder="Write a message" [(ngModel)]="message" [ngModelOptions]="{ standalone: true }"
-             
-      />
+    <form (submit)="submit()" style="padding: 10px;">
+      <input class="form-control" placeholder="Write a message" [(ngModel)]="message" [ngModelOptions]="{ standalone: true }" />
     </form><br><br>
   </div>
-  <div class="col-5">
-    <img src="https://img.freepik.com/free-vector/chat-bot-concept-illustration_114360-5522.jpg" width="500" height="400" style="position: absolute; right: 25px; border: 10px; border-radius: 10px;" />
-  </div>
 </div>
+
   <br><br>
   <app-footer></app-footer>
