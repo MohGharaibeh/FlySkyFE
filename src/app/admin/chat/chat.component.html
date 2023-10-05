@@ -2,8 +2,9 @@
   <app-sidebar></app-sidebar>
   <div class="main-panel">
   <app-navbar></app-navbar>
-  <body style="display: flex;justify-content: center;align-items: center;">
+  <section style="margin-top:50px;display: flex; justify-content: center; align-items: center; height: 100vh;">
     <div class="container" style="max-width: 600px; margin: auto; padding: 20px; border: 1px solid #ccc; border-radius: 10px; background-color: #f9f9f9; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+        <!-- Your content here -->
         <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white">
             <div class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom" style="background-color: #fff;">
                 <!-- <input class="fs-5 fw-semibold" [(ngModel)]="username"/> -->
@@ -23,7 +24,7 @@
             <input class="form-control" placeholder="Write a message" [(ngModel)]="message" [ngModelOptions]="{ standalone: true }" style="border-radius: 20px; border: 1px solid #ccc; padding: 10px;"/>
         </form>
     </div>
-  </body>
+  </section>
   
 
   <app-footer></app-footer>
