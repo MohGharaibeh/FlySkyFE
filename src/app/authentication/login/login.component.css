@@ -8174,7 +8174,7 @@
     background: #fbceb5 !important; }
   
   .ftco-section {
-    padding: 7em 0; }
+    padding: 20em 0; }
   
   .ftco-no-pt {
     padding-top: 0; }
@@ -8351,4 +8351,5 @@
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
+    
   }
