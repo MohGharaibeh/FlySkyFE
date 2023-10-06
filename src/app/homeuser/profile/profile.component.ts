@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { ToastrService } from 'ngx-toastr';
 import { RegisterService } from 'src/app/service/register.service';
 
 @Component({
@@ -8,7 +10,7 @@ import { RegisterService } from 'src/app/service/register.service';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit{
-  constructor(public user: RegisterService){}
+  constructor(public user: RegisterService,public dialog: MatDialog,public toaster: ToastrService){}
   ngOnInit(): void {
     const id = localStorage.getItem('userID');
     if (id){
@@ -17,6 +19,16 @@ export class ProfileComponent implements OnInit{
     
   }
 
+  @ViewChild('changePassword') changePass !: TemplateRef<any>;
+  @ViewChild('changeInfo') changeInfo !: TemplateRef<any>;
+
+  openInfo(){
+    this.dialog.open(this.changeInfo);
+  }
+
+  openPass(){
+    this.dialog.open(this.changePass);
+  }
   updateForm: FormGroup = new FormGroup({
     useracountid: new FormControl(localStorage.getItem('userID')),
     email : new FormControl(),
@@ -28,8 +40,40 @@ export class ProfileComponent implements OnInit{
     birthdate: new FormControl()
 
   })
-  submitUdpate(){
+
+  updatePassForm: FormGroup = new FormGroup({
+    password: new FormControl('',[Validators.required]),
+    newpassword: new FormControl('',[Validators.required]),
+    repassword: new FormControl('',[Validators.required]),
+
+    useracountid: new FormControl(localStorage.getItem('userID')),
+    email : new FormControl(this.user.profileUser.email),
+    image : new FormControl(this.user.profileUser.image),
+    fname: new FormControl(this.user.profileUser.fname),
+    lname: new FormControl(this.user.profileUser.lname),
+    roleid: new FormControl(1),
+    birthdate: new FormControl(this.user.profileUser.birthdate),
+  })
+
+  matchPass(){
+
+    if (this.updatePassForm.controls['password'].value == this.user.profileUser.password){
+      if(this.updatePassForm.controls['newpassword'].value == this.updatePassForm.controls['repassword'].value){
+        this.updatePassForm.controls['password'].setValue(this.updatePassForm.controls['newpassword'].value) 
+        this.user.newPass = this.updatePassForm.controls['password'].value;
+        this.user.updateUser(this.updatePassForm.value)
+      }
+      else{
+        this.toaster.error('new password not matched')
+      }
     
+    }
+    else{
+      this.toaster.error('current password not correct')
+    }
+  }
+  submitUdpate(){
+    this.user.newPass = this.user.profileUser.password;
     this.user.updateUser(this.updateForm.value);
   }
 

@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { RegisterService } from 'src/app/service/register.service';
 
@@ -9,13 +10,24 @@ import { RegisterService } from 'src/app/service/register.service';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  constructor(public user: RegisterService,public toaster : ToastrService){}
+  constructor(public user: RegisterService,public toaster : ToastrService,public dialog: MatDialog){}
   ngOnInit(): void {
     const id = localStorage.getItem('userID');
     if (id){
       this.user.getUserByID(id);
     }
     
+  }
+
+  @ViewChild('changePassword') changePass !: TemplateRef<any>;
+  @ViewChild('changeInfo') changeInfo !: TemplateRef<any>;
+
+  openInfo(){
+    this.dialog.open(this.changeInfo);
+  }
+
+  openPass(){
+    this.dialog.open(this.changePass);
   }
 
   updateForm: FormGroup = new FormGroup({
@@ -51,10 +63,13 @@ export class ProfileComponent implements OnInit {
         this.user.newPass = this.updatePassForm.controls['password'].value;
         this.user.updateUser(this.updatePassForm.value)
       }
+      else{
+        this.toaster.error('new password not matched')
+      }
     
     }
     else{
-      this.toaster.error('error password')
+      this.toaster.error('current password not correct')
     }
   }
   submitUdpate(){
