@@ -42,7 +42,7 @@ export class ReservedService {
 
   bankCheck:any = {};
   checkBank(bank:any){
-    debugger;
+    //debugger;
     this.http.post('https://localhost:7152/api/Bank/checkBank',bank).subscribe((res:any)=>{
       this.bankCheck = res;
       console.log(this.bankCheck);
@@ -61,10 +61,35 @@ export class ReservedService {
     })
   }
 
+
+  flightCapacity:any = {};
+  gitFlight(id:number){
+    debugger;
+    this.http.get('https://localhost:7152/api/Flight/GetByID/'+id).subscribe((res:any)=>{
+      this.flightCapacity = res;
+      console.log(this.flightCapacity)
+    },err=>{
+      console.log(err);
+    })
+  }
+
+  updateCapacity(id:any,cap:any){
+    const body = {
+      flightid : id,
+      capacity: cap
+    }
+    this.http.put('https://localhost:7152/api/Flight/updateCapacity',body).subscribe((res)=>{
+      console.log(res);
+    },err=>{
+      console.log(err);
+    })
+  }
+
   async reservedAndCheck(reserved:any,email:any , chBank:any, updBaln:any){
     debugger;
    // this.checkBalance(chBaln);
     this.checkBank(chBank);
+    this.gitFlight(reserved.flightid)
     if(this.bankCheck == null) {
       
       this.toast.error('This card is not exist');
@@ -73,21 +98,31 @@ export class ReservedService {
     }
   
       if(this.bankCheck.balance >= updBaln.balance){
+       
+      if(this.flightCapacity.capacity >= reserved.numberofticket){
         await this.reservedFlight(reserved,email);
-       await this.updateBalance(updBaln);
+        await this.updateBalance(updBaln);
+        await this.updateCapacity(reserved.flightid,reserved.numberofticket);
+ 
+       setTimeout(() => {
+         this.router.navigate(['/user/track']);
+         
+       }, 2000);
+       this.toast.success('Success Payment');
+       // window.location.reload();
+      }
 
-      setTimeout(() => {
-        this.router.navigate(['/user/track']);
-        
-      }, 2000);
-      this.toast.success('Success Payment');
-      // window.location.reload();
+      if(this.flightCapacity.capacity < reserved.numberofticket){
+        this.toast.error('Capacity of this flight is not enough')
+      }
        
       }
       if(this.bankCheck.balance < updBaln.balance){
         this.toast.error('Your balance not enough');
        // window.location.reload();
       }
+
+      
       
     
   }
