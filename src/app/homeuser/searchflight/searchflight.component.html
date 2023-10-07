@@ -62,6 +62,15 @@
                                 <li><i class="fas fa-map-marker-alt"></i>{{fly.fromcountry}}</li>
                                 <li><i class="fas fa-map-marker-alt"></i>{{fly.tocountry}}</li>
                             </ul>
+                            <div>
+                                
+                                <button 
+                                style="background-color: #007bff; color: #ffffff; border: none; padding: 10px 20px; border-radius: 5px; font-size: 16px; cursor: pointer;" 
+                                (click)="cardDialog(fly.flightid, fly.price)"
+                              >
+                                <i style="margin-right: 5px;" class="fas fa-plane"></i> Booked
+                              </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -72,3 +81,9 @@
 </div>
 <!-- Favourite Places End -->
 <app-footer></app-footer>
+
+<ng-template #putTicketCard style="margin: 50px;">
+    <h2 style="margin: 50px;">Please enter number of ticket </h2>
+    <input style="margin: 20px 20px 20px 50px;" type="number" min="1" placeholder="Number of Ticket" (change)="tickCard($event)">
+    <button style="background-color: green;color: white;" type="submet" (click)="takeCardTicket()">Booked</button>
+</ng-template>

@@ -14,7 +14,7 @@ export class SearchDateUserService {
     debugger;
     this.http.post('https://localhost:7152/api/UserAccount/ByDate',body).subscribe((res:any)=>{
       
-      this.dateShow = res;
+      this.dateShow = res.filter((x:any)=>x.status ==='wait');
       console.log(this.dateShow)
     },err=>{
       console.log(err)
@@ -24,7 +24,7 @@ export class SearchDateUserService {
   searchCountry(body:any){
     debugger;
     this.http.post('https://localhost:7152/api/UserAccount/ByCountry',body).subscribe((res:any)=>{
-      this.dateShow = res;
+      this.dateShow = res.filter((x:any)=>x.status ==='wait');
       console.log(this.dateShow)
     })
   }

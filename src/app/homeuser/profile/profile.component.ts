@@ -51,7 +51,7 @@ export class ProfileComponent implements OnInit{
     image : new FormControl(this.user.profileUser.image),
     fname: new FormControl(this.user.profileUser.fname),
     lname: new FormControl(this.user.profileUser.lname),
-    roleid: new FormControl(1),
+    roleid: new FormControl(2),
     birthdate: new FormControl(this.user.profileUser.birthdate),
   })
 
