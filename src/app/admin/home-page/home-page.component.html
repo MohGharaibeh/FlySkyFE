@@ -29,13 +29,13 @@
             <tr>
               <th >#</th>
               <th >paragraph</th>
-              <th >text1</th>
-              <th >text2</th>
-              <th >text3</th>
-              <th >text4</th>
-              <th >text5</th>
-              <th >text6</th>
-              <th >text7</th>
+              <th >Title1</th>
+              <th >Title2</th>
+              <th >Map Title</th>
+              <th >Email</th>
+              <th >Phone</th>
+              <th >Address</th>
+              <th >Trip Title</th>
               <th >image</th>
               <th></th>
             </tr>
@@ -72,12 +72,12 @@
       <form [formGroup]="updateForms" style="max-height: 450px;width: 450px;overflow-y: scroll; padding:30 0px;display: flex;justify-content: center;align-items: center;flex-direction: column;">
       <p>
           <mat-form-field appearance="fill">
-            <input formControlName="paragraph" [(ngModel)]="data.paragraph" matInput >
+            <input type="text" formControlName="paragraph" [(ngModel)]="data.paragraph" matInput placeholder="Placeholder">
           </mat-form-field>
         </p>
         <p>
           <mat-form-field appearance="fill">
-            <input formControlName="text1" [(ngModel)]="data.text1" matInput placeholder="Placeholder">
+            <input type="text" formControlName="text1" [(ngModel)]="data.text1" matInput placeholder="Placeholder">
           </mat-form-field>
         </p>
         <p>

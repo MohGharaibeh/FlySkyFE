@@ -40,6 +40,7 @@ export class HomeComponent implements OnInit{
     this.stat.getNum();
 		this.stat.getNumOfAirport();
 		this.stat.getMaxReserved();
+    this.home.getHomeById();
     // Create a Leaflet map
     this.map = L.map('map').setView([0, 0], 3);
 

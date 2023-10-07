@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { DynamicHomeService } from 'src/app/service/dynamic-home.service';
 
@@ -7,9 +7,12 @@ import { DynamicHomeService } from 'src/app/service/dynamic-home.service';
   templateUrl: './contactus.component.html',
   styleUrls: ['./contactus.component.css']
 })
-export class ContactusComponent {
-  constructor(private home:DynamicHomeService){}
+export class ContactusComponent implements OnInit{
+  constructor(public home:DynamicHomeService){}
 
+  ngOnInit(): void {
+    this.home.getHomeById();
+  }
   AddContact:FormGroup=new FormGroup({
     email:new FormControl(''),
     phone: new FormControl(''),
