@@ -236,59 +236,58 @@
 
 
 <ng-template #createDialog class="" style="width: 100vw;">
-  <h1 style="text-align: center; margin: 0;">Add Airport</h1>
+  <h1 style="text-align: center; margin: 0;">Add Flight</h1>
   <form class="formAddFlight" [formGroup]="createForms" style="width: 30vw; max-height: 72vh; overflow: auto; display: flex; flex-direction: column; align-items: center;">
 
     
-    <mat-form-field appearance="fill" style="width: 100%;">
+    <mat-form-field appearance="fill" style="width: 85%;">
       <mat-label>capacity</mat-label>
       <input type="text" formControlName="capacity" matInput placeholder="capacity">
     </mat-form-field>
 
-
-    <mat-form-field appearance="outline" style="width: 100%;">
+    <mat-form-field appearance="fill" style="width: 85%;">
       <mat-label>price</mat-label>
       <input type="text" formControlName="price" matInput placeholder="price">
     </mat-form-field>
 
-    <mat-form-field appearance="outline" style="width: 100%;">
+    <mat-form-field appearance="fill" style="width: 85%;">
       <mat-label>description</mat-label>
       <input type="text" formControlName="description" matInput placeholder="description">
     </mat-form-field>
 
-    <mat-form-field appearance="outline" style="width: 100%;">
+    <mat-form-field appearance="fill" style="width: 85%;">
       <mat-label>fromcountry</mat-label>
       <input type="text" formControlName="fromcountry" matInput placeholder="fromcountry">
     </mat-form-field>
 
-    <mat-form-field appearance="fill" style="width: 100%;">
+    <mat-form-field appearance="fill" style="width: 85%;">
       <mat-label>tocountry</mat-label>
       <input type="text" formControlName="tocountry" matInput placeholder="tocountry">
     </mat-form-field>
 
-    <mat-form-field appearance="outline" style="width: 100%;">
+    <mat-form-field appearance="fill" style="width: 85%;">
       <mat-label>travelclass</mat-label>
       <input type="text" formControlName="travelclass" matInput placeholder="travelclass">
     </mat-form-field>
 
-    <mat-form-field appearance="outline" style="width: 100%;">
+    <mat-form-field appearance="fill" style="width: 85%;">
       <select class="form-select" aria-label="Default select example" formControlName="fromid" [(ngModel)]="data.fromid">
         <option *ngFor="let air of airport.airports" [value]="air.airportid">{{air.name}}</option>
       </select>
     </mat-form-field>
 
-    <mat-form-field appearance="outline" style="width: 100%;">
+    <mat-form-field appearance="fill" style="width: 85%;">
       <select class="form-select" aria-label="Default select example" formControlName="toid" [(ngModel)]="data.toid">
         <option *ngFor="let air of airport.airports" [value]="air.airportid">{{air.name}}</option>
       </select>
     </mat-form-field>
 
-    <mat-form-field appearance="fill" style="width: 100%;">
+    <mat-form-field appearance="fill" style="width: 85%;">
       <mat-label>departuredate</mat-label>
       <input type="datetime-local" formControlName="departuredate" matInput>
     </mat-form-field>
 
-    <mat-form-field appearance="fill" style="width: 100%;">
+    <mat-form-field appearance="fill" style="width: 85%;">
       <mat-label>arrivaldate</mat-label>
       <input type="datetime-local" formControlName="arrivaldate" matInput>
     </mat-form-field>
@@ -301,7 +300,7 @@
     </div>
 
     <div name="button" mat-dialog-actions style="margin-top: 16px;">
-      <button style="background-color: #04aa6d; color: #fff;" (click)="createFlight()" mat-button [mat-dialog-close]="true">Add</button>
+      <button style="background-color: #04aa6d; color: #fff;margin-right: 10px;" (click)="createFlight()" mat-button [mat-dialog-close]="true">Add</button>
       <button style="background-color: red; color: #fff;" mat-button mat-dialog-close="no" cdkFocusInitial>Cancel</button>
     </div>
   </form>
