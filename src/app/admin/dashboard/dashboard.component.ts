@@ -14,13 +14,13 @@ export class DashboardComponent implements OnInit {
 data:any[]=[]
 label:any[]=['User', 'Airport', 'Max Reserved', 'Profit']
 	constructor(public stat: StatisticService, private toast:ToastrService, public report:ManageHomeService){}
-	async ngOnInit() {
+	ngOnInit() {
 		try {
 			// Fetch data asynchronously
-			await this.stat.getNum();
-			await this.stat.getNumOfAirport();
-			await this.stat.getMaxReserved();
-			await this.report.profit();
+			this.stat.getNum();
+			this.stat.getNumOfAirport();
+			this.stat.getMaxReserved();
+			this.report.profit();
 		
 			// Create the data array with fetched values
 			this.data = [
@@ -31,7 +31,10 @@ label:any[]=['User', 'Airport', 'Max Reserved', 'Profit']
 			];
 		
 			// Render the chart
-			this.renderChart(this.label, this.data);
+			setTimeout(() => {
+				this.renderChart(this.label, this.data);
+			}, 1000);
+			
 		  } catch (error) {
 			console.error('Error fetching data:', error);
 		  }

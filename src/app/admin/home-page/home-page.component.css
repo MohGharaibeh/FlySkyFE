@@ -2,7 +2,9 @@
   width: 100%;
   background-color: red;
 }
-
+input{
+  width: 100%;
+}
 /* Define a CSS class for the template container */
 .update-dialog {
     background-color: lightblue;

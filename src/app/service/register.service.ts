@@ -19,7 +19,7 @@ export class RegisterService {
 existEmail: any ={};
 checkEmailExistence(email: string){
   this.http.get('https://localhost:7152/api/UserAccount/chickUser/'+email).subscribe((res:any)=>{
-    this.existEmail = res;
+    this.existEmail = res.email;
   },err=>{
     console.log(err);
   })

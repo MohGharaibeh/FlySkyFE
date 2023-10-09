@@ -86,10 +86,10 @@ export class ReservedService {
   }
 
   async reservedAndCheck(reserved:any,email:any , chBank:any, updBaln:any){
-    debugger;
    // this.checkBalance(chBaln);
     this.checkBank(chBank);
     this.gitFlight(reserved.flightid)
+    debugger;
     if(this.bankCheck == null) {
       
       this.toast.error('This card is not exist');

@@ -24,25 +24,30 @@
       <app-navbar ></app-navbar>
       <div class="content" style="margin-bottom: 40px;max-height: 100%;">
           <div class="row">
-
-              <button  (click)="openCreateDialog()" style="display: block;width: 150px;background-color: #014b85;  color: #fff;" mat-raised-button>Add one!</button>
+            <div style="display: flex; align-items: center;">
+              <button  (click)="openCreateDialog()" style="display: block;width: 150px;background-color: #014b85;  color: #fff;margin-right: 20px;" mat-raised-button>Add one!</button>
               <br>
-              <form (submit)="onSearch()" style="text-align: center;max-width: 400px; margin: 10px 0; padding: 20px; border: 1px solid #ccc; border-radius: 10px; background-color: #f9f9f9;">
-
-                <label for="departulDate" style="display: inline-block; margin-right: 10px; margin-bottom: 5px;">Start Date</label>
-                <input type="date" id="departulDate" name="departulDate" [(ngModel)]="departulDate" style="padding: 8px; width: calc(100% - 30px); border: 1px solid #ccc; border-radius: 5px; display: inline-block;">
-            
-                <br>
-            
+              <form (submit)="onSearch()" style="display: flex;justify-content: center;align-items: center;text-align: center;width: 650px; margin: 10px 0; padding: 20px; border: 1px solid #ccc; border-radius: 10px; background-color: #f9f9f9;">
+                <div style="width: 40%;">
+                  <label for="departulDate" style="display: inline-block; margin-right: 10px; margin-bottom: 5px;">Start Date</label>
+                  <input type="date" id="departulDate" name="departulDate" [(ngModel)]="departulDate" style="padding: 8px; width: calc(100% - 30px); border: 1px solid #ccc; border-radius: 5px; display: inline-block;width: 100%;">
+              
+                </div>
+                
+                
+              <div style="width: 40%;">
                 <label for="arrivelDate" style="display: inline-block; margin-right: 10px; margin-bottom: 5px;">End Date</label>
-                <input type="date" id="arrivelDate" name="arrivelDate" [(ngModel)]="arrivelDate" style="padding: 8px; width: calc(100% - 30px); border: 1px solid #ccc; border-radius: 5px; display: inline-block;">
+                  <input type="date" id="arrivelDate" name="arrivelDate" [(ngModel)]="arrivelDate" style="padding: 8px; width: calc(100% - 30px); border: 1px solid #ccc; border-radius: 5px; display: inline-block;width: 100%;">
+              
+              </div>
+                
+              
             
-                <br>
-            
-                <button type="submit" class="btn btn-primary" style="display: block; width: calc(100% - 30px); padding: 10px; border: none; border-radius: 5px; background-color: #007bff; color: white;">Search</button>
+                <button type="submit" class="btn btn-primary" style="margin:15px 0 0 10px;display: block; width: 15%; padding: 10px; border: none; border-radius: 5px; background-color: #007bff; color: white;">Search</button>
             
             </form>
             
+          </div>
         <table class="table table-light table-hover" style="width: 100%;max-height:100% ;overflow-x: scroll;box-shadow: 3px 3px 3px #aaa;">
           <thead>
               <tr>
@@ -92,17 +97,17 @@
         <!-- <img src="https://book.jetblue.com/assets/header/img/jetblue-white-reg.png" alt=""> -->
       </div>
       <div class="flight-data">
-        <div class="passanger-details">
-          <span class="title">Passenger</span>
-          <span class="detail">{{flightData.capacity}}</span>
+        <div class="passanger-details" >
+          <span class="title" style="color: #838ea8;">Passenger</span><br>
+          <span style="color: white;font-size: 18px;padding-top: 3px;" class="detail">{{flightData.capacity}}</span>
         </div>
         <div class="passanger-depart" style="white-space: nowrap;">
-          <span class="title">Depart</span>
-          <span class="detail">{{ flightData.departuredate | date:'hh:mm a' }}</span>
+          <span style="color: #838ea8;" class="title">Depart</span><br>
+          <span style="color: white;font-size: 18px;padding-top: 3px;" class="detail">{{ flightData.departuredate | date:'hh:mm a' }}</span>
         </div>
         <div class="passanger-arrives" style="white-space: nowrap;">
-          <span class="title">Arrives</span>
-          <span class="detail">{{ flightData.arrivaldate | date:'hh:mm a' }}</span>
+          <span style="color: #838ea8;" class="title">Arrives</span><br>
+          <span style="color: white;font-size: 18px;padding-top: 3px;" class="detail">{{ flightData.arrivaldate | date:'hh:mm a' }}</span>
         </div>
         
       </div>
@@ -110,30 +115,30 @@
     <div class="flight-card-content">
       <div class="flight-row">
         <div class="flight-from">
-          <span class="from-code">{{ flightData.fromcountry }}</span>
+          <span style="width: 235px; font-size: 60px;color: #002c5f; font-weight: 200;" class="from-code">{{ flightData.fromcountry }}</span>
           <span class="from-city">{{ flightData.fromCity }}</span>
         </div>
         <div class="plane">
-          <img src="https://cdn.onlinewebfonts.com/svg/img_537856.svg" alt="">
+          <img style="width: 90px;height: 90px;" src="https://cdn.onlinewebfonts.com/svg/img_537856.svg" alt="">
         </div>
         <div class="flight-to">
-          <span class="to-code">{{ flightData.tocountry  }}</span>
+          <span style="width: 235px; font-size: 60px;color: #002c5f; font-weight: 200;" class="to-code">{{ flightData.tocountry  }}</span>
           <span class="to-city">{{ flightData.toCity }}</span>
         </div>
       </div>
-      <div class="flight-details-row">
-        <div class="flight-operator">
-          <span class="title">Price</span>
-          <span class="detail">{{ flightData.price  }}</span>
+      <div class="flight-details-row" style="width: 100%;display:grid; padding: 30px 50px; grid-template-columns: 1fr 1fr ;">
+        <div class="flight-operator" >
+          <span style="color: #6a8597; letter-spacing: 3px;" class="title">Price</span><br>
+          <span style="margin-top: 0.2em; color: #002c5f;font-size: 18px;" class="detail">{{ flightData.price  }}</span>
         </div>
-        <div class="flight-number">
-          <span class="title">Status</span>
-          <span class="detail">{{ flightData.status }}</span>
+        <div class="flight-number" style="text-align: right;justify-content: right;align-items: end;">
+          <span style="color: #6a8597; letter-spacing: 3px;" class="title">Status</span><br>
+          <span style="margin-top: 0.2em; color: #002c5f;font-size: 18px;" class="detail">{{ flightData.status }}</span>
         </div>
-        <div class="flight-class">
-          <span class="title">CLASS</span>
-          <span class="detail">{{ flightData.travelclass  }}</span>
-        </div>
+        <!-- <div class="flight-class" style="text-align: right;">
+          <span style="color: #6a8597; letter-spacing: 3px;" class="title">CLASS</span><br>
+          <span style="margin-top: 0.2em; color: #002c5f;font-size: 18px;" class="detail">{{ flightData.travelclass  }}</span>
+        </div> -->
       </div>
     </div>
   </div>
@@ -159,58 +164,70 @@
 
     <div>
       <mat-form-field appearance="fill" style="width: 48%; margin-right: 4%;">
+        <label>Capacity</label>
         <input type="number" formControlName="capacity" [(ngModel)]="data.capacity" matInput placeholder="Capacity">
       </mat-form-field>
 
       <mat-form-field appearance="fill" style="width: 48%;">
+        <label>Status</label>
         <input type="text" formControlName="status" [(ngModel)]="data.status" matInput placeholder="Status">
       </mat-form-field>
     </div>
 
     <div>
       <mat-form-field appearance="fill" style="width: 48%; margin-right: 4%;">
+        <label>Price</label>
         <input type="number" formControlName="price" [(ngModel)]="data.price" matInput placeholder="Price">
       </mat-form-field>
 
       <mat-form-field appearance="fill" style="width: 48%;">
+        <label>Description</label>
         <input type="text" formControlName="description" [(ngModel)]="data.description" matInput placeholder="Description">
       </mat-form-field>
     </div>
 
     <div>
       <mat-form-field appearance="fill" style="width: 48%; margin-right: 4%;">
+        <label>From Country</label>
         <input type="text" formControlName="fromcountry" [(ngModel)]="data.fromcountry" matInput placeholder="From Country">
       </mat-form-field>
 
       <mat-form-field appearance="fill" style="width: 48%;">
+        <label>To Country</label>
         <input type="text" formControlName="tocountry" [(ngModel)]="data.tocountry" matInput placeholder="To Country">
       </mat-form-field>
     </div>
 
     <div>
-      <mat-form-field appearance="fill" style="width: 48%; margin-right: 4%;">
+      <!-- <mat-form-field appearance="fill" style="width: 48%; margin-right: 4%;">
+        <label>Class</label>
         <input type="text" formControlName="travelclass" [(ngModel)]="data.travelclass" matInput placeholder="Travel Class">
-      </mat-form-field>
+      </mat-form-field> -->
 
       <mat-form-field appearance="fill" style="width: 48%;">
+        <label>From Airport</label>
         <select class="form-select" aria-label="Default select example" formControlName="fromid" [(ngModel)]="data.fromid" style="width: 100%;">
+          <option *ngFor="let air of airport.airports" [value]="air.airportid">{{air.name}}</option>
+        </select>
+      </mat-form-field>
+      <mat-form-field appearance="fill" style="width: 48%; margin-bottom: 10px;">
+        <label>To Airport</label>
+        <select class="form-select" aria-label="Default select example" formControlName="toid" [(ngModel)]="data.toid" style="width: 100%;">
           <option *ngFor="let air of airport.airports" [value]="air.airportid">{{air.name}}</option>
         </select>
       </mat-form-field>
     </div>
 
-    <mat-form-field appearance="fill" style="width: 100%; margin-bottom: 10px;">
-      <select class="form-select" aria-label="Default select example" formControlName="toid" [(ngModel)]="data.toid" style="width: 100%;">
-        <option *ngFor="let air of airport.airports" [value]="air.airportid">{{air.name}}</option>
-      </select>
-    </mat-form-field>
+    
 
     <div>
       <mat-form-field appearance="fill" style="width: 48%; margin-right: 4%;">
+        <label>Departure Date</label>
         <input type="datetime-local" formControlName="departuredate" [(ngModel)]="data.departuredate" matInput placeholder="Departure Date">
       </mat-form-field>
 
       <mat-form-field appearance="fill" style="width: 48%;">
+        <label>Arrival Date</label>
         <input type="datetime-local" formControlName="arrivaldate" [(ngModel)]="data.arrivaldate" matInput placeholder="Arrival Date">
       </mat-form-field>
     </div>
@@ -220,7 +237,7 @@
         <label for="image-upload" class="file-label" style="cursor: pointer;">
           <i class="fas fa-upload"></i> Upload Image
         </label>
-        <input type="file" #file accept="image/*" id="image-upload" formControlName="image" (change)="uploadImage(file.files)" style="display: none;">
+        <input type="file" #file accept="image/*" id="image-upload" [(ngModel)]="data.image" formControlName="image" (change)="uploadImage(file.files)" style="display: none;">
       </div>
     </div>
 
@@ -239,70 +256,72 @@
   <h1 style="text-align: center; margin: 0;">Add Flight</h1>
   <form class="formAddFlight" [formGroup]="createForms" style="width: 30vw; max-height: 72vh; overflow: auto; display: flex; flex-direction: column; align-items: center;">
 
-    
     <mat-form-field appearance="fill" style="width: 85%;">
-      <mat-label>capacity</mat-label>
-      <input type="text" formControlName="capacity" matInput placeholder="capacity">
+        <label>Capacity</label><br>
+        <input type="text" formControlName="capacity" matInput placeholder="Capacity">
     </mat-form-field>
 
     <mat-form-field appearance="fill" style="width: 85%;">
-      <mat-label>price</mat-label>
-      <input type="text" formControlName="price" matInput placeholder="price">
+        <label>Price </label>
+        <br>
+        <input type="text" formControlName="price" matInput placeholder="Price">
     </mat-form-field>
 
     <mat-form-field appearance="fill" style="width: 85%;">
-      <mat-label>description</mat-label>
-      <input type="text" formControlName="description" matInput placeholder="description">
+        <label>Description</label>
+        <input type="text" formControlName="description" matInput placeholder="Description">
     </mat-form-field>
 
     <mat-form-field appearance="fill" style="width: 85%;">
-      <mat-label>fromcountry</mat-label>
-      <input type="text" formControlName="fromcountry" matInput placeholder="fromcountry">
+        <label>Departure Country</label>
+        <input type="text" formControlName="fromcountry" matInput placeholder="Departure Country">
     </mat-form-field>
 
     <mat-form-field appearance="fill" style="width: 85%;">
-      <mat-label>tocountry</mat-label>
-      <input type="text" formControlName="tocountry" matInput placeholder="tocountry">
+        <label>Destination Country</label>
+        <input type="text" formControlName="tocountry" matInput placeholder="Destination Country">
+    </mat-form-field>
+
+    <!-- <mat-form-field appearance="fill" style="width: 85%;">
+        <label>Travel Class</label>
+        <input type="text" formControlName="travelclass" matInput placeholder="Travel Class">
+    </mat-form-field> -->
+
+    <mat-form-field appearance="fill" style="width: 85%;">
+        <label>Departure Airport</label>
+        <select class="form-select" aria-label="Default select example" formControlName="fromid" [(ngModel)]="data.fromid" style="width: 85%;">
+            <option *ngFor="let air of airport.airports" [value]="air.airportid">{{air.name}}</option>
+        </select>
     </mat-form-field>
 
     <mat-form-field appearance="fill" style="width: 85%;">
-      <mat-label>travelclass</mat-label>
-      <input type="text" formControlName="travelclass" matInput placeholder="travelclass">
+        <label>Destination Airport</label>
+        <select class="form-select" aria-label="Default select example" formControlName="toid" [(ngModel)]="data.toid" style="width: 85%;">
+            <option *ngFor="let air of airport.airports" [value]="air.airportid">{{air.name}}</option>
+        </select>
     </mat-form-field>
 
     <mat-form-field appearance="fill" style="width: 85%;">
-      <select class="form-select" aria-label="Default select example" formControlName="fromid" [(ngModel)]="data.fromid">
-        <option *ngFor="let air of airport.airports" [value]="air.airportid">{{air.name}}</option>
-      </select>
+        <label>Departure Date</label>
+        <input type="datetime-local" formControlName="departuredate" matInput>
     </mat-form-field>
 
     <mat-form-field appearance="fill" style="width: 85%;">
-      <select class="form-select" aria-label="Default select example" formControlName="toid" [(ngModel)]="data.toid">
-        <option *ngFor="let air of airport.airports" [value]="air.airportid">{{air.name}}</option>
-      </select>
-    </mat-form-field>
-
-    <mat-form-field appearance="fill" style="width: 85%;">
-      <mat-label>departuredate</mat-label>
-      <input type="datetime-local" formControlName="departuredate" matInput>
-    </mat-form-field>
-
-    <mat-form-field appearance="fill" style="width: 85%;">
-      <mat-label>arrivaldate</mat-label>
-      <input type="datetime-local" formControlName="arrivaldate" matInput>
+        <label>Arrival Date</label>
+        <input type="datetime-local" formControlName="arrivaldate" matInput>
     </mat-form-field>
 
     <div style="width: 100%;">
-      <label for="image-upload" class="file-label" style="cursor: pointer;">
-        <i class="fas fa-upload"></i> Upload Image
-        <input type="file" #file accept="image/*" id="image-upload" formControlName="image" (change)="uploadImage(file.files)" style="display: none;">
-      </label>
+        <label for="image-upload" class="file-label" style="cursor: pointer;">
+            <i class="fas fa-upload"></i> Upload Image
+            <input type="file" #file accept="image/*" id="image-upload" formControlName="image" (change)="uploadImage(file.files)" style="display: none;">
+        </label>
     </div>
 
     <div name="button" mat-dialog-actions style="margin-top: 16px;">
-      <button style="background-color: #04aa6d; color: #fff;margin-right: 10px;" (click)="createFlight()" mat-button [mat-dialog-close]="true">Add</button>
-      <button style="background-color: red; color: #fff;" mat-button mat-dialog-close="no" cdkFocusInitial>Cancel</button>
+        <button style="background-color: #04aa6d; color: #fff;margin-right: 10px;" (click)="createFlight()" mat-button [mat-dialog-close]="true">Add</button>
+        <button style="background-color: red; color: #fff;" mat-button mat-dialog-close="no" cdkFocusInitial>Cancel</button>
     </div>
-  </form>
-</ng-template>
+</form>
 
+</ng-template>

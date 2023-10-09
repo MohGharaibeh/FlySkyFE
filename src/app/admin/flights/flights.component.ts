@@ -58,7 +58,7 @@ export class FlightsComponent implements OnInit {
     this.data = obj;
     this.dialog.open(this.updateDialoge);
     this.updateForms.controls['flightid'].setValue(this.data.flightid);
-
+    this.fly.showImage = obj.image;
   }
   updateFlight(){
     this.fly.updateFlight(this.data);

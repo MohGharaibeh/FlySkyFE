@@ -17,6 +17,7 @@ import { ChatComponent } from './chat/chat.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ChatbotComponent } from './chatbot/chatbot.component';
 import { ChatbotService } from '../service/chatbot.service';
+import { SearchdateComponent } from './searchdate/searchdate.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { ChatbotService } from '../service/chatbot.service';
     PaymentComponent,
     TrackingComponent,
     ChatComponent,
-    ChatbotComponent
+    ChatbotComponent,
+    SearchdateComponent
   ],
   imports: [
     CommonModule,

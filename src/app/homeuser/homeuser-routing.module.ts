@@ -11,6 +11,7 @@ import { PaymentComponent } from './payment/payment.component';
 import { TrackingComponent } from './tracking/tracking.component';
 import { ChatComponent } from './chat/chat.component';
 import { ChatbotComponent } from './chatbot/chatbot.component';
+import { SearchdateComponent } from './searchdate/searchdate.component';
 
 const routes: Routes = [
   {
@@ -52,6 +53,10 @@ const routes: Routes = [
   {
     path:'chatbot',
     component:ChatbotComponent
+  },
+  {
+    path:'searchdate',
+    component:SearchdateComponent
   }
 ];
 

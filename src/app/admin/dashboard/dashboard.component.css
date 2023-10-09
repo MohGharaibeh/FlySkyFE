@@ -2,5 +2,5 @@ canvas{
     display: inline-block !important;
     box-sizing: border-box !important;
     height: 570px !important;
-    width: 1060px !important;
+    width: 100% !important;
 }

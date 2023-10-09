@@ -41,6 +41,8 @@ export class HomeComponent implements OnInit{
 		this.stat.getNumOfAirport();
 		this.stat.getMaxReserved();
     this.home.getHomeById();
+    this.testi.getAllTestimonial();
+    this.home.getAboutById();
     // Create a Leaflet map
     this.map = L.map('map').setView([0, 0], 3);
 
@@ -146,7 +148,7 @@ export class HomeComponent implements OnInit{
 
     this.search.serachDate(dateRange);
    //this.dialog.open(this.searchDialog);
-   this.router.navigate(['/user/search'])
+   this.router.navigate(['/user/searchdate'])
   }
 
   serachCountry(){

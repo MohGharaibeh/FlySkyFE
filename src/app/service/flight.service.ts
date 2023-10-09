@@ -119,6 +119,7 @@ totalPrice:number=0;
 ticket:number=0;
 depDate:Date = new Date();
 arrDate: Date = new Date();
+flyss:any={};
   gitItById(id: number) {
     debugger;
     this.getFlightById(id).subscribe(
@@ -126,6 +127,7 @@ arrDate: Date = new Date();
         this.showImage = data.image;
         this.flightData = data; 
         this.priceFly = data.price;
+        this.flyss=data;
         //this.dialog.open(this.openId, { data: { flightData: this.flightData } });
       },
       (error) => {

@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { FlightService } from 'src/app/service/flight.service';
 import { ReservedService } from 'src/app/service/reserved.service';
 
@@ -12,17 +13,16 @@ import { ReservedService } from 'src/app/service/reserved.service';
 })
 export class PaymentComponent implements OnInit{
   constructor(public reserv:ReservedService, private _formBuilder: FormBuilder,
-     public fly:FlightService, private route: ActivatedRoute){
+     public fly:FlightService, private route: ActivatedRoute, private toast:ToastrService, private router:Router){
   
   }
   firstFormGroup: FormGroup = this._formBuilder.group({firstCtrl: ['']});
   secondFormGroup: FormGroup = this._formBuilder.group({secondCtrl: ['']});
 
   ngOnInit(): void {
-    console.log(paypal); // Check if 'paypal' object is accessible globally
+    console.log(paypal); 
 console.log(this.Pay.nativeElement);
 
-// Attempt to render PayPal buttons
 if (paypal && this.Pay.nativeElement) {
   paypal.Buttons(
     {
@@ -53,21 +53,26 @@ if (paypal && this.Pay.nativeElement) {
         }
         var email = {
           NumOfTicket:this.fly.ticket,
-          UserEmail:localStorage.getItem('userID'),
+          UserEmail:localStorage.getItem('userEmail'),
           TotalPrice:this.fly.totalPrice,
           ArrivalDate: this.fly.arrDate,
           DepartureDate: this.fly.depDate
         }
         this.reserv.reservedFlight(b,email)
+        
         return actions.order.capture().then((details: any) => {
 
           console.log(details);
-          // Put toastr or any other handling here
+          this.toast.success('Payment Success')
+          this.router.navigate(['user/track'])
+          // Put toastr
         });
+        
       },
       onError: (error: any) => {
         console.log(error);
-        // Handle errors here
+        this.toast.error('Somthing Error')
+        // toastr errors here
       }
     }
   ).render(this.Pay.nativeElement);
@@ -107,8 +112,7 @@ userEmail:any =localStorage.getItem('userEmail');
     
   // }
   
-    async sendPay(){
-      debugger;
+    sendPay(){
       var b ={
         numberofticket:this.formPay.controls['numberofticket'].value,
         useracountid:this.formPay.controls['useracountid'].value,
